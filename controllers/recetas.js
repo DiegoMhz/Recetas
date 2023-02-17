@@ -1,6 +1,6 @@
 const recetasRouter = require('express').Router();
 const User = require('../models/user');
-const Recetas = require('../models/Recetas');
+const Recetas = require('../models/recetas');
 
 recetasRouter.post('/', async (request, response) => {
     const { user } = request;
