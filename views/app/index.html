@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+<body class="h-screen bg-inherit pt-20">
+ <!-- NAV-BAR -->
+ <nav class="absolute top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 dark:bg-slate-800 px-4">
+  <img src="imagen21/20230112_192454_0000-removebg-preview (1).png" class="h-48 w-60">
+  <div class="flex gap-4 text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 md:hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <a class="hidden md:block" href="/signup/">Cerrar sesion</a>
+  </div>
+</nav>
+<!-- Contenedor -->
+<div id="contenedor" class="pt-4 flex-col flex justify-center items-center px-1.5 bg-inherit dark:bg-slate-800">
+  <div class="text-center">
+    <div class="text-4xl font-semibold">Bienvenido</div>
+    <div class="text-base font-normal">Antes de comenzar necesitamos algunos datos...</div>
+  </div>
+</div>
+<div id="contenedor-form" class="justify-center flex">
+  <form id="form" class="flex flex-direction flex-col gap-4 w-full  bg-inherit p-4 rounded-lg">
+  <div class="text-center">
+    <label>¿Cuál es tu sexo de nacimiento?</label>
+    <div id="input-div" class="flex flex-col justify-center h-14">
+      <div id="div-genero" class="flex justify-center w-full gap-4">
+        
+        <div id="div-input-masculino" class="bg-white hover:bg-green-500 w-6/12 text-center justify-center flex 
+        h-12 flex-col border border rounded-lg border-green-600">
+        <label for="sexo-masculino" class="cursor-pointer">Masculino</label>
+        <input type="radio" name="sexo" value="Masculino" id="sexo-masculino" class="absolute opacity-0">
+        </div>
+        
+        <div id="div-input-femenino" class="bg-white hover:bg-green-500 w-6/12 text-center justify-center flex 
+        h-12 flex-col border border rounded-lg border-green-600">
+        <label for="sexo-femenino" class="cursor-pointer">Femenino</label>
+        <input type="radio" name="sexo" value="Femenino" id="sexo-femenino" class="absolute opacity-0">
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <div class="input-div">
+    
+    <!-- <div id="div-input-meta" class="w-full">
+      <div class="flex flex-col gap-4">
+        <h2 class="font-medium">Meta</h2>
+    <select name="meta" class="p-4 bg-white rounded-lg w-full outline-none placeholder:text-slate-400" id="input-meta">
+      <option value="value1"selected disabled>Meta</option>
+      <option value="deficit calorico">Deficit Calorico</option>
+      <option value="masa muscular">Masa muscular</option>
+    </select>
+  </div>
+  </div> -->
+
+   <div id="actividad" class="w-full text-center">
+    <div class="flex flex-col">
+    <label class="pt-0">¿Cuantos dias entrenas?</label>
+  <select name="Actividad" class="p-4 bg-white rounded-lg w-full outline-none placeholder:text-slate-400 border" id="input-actividad">
+    <option value="value1"selected disabled>Actividad</option>
+    <option value="Baja">Baja: Ejercicio de 1 a 2 dias a la semana</option>
+    <option value="Media">Media: Ejercicio de 3 a 5 dias a la semana</option>
+    <option value="Alta">Alta Ejercicio de 5 a 7 dias a la semana</option>
+  </select>
+  </div>
+  </div> 
+
+    
+    <div id="div-input-edad"  class="w-full text-center">
+      <div class="flex flex-col w-full">
+        <label class="pt-0">¿Cuál es tu edad?</label>
+      <input type="text"  id="input-edad" placeholder="20 años" class="text-center border p-4 bg-white border rounded-lg w-full outline-none placeholder:text-slate-400">
+    </div>
+    </div> 
+  </div>
+
+  <div class="input-div gap-4">
+    
+    <div class="div-peso"  class="w-full">
+      <div class="flex flex-col w-full text-center">
+      <label for="input-peso" class="pt-0">¿Cuanto pesas?</label>
+      <div class="flex">
+      <input type="text" class=" text-center p-4 bg-white rounded-lg border w-full outline-none placeholder:text-slate-400" placeholder="Ej: 49 kg"  id="input-peso">
+      </div>
+    </div>
+    </div> 
+     
+     <div id="div-input-altura" class="w-full text-center">
+      <div class="flex flex-col">
+        <label for="input-altura" class="pt-0">¿Cuanto mides?</label>
+        <div class="flex">
+    <input type="text" class="p-4 bg-white rounded-lg w-full outline-none placeholder:text-slate-400 text-center border" placeholder="Ej: 170 cm" id="input-altura">
+</div>
+  </div>
+  </div>
+  </div>
+   
+
+  <div class="input-div">
+    
+    <!-- <div id="actividad" class="w-full">
+      <div>
+    <select name="meta" class="p-4 bg-white rounded-lg w-full outline-none placeholder:text-slate-400" id="input-actividad">
+      <option value="value1"selected disabled>Actividad</option>
+      <option value="Baja">Baja: Ejercicio de 1 a 2 dias a la semana</option>
+      <option value="Media">Media: Ejercicio de 3 a 5 dias a la semana</option>
+      <option value="Alta">Alta Ejercicio de 5 a 7 dias a la semana</option>
+    </select>
+    </div>
+  </div>
+  </div> -->
+
+    <div id="div-input-meta" class="w-full text-center">
+      <div class="flex flex-col">
+        <p class="font-medium text-lg">Tu objetivo nutricional es...</p>
+    <select name="meta" class="p-4 bg-white rounded-lg w-full outline-none placeholder:text-slate-400 border" id="input-meta">
+      <option value="Bajar de peso"selected>Bajar de peso</option>
+      <option value="Subir de peso">Subir de peso</option>
+    </select>
+  </div>
+  </div> 
+</div>
+
+  <button id="btn-aceptar">Aceptar</button>
+  </form>
+</div>
+  <script src="index.js"></script>
+</body>
+</html>
+

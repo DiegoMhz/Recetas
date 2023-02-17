@@ -1,0 +1,37 @@
+
+/*Clases */
+.face{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.front{
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 0 5px 10px #000;
+}
+
+
+.back{
+  transform: perspective(600px) rotateY(180deg);
+  background: rgb(3,35,54);
+  padding: 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 10px #000;
+  overflow: auto;
+}
+
+
+#card:hover .front{
+  transform: perspective(600px) rotateY(180deg);
+}
+#card:hover .back{
+  transform: perspective(600px) rotateY(360deg);
+}
+ 

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body class="pt-20 bg-slate-300 flex min-h-screen justify-center items-center bg-white flex-wrap">
+    <!-- NAV BAR -->
+    <nav class="absolute top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 dark:bg-slate-800 px-4">
+      <img src="imagenp/20230112_192454_0000-removebg-preview (1).png" class="h-48 w-60">
+
+      <div class="flex gap-4 text-white items-center" id="svg-container">
+
+
+        <div class="flex items-center justify-center flex-col h-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" style="height: 25px;" id="btn-progreso" class="cursor-pointer" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm8 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-19 0c0-6.065 4.935-11 11-11v2c-4.962 0-9 4.038-9 9 0 2.481 1.009 4.731 2.639 6.361l-1.414 1.414.015.014c-2-1.994-3.24-4.749-3.24-7.789z"/></svg>
+        <label id="label-progreso" class="text-black text-sm">Progreso</label>
+      </div>
+
+  <div class="flex flex-col items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" class="cursor-pointer" id="btn-perfil" style="height: 25px;" height="24" viewBox="0 0 24 24"><path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z"/></svg>
+          <label class="text-black text-sm">Perfil</label>
+  </div>
+
+  <div class="flex flex-col items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" id="svg-recetas" class="cursor-pointer" style="height: 25px;" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M18.496 24h-.001c-.715 0-1.5-.569-1.5-1.5v-8.5s-1.172-.003-2.467 0c.802-6.996 3.103-14 4.66-14 .447 0 .804.357.807.851.01 1.395.003 16.612.001 21.649 0 .828-.672 1.5-1.5 1.5zm-11.505-12.449c0-.691-.433-.917-1.377-1.673-.697-.56-1.177-1.433-1.088-2.322.252-2.537.862-7.575.862-7.575h.6v6h1.003l.223-6h.607l.173 6h1.003l.242-6h.562l.199 6h1.003v-6h.549s.674 5.005.951 7.55c.098.902-.409 1.792-1.122 2.356-.949.751-1.381.967-1.381 1.669v10.925c0 .828-.673 1.5-1.505 1.5-.831 0-1.504-.672-1.504-1.5v-10.93z"/></svg>
+          <label class="text-black text-sm">Receta</label>
+  </div>
+
+        <div class="flex flex-col">
+        <svg xmlns="http://www.w3.org/2000/svg" style="height: 25px;" class="hidden md:block cursor-pointer text-black" width="24" id="btn-cerrar" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <a href="/signup/" class="text-black text-sm">Salir</a>
+      </div>
+    
+    </div>
+
+      </nav>
+
+  <div> 
+    
+<div id="contenedor">
+  <h1 class="text-center mt-4 font-bold" style="font-size: 28px;">Bienvenido</h1>
+
+      <p class="text-end pr-4">Para generara su dieta mensual</p>
+      <div class="flex justify-end pr-20">
+      <button id="btn-recetas" type="button" class="bg-green-500 hover:bg-green-600" style="border-radius: 0.5rem; padding: 0.5rem;">Presione aqui</button>
+    </div>
+
+  <p class="text-center font-medium" style="font-size: 18px;">A continuacion te presentamos diferentes sugerencias de platos  que te ayudaran a bajar de peso</p>
+
+    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Meriendas</h3>
+      <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2020/07/08/brochetas-de-frutas_eed350b6_1200x1600.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Brochetas de frutas</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Brochetas de frutas</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1 fresas</li>
+              <li>15 gramos de fresones</li>
+              <li>1/4 mango</li>
+              <li>1/4 pomelo rosa</li>
+              <li>25 gramos de queso fresco</li>
+              <li>15 gramos de carne de membrillo</li>
+              <li>1/4 plátano</li>
+              <li>10 gramos de miel</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>
+               PASO 1. Lava las fresas y los fresones, sécalos y retírales el rabito.
+               <br> PASO 2. Congela las fresas. Pela el mango y el pomelo y pártelos en rodajas. Puedes ayudarte de un cortapastas en círculos iguales.
+               <br> PASO 3. Lava la albahaca. Escurre el queso y córtalo en láminas gruesas y luego en círculos, también con el cortapastas.
+               <br> PASO 4. Corta el membrillo de igual forma. Pela el plátano y córtalo en rodajas al bies.
+               <br> PASO 5. Lleva a ebullición la miel con unas hojas de albahaca y retira del fuego. Deja infusionar unos minutos y cuélala.
+               <br> PASO 6. Ensarta las frutas frescas, el membrillo y el queso en brochetas. Riega con la miel y decora con las fresas troceadas y la albahaca cortada en juliana.
+              </p>
+            </div>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2020/07/08/yogur-con-avena_fda56a54_600x800.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Yogur con avena</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Hamburguesa</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>50 g de copos de quinoa</li>
+              <li>12 g de pipas de girasol</li>
+              <li>5 g de semillas de sésamo</li>
+              <li>15 g de almendras fileteadas</li>
+              <li>15 g de pasas de corinto</li>
+              <li>100 g de yogur de soja</li>
+              <li>75 g de mango</li>
+              <li>1 cucharadita de semillas de chía</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>
+                PASO 1. Primero se tuestan ligeramente en el horno los copos de quinoa, las semillas de girasol, el sésamo y las almendras.
+               <br> PASO 2. Una vez que ya se han dorado un poquito se añaden las pasas y se reparte esta mezcla en cuatro vasitos. Luego, se agrega una buena capa de yogur por encima.
+               <br> PASO 3. Se pela y se corta el mango a taquitos pequeños y se coloca con cuidado sobre el yogur, de manera que queden tres capas diferenciadas.
+               <br> PASO 4. Se espolvorea por encima con las semillas de chía y se sirve.
+              </p>
+            </div>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2020/07/08/helados-de-sandia-00437110_dc752d27_600x800.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Polos de sandia</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Polos de sandia</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>400 gramos de sandía</li>
+              <li>2 dl de yogur griego (sin azúcar)</li>
+              <li>50 gramos de pepitas de chocolate negro</li>
+              <li>50 gramos de panela</li>
+              <li>1 limón</li>
+              <li>Unas hojas de menta</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>
+               <br> PASO 1. Corta la sandía por la mitad, retira las semillas y la piel y trocea.
+               <br> PASO 2. Exprime el limón y filtra el zumo para eliminar las semillas. PASO 3. Añade la sandía en el vaso de la batidora junto con el zumo del limón filtrado, el yogur y la panela.
+               <br> PASO 4. Tritura durante unos minutos hasta obtener una crema homogénea y lisa. Añade las pepitas de chocolate negro y remueve unos instantes.
+               <br> PASO 5. Reparte la preparación en los moldes de polos y dales unos golpecitos sobre la encimera para que se reparta bien la crema y no queden burbujas de aire.
+               <br> PASO 6. Introduce un palito de madera en cada molde. Déjalos en el congelador unas 6 horas o hasta el día siguiente. Para desmoldarlos, ponlos bajo el chorro de agua templada.
+               <br> PASO 7. Sirve los polos de sandía y decora con unas hojas de menta. 
+              </p>
+            </div>
+        
+           
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2022/06/28/yogures-con-kiwi-y-muesli_7ed7243f_600x405.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Vasitos de kiwi con coco y granola</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Vasitos de kiwi con coco y granola</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1 kiwis maduros</li>
+              <li>100 ml de leche de coco (con alta materia grasa aprox 20%)</li>
+              <li>75 ml de sirope de agave</li>
+              <li>60 g de copos de avena</li>
+              <li>20 g de avellanas</li>
+              <li>25 g de dátiles sin hueso</li>
+              <li>1/2 cucharaditas de canela en polvo</li>
+              <li>1/2 cucharaditas de aceite de coco</li>
+              <li>1/2 cucharadas de agua</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-Cocer la pasta de lasaña según las instrucciones del paquete. 
+                <br>2-Escurrir y dejar enfriar. 
+                <br>3-Calentar el aceite de oliva en una sartén a fuego medio y añadir las verduras picadas. 
+                <br>4-Sofría por unos minutos hasta que estén suaves. 
+                <br>5-Agregue el tomate picado y cocine durante unos minutos más. 
+                <br>6-En un refractario para hornear, colocar una capa de pasta de lasaña, seguida de una capa de verduras, una capa de queso ricotta y una capa de queso mozzarella. 
+                <br>7-Repetir estas capas hasta terminar con una capa de queso mozzarella en la parte superior.
+                <br>8-Hornear a 180°C durante 25 minutos o hasta que el queso esté dorado.
+                <br>9-Dejar enfriar antes de servir.</p>
+            </div>
+        
+            
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Almuerzos</h3>
+
+  
+
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://cdn0.recetasgratis.net/es/posts/1/9/3/atun_con_salsa_teriyaki_y_sesamo_63391_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Atún en salsa teriyaki </h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Atún en salsa teriyaki</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1½ kilogramos de lomo de atún</li>
+              <li>25 gramos de sésamo blanco</li>
+              <li>25 gramos de sésamo negro</li>
+              <li>150 mililitros de salsa de soja</li>
+             <p> Para la salsa teriyaki:</p>
+             <li>2 cucharadas soperas de vinagre de manzana o vinagre balsámico</li>
+             <li>6 cucharadas soperas de salsa de soja</li>
+             <li>1 cucharada sopera de azúcar (puedes cambiarlo por algún edulcorante o piloncillo)</li>
+             <li>1 pizca de jengibre fresco (opcional)</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-Para preparar la salsa teriyaki, incorpora en una cazuela todos los ingredientes de la salsa, a excepción de la maicena.
+                <br>2-Calienta a fuego medio, durante 20 minutos.
+                <br>3-Cumplido el tiempo estipulado, retira la olla del fuego, agrega la maicena y remueve con unas varillas enérgicamente.
+                <br>4-Una vez disuelta la harina y lograda una salsa de consistencia espesa, regresa la salsa al fuego.
+                <br>5-Espera alrededor de 10 minutos, luego retira y deja enfriar.
+                <br>6-Utiliza la salsa para marinar el atún, como mínimo dos horas y de preferencia toda la noche.
+                <br>7-Por otra parte, agrega dos variedades de semillas de sésamo dentro de un bol e impregna las piezas de atún con ellas.
+                <br>8-Prepara una sartén con aceite caliente y sella el pescado.
+                <br>9-Sirve el atún cubriéndolo con salsa tereyaki adicional y semilla de sésamo tostadas (así resaltas su sabor). También puedes colocar la salsa en la mesa, así cada comensal la consume a su gusto.
+              </p>
+            </div>
+        
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://i.blogs.es/b88b27/ensalada-asiatica-tofu-arroz-brocoli-300118-0001/1366_2000.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Ensalada al estilo asiático de tofu, arroz y brócoli</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Ensalada al estilo asiático de tofu, arroz y brócoli</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>Arroz basmati: 74 g</li>
+              <li>Jengibre fresco: 5 g</li>
+              <li>Zumo de lima:
+                15 ml</li>
+              <li>Salsa de soja:
+                10 ml</li>
+              <li>Salsa Sriracha o salsa picante de chile:
+                4 ml</li>
+              <li>Aceite de sésamo o de girasol o maíz:
+                8 ml</li>
+              <li>Tofu firme:
+                112 g</li>
+              <li>Brócoli:
+                175 g</li>
+              <li>Cilantro fresco:
+                5 g</li>
+              <li>Albahaca:
+                5 g</li>
+                <li>Pistachos:
+                  8 g</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-En una olla cocemos el arroz según las instrucciones del fabricante, una vez cocido lo separamos con un tenedor para que queden los granos sueltos y lo dejamos enfriar.
+               <br>2-Mientras en un bol o en el vaso de un robot de cocina mezclamos el jengibre fresco pelado y rallado, el zumo de lima, la salsa de soja, el aceite y dos cucharadas de agua. Trituramos con una batidora y marinamos en esta mezcla el tofu cortado en dados durante 20 minutos.        
+               <br>3-Cocemos al vapor o en abundante agua hirviendo según se prefiera, las flores de brócoli hasta que estén cocidas, pero crujientes. Separamos, las pasamos por agua helada para cortar la cocción, y las extendemos en una fuente y dejamos enfriar.                
+               <br>4-Para terminar en una bandeja ponemos el arroz, añadimos las flores de brócoli, echamos el tofu y su marinada, picamos por encima las hierbas frescas y los pistachos pelados. Servimos.          
+              </p>
+            </div>
+        
+        </div>
+        
+      </div>
+
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://i.blogs.es/5552eb/pastaesparragos/450_1000.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Macarrones con espárragos y langostinos</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Macarrones con espárragos y langostinos</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>87 gramos de macarrones integrales</li>
+              <li>5 langostinos</li>
+              <li>4 espárragos trigueros</li>
+              <li>Albahaca</li>
+              <li>1 dientes de ajo</li>
+              <li>Zumo de limón</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-Lo primero que haremos es cortar la base de los espárragos, lavarlos y ponerlos a hervir en una olla que contenga agua caliente; dejamos que se ablanden durante unos 10 minutos y después apartamos del fuego y reservamos. En una olla aparte ponemos agua a hervir y cuando rompa la ebullición echamos los langostinos durante 3 minutos. Sacamos del agua, los pelamos y reservamos.
+               <br> 2-Ahora tan solo tendremos que poner la pasta a hervir con un chorrito de aceite y sal. Cuando esté lista tendremos que colarla y reservar. En una sartén a fuego lento pondremos a freír el ajo picado con los langostinos, al poco rato añadimos los espárragos, el zumo del limón y salteamos todos. Ahora tendremos que agregar los macarrones y remover para que se mezcle todo. ¡Así de fácil, rápido y delicioso! ¿Te apuntas?
+              </p>
+            </div>
+        
+        </div>
+        
+      </div>
+
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://cdn.elcocinerocasero.com/imagen/receta/1000/2017-08-24-19-35-41/salmon-al-horno.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Salmon al horno con patatas</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Salmon al horno con patatas</h3>
+
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li> 1 lomo de salmón entero</li>
+              <li> 2 patatas medianas</li>
+              <li> 1 cebolla</li>
+              <li>2 limones</li>
+              <li> Perejil o eneldo</li>
+              <li> Aceite de oliva virgen extra</li>
+              <li>Sal</li>
+              <li>Pimienta</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1 Limpiar el lomo de salmón y secar muy bien el pescado con un paño limpio y seco, o papel de cocina; reservar.
+              <br>  2 Precalentar el horno a 180º C. Pelar y cortar las patatas en rodajas, no demasiado gruesas. Pelar y cortar la cebolla en plumas. Poner en una bandeja apta para el horno las rodajas de patata y las plumas de cebolla. Salpimentar al gusto y regar con tres cucharadas de aceite de oliva . Meter la bandeja en el tercer nivel del horno y dejar cocer durante 15 minutos; retirar.
+              <br>  3 Colocar el lomo de salmón en la bandeja. Salpimentar y rociar con unas gotas de zumo de limón. Pintar con 2 cucharadas de aceite y hornear durante unos 16-18 minutos. Sacar la bandeja del horno y espolvorear con perejil o eneldo picado. Servir el lomo de salmón entero.
+                
+                
+              </p>
+            </div>
+        
+           
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jugos</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://enrilemoine.com/wp-content/uploads/2014/09/Batido-de-fresas-y-avena-SAVOIR-FAIRE-by-enrilemoine-scaled.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Batido de fresa</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Batido de fresa</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1-Medio kilo de fresas. Lo mejor es usarlas frescas cuando están de temporada, pero también puedes echar mano de las congeladas para salir del apuro.</li>
+              <li>2-Un vaso de leche entera.</li>
+              <li>3-Azúcar al gusto o edulcorante, aunque si las fresas están muy maduras ni siquiera hará falta. ¡Así apreciarás mejor el sabor natural de la fruta!</li>
+            </ul>
+          </div>
+
+        </div>
+        
+      </div>
+
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://images.hola.com/imagenes/cocina/recetas/20191017151907/batido-mango-papaya-coco/0-734-593/batido-mango-t.jpg?tx=w_680" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Batido de Mango</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Batido de Mango</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1-Una taza de mango cortado en trozos pequeños.</li>
+              <li>2-Medio vaso de agua. También puedes usar tu bebida vegetal favorita, como la de coco, almendras o avena. </li>
+              <li>3-Medio vaso de hielo picado. </li>
+              <li>4-Azucar o el edulcorante que más te guste. Aunque con el dulzor del mango puede no ser necesario.</li>
+            </ul>
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.laurafuentes.soy/wp-content/uploads/2022/01/pineapple-banana-smoothie_post_1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Batido de Piña</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Batido de Piña</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1-Dos rodajas de piña.</li>
+              <li>2-Un vaso de leche entera, semi o desnatada. También puedes usar leche de avena, de coco o similar, productos que en realidad no llevan lácteos y son preparados a partir de sustancias vegetales.</li>
+              <li>3-azúcar o el edulcorante que más te guste.</li>
+            </ul>
+          </div>
+
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.hnosperez.com/blog/wp-content/uploads/2021/03/batido-platano.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Batido de Plátano </h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Batido de Plátano</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1-2 plátanos o bananas maduros.</li>
+              <li>2-300 mililitros de leche entera.</li>
+              <li>3-Azucar. La cantidad de endulzante es al gusto.</li>
+           
+            </ul>
+          </div>
+
+         
+        </div>
+        
+      </div>
+
+
+
+    </div>
+    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Cenas</h3>
+
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://content-cocina.lecturas.com/medio/2018/07/19/tortilla-de-champinones-y-jamon_f233bf55_800x800.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Tortilla de champiñones y jamon</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Tortilla de champiñones y jamon</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>2 huevos</li>
+              <li>37 g de champiñones</li>
+              <li>25 g de jamón serrano</li>
+              <li>1/2 dientes de ajo</li>
+              <li>1/4 ramita de perejil</li>
+              <li>Aceite de oliva</li>
+              <li>Sal</li>
+              <li>Pimienta negra</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-Limpia los champiñones, elimina la parte terrosa, lávalos y sécalos con papel de cocina. Lamina los champiñones, y pela y pica finamente el ajo. Lava y seca el perejil, y pícalo. Corta el jamón en daditos.
+              <br>  2-Sofríe el ajo en una sartén con una cucharada de aceite de oliva caliente. Agrega los champiñones, saltéalos 5 minutos y retira del fuego. Añade el jamón y el perejil.
+               <br> 3-Bate los huevos en un cuenco, añade una pizca de sal y el sofrito anterior mezclando bien los ingredientes.
+               <br> 4-Engrasa una sartén de buen tamaño con un poco de aceite y ponla al fuego. Vierte la mezcla y déjala cuajar 4 minutos. Dale la vuelta y cocínala 4 minutos más por el otro. 
+             
+              </p>
+            </div>
+        
+          
+        </div>
+        
+      </div>
+
+
+
+<div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2022/12/14/pollo-a-la-plancha-con-lima_00000000_221214135618_943x1200.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+         
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Pollo a la plancha con lima</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Pollo a la plancha con lima</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>1 filetes de pechuga de pollo</li>
+              <li>1/2 dientes de ajo</li>
+              <li>1 limas</li>
+              <li>12 g de germinados de alfalfa (opcional)</li>
+              <li>Unas hojas de ensalada variada</li>
+              <li> 1 cucharadas de vinagre balsámico</li>
+              <li>Sal</li>
+              <li>1 cucharadas de aceite de oliva</li>
+              <li>Pimienta negra</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>Paso 1. Limpia las pechugas, lávalas, sécalas y córtalas en trozos. Pela los dientes de ajo y pártelos por la mitad.
+               <br> Paso 2. Mezcla el vinagre con el aceite, el ajo, el zumo de 1 lima y pimienta. Añade el pollo y deja macerar 30 minutos. Lava las limas restantes y trocéalas.
+               <br> Paso 3. Escurre el pollo, sazónalo y ásalo en una plancha, con las limas, durante 5 minutos; dale la vuelta para que se dore por igual. Repártelo en platos y añade las hojas de ensalada lavadas y secas. Completa, si quieres, con los germinados enjuagados y escurridos, y sirve.
+              
+              </p>
+            </div>
+        
+            
+        </div>
+        
+      </div>
+
+
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2022/12/14/canelones-de-ensalada-de-judias-blancas-con-atun_00000000_221214135926_600x600.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+        
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Canelones de ensalada de judias blancas con atun</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Canelones de ensalada de judias blancas con atun</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>2 láminas de lasaña</li>
+              <li>40 g de atún en escabeche</li>
+              <li>37 g de alubias blancas cocidas</li>
+              <li>1/2 zanahorias</li>
+              <li>1/2 ramitas de perejil</li>
+              <li>25 g de guisantes congelados</li>
+              <li>Sal</li>
+              <li>Unas hojas de lechuga</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>Paso 1. Cuece las láminas de pasta en agua con sal siguiendo las instrucciones del envase. Escúrrelas y déjalas extendidas sobre un paño.
+               <br> Paso 2. Raspa las zanahorias, lávalas y córtalas en daditos. Cuécelas, con los guisantes sin descongelar, en una cacerola con agua salada 6 o 7 minutos. Pasado ese tiempo escurre bien.
+               <br> Paso 3. Escurre también el atún, reservando el escabeche, y desmenúzalo. Mezcla la verdura cocida con las alubias blancas enjuagadas y escurridas, el atún y la lechuga, lavada y cortada en juliana fina.
+               <br> Paso 4. Reparte la mezcla en las láminas de pasta y enróllalas. Sirve los canelones rociados con un hilo del escabeche reservado y espolvoreados con el perejil lavado y picado.
+              </p>
+            </div>
+        
+           
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4">
+
+        <div class="face front">
+          <img src="https://www.elmueble.com/medio/2021/02/15/medallones-de-pavo-al-limon_00000000_221214141724_360x480.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Medallones de pavo al limon</h3>
+        </div>
+
+        <div class="face back">
+          <h3 class="font-bold text-center" style="font-size: 20px;">Medallones de pavo al limon</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>150 g de pechuga de pavo</li> 
+              <li>50 g de arroz</li> 
+              <li>1/2 limones</li> 
+              <li>1 huevos</li> 
+              <li>Azúcar</li> 
+              <li>Harina de maíz</li> 
+               <li>50 ml de caldo de pollo</li> 
+                <li> 1 cdas. de salsa de soja</li> 
+                 <li>1/4 pimiento rojo</li> 
+                 <li>12 g de guisantes</li> 
+                 <li>Aceite</li> 
+                 <li>Pimienta</li> 
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>Paso 1. Lavar la pechuga, cortar por la mitad y untar cada pieza con la salsa de soja y dejar marinar 30 minutos.
+               <br> Paso 2. Batir los huevos y mezclar con 3 cucharadas de harina de maíz. Escurrir el pavo, rebozar con la mezcla anterior y freír a fuego bajo para que se cocine bien sin dorarse demasiado. 
+               <br> Paso 3. Cortar 4 rodajas de limón. Exprimir el zumo de ambos y poner a calentar en un cazo junto con el caldo, 1 cucharada de azúcar y una de harina. Remover bien y dejar que hierva hasta que la salsa consiga espesarse. Quitar del fuego, sazonar y reservar. 
+               <br> Paso 4. Cocer al dente el arroz en agua salada y escurrir. 
+               <br> Paso 5. Limpiar, secar y cortar en dados los pimientos. Saltear en una sartén a fuego fuerte con 2 cucharadas de aceite. Añadir los guisantes, el arroz, sal, pimienta y mezclar. Saltear al menos 2 minutos. 
+               <br> Paso 6. Para terminar, cortar el pavo en rodajas, añadir la salsa y servir con el arroz y las rodajas de limón. 
+              </p>
+            </div>
+        
+            
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+  </div>    
+
+</div>    
+   
+
+
+<script src="index.js"></script>
+</body>
+</html>
+

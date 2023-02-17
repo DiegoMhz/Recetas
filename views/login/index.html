@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Login</title>
+</head>
+<body class="h-screen">
+    <nav class="fixed w-2/4 top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 dark:bg-slate-800 px-4">
+        <img src="imagen/20230112_192454_0000-removebg-preview (1).png" class="h-48 w-60">
+      </nav>
+      
+<div class="flex h-full">
+
+<div class="flex items-center h-full w-2/4 px-8 pt-20 bg-white dark:bg-slate-800">
+    <div class="w-full">
+        <div class="pl-4">
+            <h1 class="font-bold text-2xl mb-2">Iniciar sesion</h1>
+            <p class="mb-4">Con tu correo</p>
+        </div>
+        <form id="form" class="bg-white dark:bg-slate-700 w-full h-6/12 p-4 rounded-lg flex flex-col gap-4 ">
+            <div class="flex flex-col gap-2 dark:text-white text-black">
+                <Label  for="email-input">Ingrese su correo electronico</Label>
+                <input autocomplete="off" class="outline-none p-2 rounded-lg bg-white border  dark:bg-slate-600" type="email" placeholder="ejemplo@gmail.com" name="email-input" id="email-input">
+            </div>
+            <div class="flex flex-col gap-2 dark:text-white text-black">
+                <Label for="password-input">Contraseña</Label>
+                <input class="outline-none p-2 rounded-lg bg-white border dark:bg-slate-600" type="password" placeholder="Su contraseña debe tener minimo 8 digitos" name="password-input" id="password-input">
+            </div>
+            <button id="form-btn" style="background-color: #27884d; color: white; border-radius: 22px;" class="disabled:opacity-75 p-2 text-black font-bold bg-amber-500 hover:bg-amber-600 text-white pointer" type="submit">Inicia sesión</button>
+        </form>
+        <div id="error" class="text-center">
+            <p style="color: #fc706a;">Contraseña o correo invalido</p>
+        </div>
+        <div class="mt-8 flex justify-center">
+            <p>¿Aún no tienes una cuenta?
+                <a href="/signup">
+                    <span style="color: #35b266;">
+                        Regístrate
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="w-2/4">
+    <div id="kk" class="h-full flex p-8 relative flex-col justify-center overflow-hidden " style="background-image: url(https://app.manzanaverde.la/images/peru/home.jpg); background-size: cover; z-index: 100">
+        <div>
+            <div class="text-white">
+                <h2 class="text-4xl mb-6 font-bold">Cumple tu objetivo nutricional desde tu oficina, casa o desde donde tu quieras.</h2>
+                <p>Cuidar tu alimentación nunca fue tan sencillo</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+    <script src="s.js"></script>
+</body>
+</html>

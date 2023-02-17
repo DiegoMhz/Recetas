@@ -1,0 +1,52 @@
+
+label{
+  padding: 1rem;
+}
+
+/* ~~~~~~~~~~~~~ID~~~~~~~~~~~~~~~~ */
+
+#btn-aceptar{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color:#84cc16;
+    transition: 0.5s;
+}
+#btn-aceptar:hover{
+    background-color:#65a30d
+}
+
+#kg{
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #475569;
+}
+#titulo{
+  text-align: center;
+}
+  /* ~~~~~~~~~~~~~CLASES~~~~~~~~~~~~~~~~ */
+
+  .div-genero{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .input-div {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .div-peso{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+
+
+@media (min-width: 882px) {
+    #form {
+      width: 50%;
+    }
+  }
+
+  /* 640px */
