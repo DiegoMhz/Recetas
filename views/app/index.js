@@ -1,4 +1,8 @@
 
+const NUMBER_REGEX = /^[0-9]{3}$/;
+
+const PESO_REGEX = /^[0-9]{2,3}$/;
+
 const form = document.querySelector('#form')
 // INPUTS
 const divMasculino = document.querySelector('#div-input-masculino')
@@ -10,19 +14,96 @@ const inputPeso = document.querySelector("#input-peso")
 const inputMasculino = document.querySelector("#sexo-masculino")
 const inputFemenino = document.querySelector("#sexo-femenino")
 const inputEdad = document.querySelector("#input-edad")
+const btnAceptar = document.querySelector('#btn-aceptar');
 const falso = false
 
+let actividadValidacion = false;
+let alturaValidacion = false;
+let pesoValidacion = false;
+let metaValidacion = false;
+let masculinoValidacion = false;
+let femeninoValidacion = false;
+let edadValidacion = false;
+
+
+const validation = (e, validation, element) => {
+    btnAceptar.disabled = !alturaValidacion || !pesoValidacion ||  !actividadValidacion || !metaValidacion || !masculinoValidacion || !femeninoValidacion || !edadValidacion  ? true : false;
+    if (validation) {
+      element.classList.add('correct');
+      element.classList.remove('incorrect');
+    } else {
+      element.classList.add('incorrect');
+      element.classList.remove('correct');
+    }
+  }
+
+
+
 inputMasculino.addEventListener('click', e =>{
+    console.log(e.target.checked);
+    if (e.target.checked === true) {
+        masculinoValidacion = true;
+        femeninoValidacion = true;
+    }
     divMasculino.classList.add('bg-green-500')
     divfemenino.classList.remove('bg-green-500') 
+    console.log(inputFemenino.checked);
+    validation(e, masculinoValidacion, inputMasculino);
 })
+
 
 inputFemenino.addEventListener('click', e =>{
+    console.log(inputMasculino.checked);
+    console.log(e.target.checked);
+    if (e.target.checked === true) {
+        masculinoValidacion = true;
+        femeninoValidacion = true;
+    }
     divMasculino.classList.remove('bg-green-500')
     divfemenino.classList.add('bg-green-500')
+    validation(e, femeninoValidacion, inputFemenino);
 })
 
-const btnAceptar = document.querySelector('btn-aceptar');
+inputEdad.addEventListener('input', e => {
+    console.log(e.target.value);
+    edadValidacion = PESO_REGEX.test(e.target.value);
+    console.log(edadValidacion);
+    validation(e, edadValidacion, inputEdad);
+})
+
+inputMeta.addEventListener('input', e => {
+    console.log(e.target.value);
+    if (e.target.value != '' ) {
+        metaValidacion = true;
+    };
+    console.log(metaValidacion);
+    validation(e, metaValidacion, inputMeta);
+})
+
+inputPeso.addEventListener('input', e => {
+    console.log(e.target.value);
+    pesoValidacion = PESO_REGEX.test(e.target.value);
+    console.log(pesoValidacion);
+    validation(e, pesoValidacion, inputPeso);
+})
+
+inputAltura.addEventListener('input', e => {
+    console.log(e.target.value);
+    alturaValidacion = NUMBER_REGEX.test(e.target.value);
+    console.log(alturaValidacion);
+    validation(e, alturaValidacion, inputAltura);
+})
+
+inputActividad.addEventListener('input', e => {
+    console.log(e.target.value);
+    if (e.target.value != '' ) {
+        actividadValidacion = true
+    }
+    console.log(actividadValidacion);
+    validation(e, actividadValidacion, inputActividad);
+})
+
+
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -33,6 +114,8 @@ form.addEventListener('submit', e => {
     const meta = inputMeta.value
     const masculino = inputMasculino.checked
     const femenino = inputFemenino.checked
+
+
 
 
     const MONTHS = [

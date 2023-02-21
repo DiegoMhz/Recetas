@@ -41,6 +41,14 @@ label{
     width: 100%;
   }
 
+  .correct{
+    border-color: green;
+  }
+
+  .incorrect{
+    border-color: red;
+  }
+
 
 
 @media (min-width: 882px) {

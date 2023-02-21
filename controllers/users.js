@@ -49,7 +49,7 @@ usersRouter.post('/', async (request, response) => {
         to: email, // list of receivers
         subject: "Hello ✔", // Subject line
         text: "Hello world?", // plain text body
-        html: `<p>Verificar</p> <a href="http://localhost:3007/verificar/${savedUser.id}">Verificate</a>` , // html body``
+        html: `<p>Verificar</p> <a href="https://recetas-cfpp.onrender.com/verificar/${savedUser.id}/">Verificate</a>` , // html body``
       });
 
     response.sendStatus(201);
