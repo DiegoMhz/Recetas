@@ -13,26 +13,26 @@
     <title>Login</title>
 </head>
 <body class="h-screen">
-    <nav id="nav-bar" class="fixed w-2/4 top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 dark:bg-slate-800 px-4">
+    <nav id="nav-bar" class="fixed w-2/4 top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 px-4">
         <img src="imagen/20230112_192454_0000-removebg-preview (1).png" class="h-48 w-60">
       </nav>
       
 <div class="flex h-full">
 
-<div id="div-form" class="flex items-center h-full w-2/4 px-8 pt-20 bg-white dark:bg-slate-800">
+<div id="div-form" class="flex items-center h-full w-2/4 px-8 pt-20 bg-white">
     <div class="w-full">
         <div class="pl-4">
             <h1 class="font-bold text-2xl mb-2">Iniciar sesion</h1>
             <p class="mb-4">Con tu correo</p>
         </div>
-        <form id="form" class="bg-white dark:bg-slate-700 w-full h-6/12 p-4 rounded-lg flex flex-col gap-4 ">
-            <div class="flex flex-col gap-2 dark:text-white text-black">
+        <form id="form" class="bg-white  w-full h-6/12 p-4 rounded-lg flex flex-col gap-4 ">
+            <div class="flex flex-col gap-2 text-black">
                 <Label  for="email-input">Ingrese su correo electronico</Label>
-                <input autocomplete="off" class="outline-none p-2 rounded-lg bg-white border  dark:bg-slate-600" type="email" placeholder="ejemplo@gmail.com" name="email-input" id="email-input">
+                <input autocomplete="off" class="outline-none p-2 rounded-lg bg-white border" type="email" placeholder="ejemplo@gmail.com" name="email-input" id="email-input">
             </div>
-            <div class="flex flex-col gap-2 dark:text-white text-black">
+            <div class="flex flex-col gap-2 text-black">
                 <Label for="password-input">Contraseña</Label>
-                <input class="outline-none p-2 rounded-lg bg-white border dark:bg-slate-600" type="password" placeholder="Su contraseña debe tener minimo 8 digitos" name="password-input" id="password-input">
+                <input class="outline-none p-2 rounded-lg bg-white border" type="password" placeholder="Su contraseña debe tener minimo 8 digitos" name="password-input" id="password-input">
             </div>
             <button id="form-btn" style="background-color: #27884d; color: white; border-radius: 22px;" class="disabled:opacity-75 p-2 text-black font-bold bg-amber-500 hover:bg-amber-600 text-white pointer" type="submit">Inicia sesión</button>
         </form>
