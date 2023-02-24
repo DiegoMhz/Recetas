@@ -22,7 +22,7 @@ const MONTHS = [
   'Diciembre',
 ];
 const newDate = new Date();
-let month = MONTHS[newDate.getMonth() + 2];
+let month = MONTHS[newDate.getMonth()];
 console.log(month);
 console.log(MONTHS);
 
