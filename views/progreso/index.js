@@ -32,6 +32,8 @@ const getTodos = async () => {
   })
   console.log(data[0].newDate);
 
+  const ctx = document.getElementById('my');
+
   if (data[0].newDate === "Enero") {
     if (month === 'Enero') {
       divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
@@ -192,6 +194,47 @@ if (data[0].newDate === "Febrero") {
   <option value="value1"selected disabled>Selecciona el mes</option>
   <option value="Febrero">Febrero</option>
   </select>`
+
+  const p = [data[0].peso]
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Febrero'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: p,
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [data[0].Febrero[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
   }
   
   if (month === 'Marzo') {
@@ -200,6 +243,46 @@ if (data[0].newDate === "Febrero") {
   <option value="Febrero">Febrero</option>
   <option value="Marzo">Marzo</option>
   </select>`
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Febrero','Marzo'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso, data[0].Febrero[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [data[0].Febrero[0].pesoActual,data[0].Marzo[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
+  
   }
   
   if (month === 'Abril') {
@@ -209,6 +292,45 @@ if (data[0].newDate === "Febrero") {
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
   </select>`
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Febrero','Marzo','Abril'],
+      datasets: [{
+        label: 'Peso inicial',
+        data:[data[0].peso,data[0].Febrero[0].pesoActual,data[0].Marzo[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [data[0].Febrero[0].pesoActual,data[0].Marzo[0].pesoActual,data[0].Abril[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
   }
   
   if (month === 'Mayo') {
@@ -1919,61 +2041,14 @@ if (data[0].newDate === "Noviembre") {
 
 const select = divSelectorMes.children[0];
 
-select.addEventListener('click', async e =>{
+select.addEventListener('input', async e =>{
   console.log(e.target.value);
-  
-  // CHARTJS
-  const ctx = document.getElementById('my');
-    let myChart =  new Chart(ctx, {
-     type: 'bar',
-     data: {
-      // Peso inicial
-       labels: ['Enero'],
-       datasets: [{
-         label: 'Peso inicial',
-         data: [data[0].Enero[0].pesoinicial],
-         borderColor: '#36A2EB',
-         backgroundColor: '#9BD0F5',
-         borderWidth: 2,
-         borderRadius: 5,
-         borderSkipped: false,
-       },
-       {
-          // Peso actual
-          label: 'Peso Actual',
-          data: [data[0].Enero[0].pesoActual],
-          borderColor: '#922B21',
-          backgroundColor: '#E74C3C',
-          borderWidth: 2,
-          borderRadius: 5,
-          borderSkipped: false,
-        }
-      ]
-     },
-     options: {
-      responsive: true,
-      plugins: {
-          legend: {
-              position: 'top',
-         },
-         title: {
-          display: true,
-          text: 'Tu progreso'
-      }
-       }
-     },
-   });
-   myChart.destroy();
-
-   select.addEventListener('click',  e =>{
-    myChart.destroy();
-   })
 
   //  IF CHART
   if (data[0].newDate === 'Febrero') {
 
    if (e.target.value === 'Febrero') {
-   
+    myChart.destroy();
      const p = [data[0].peso]
       myChart =  new Chart(ctx, {
         type: 'bar',
@@ -2018,7 +2093,7 @@ select.addEventListener('click', async e =>{
    }
 
    if (e.target.value === 'Marzo') {
-    
+    myChart.destroy();
       myChart =  new Chart(ctx, {
         type: 'bar',
         data: {
@@ -2062,7 +2137,7 @@ select.addEventListener('click', async e =>{
    }
 
    if (e.target.value === 'Abril') {
-  
+    myChart.destroy();
       myChart =  new Chart(ctx, {
         type: 'bar',
         data: {
