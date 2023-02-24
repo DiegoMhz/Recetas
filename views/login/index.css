@@ -4,7 +4,7 @@
     background-size: cover;
 } */
 
-#kk::before{
+#div-img::before{
     content: "";
     position: absolute;
     top: 0;
@@ -14,3 +14,24 @@
     background-color: rgba(0,0,0,.5);
     z-index: -5;
 }
+
+
+@media (max-width: 950px) {
+    #div-img {
+      display: none;
+    }
+  }
+
+  @media (max-width: 950px) {
+    #nav-bar {
+      width: 100%;
+    }
+  }
+  
+  
+  @media (max-width: 950px) {
+    #div-form {
+      width: 100%;
+    }
+  }
+  
