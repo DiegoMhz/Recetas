@@ -1677,6 +1677,30 @@ if (divcontenedor.innerText === '') {
     </div>
  `
  divSelect.classList.remove('hidden')
+
+ const cardFront = document.querySelectorAll('.front')
+ const cardBack = document.querySelectorAll('.back')
+
+ cardFront.forEach(element => {
+  element.addEventListener('click', e => {
+  console.log(element.parentElement.children[0]);
+  const cardFront = element.parentElement.children[0]
+  const cardBack = element.parentElement.children[1]
+    cardFront.style.transform = "rotateY(180deg)";
+    cardBack.style.transform = "rotateY(360deg)";
+  })
+  });
+  
+  cardBack.forEach(element => {
+    element.addEventListener('click', e => {
+    console.log(element.parentElement.children[0]);
+    const cardFront = element.parentElement.children[0]
+    const cardBack = element.parentElement.children[1]
+      cardFront.style.transform = "rotateY(360deg)";
+      cardBack.style.transform = "rotateY(180deg)";
+    })
+    });
+
     select.addEventListener('input', e => {
     
         if (e.target.value === 'SemanaUno') {
@@ -2727,8 +2751,29 @@ if (divcontenedor.innerText === '') {
             </div>
         </div>
       </div>
-    </div>
-`
+    </div>`
+    const cardFront = document.querySelectorAll('.front')
+    const cardBack = document.querySelectorAll('.back')
+
+    cardFront.forEach(element => {
+      element.addEventListener('click', e => {
+      console.log(element.parentElement.children[0]);
+      const cardFront = element.parentElement.children[0]
+      const cardBack = element.parentElement.children[1]
+        cardFront.style.transform = "rotateY(180deg)";
+        cardBack.style.transform = "rotateY(360deg)";
+      })
+      });
+
+      cardBack.forEach(element => {
+        element.addEventListener('click', e => {
+        console.log(element.parentElement.children[0]);
+        const cardFront = element.parentElement.children[0]
+        const cardBack = element.parentElement.children[1]
+          cardFront.style.transform = "rotateY(360deg)";
+          cardBack.style.transform = "rotateY(180deg)";
+        })
+        });
         }
     
         else if (e.target.value === 'SemanaDos') {
@@ -3782,8 +3827,31 @@ if (divcontenedor.innerText === '') {
       
           </div>
       `
-      
+      const cardFront = document.querySelectorAll('.front')
+      const cardBack = document.querySelectorAll('.back')
+
+      cardFront.forEach(element => {
+        element.addEventListener('click', e => {
+        console.log(element.parentElement.children[0]);
+        const cardFront = element.parentElement.children[0]
+        const cardBack = element.parentElement.children[1]
+          cardFront.style.transform = "rotateY(180deg)";
+          cardBack.style.transform = "rotateY(360deg)";
+        })
+        });
+
+        cardBack.forEach(element => {
+          element.addEventListener('click', e => {
+          console.log(element.parentElement.children[0]);
+          const cardFront = element.parentElement.children[0]
+          const cardBack = element.parentElement.children[1]
+            cardFront.style.transform = "rotateY(360deg)";
+            cardBack.style.transform = "rotateY(180deg)";
+          })
+          });
         }
+
+        
     
         else if (e.target.value === 'SemanaTres') {
           divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°3</h3>
@@ -4860,7 +4928,29 @@ if (divcontenedor.innerText === '') {
             </div>
           </div>
       `
-           
+      
+      const cardFront = document.querySelectorAll('.front')
+      const cardBack = document.querySelectorAll('.back')
+
+      cardFront.forEach(element => {
+        element.addEventListener('click', e => {
+        console.log(element.parentElement.children[0]);
+        const cardFront = element.parentElement.children[0]
+        const cardBack = element.parentElement.children[1]
+          cardFront.style.transform = "rotateY(180deg)";
+          cardBack.style.transform = "rotateY(360deg)";
+        })
+        });
+
+        cardBack.forEach(element => {
+          element.addEventListener('click', e => {
+          console.log(element.parentElement.children[0]);
+          const cardFront = element.parentElement.children[0]
+          const cardBack = element.parentElement.children[1]
+            cardFront.style.transform = "rotateY(360deg)";
+            cardBack.style.transform = "rotateY(180deg)";
+          })
+          });
         }
     
         else if (e.target.value === 'SemanaCuatro') {
@@ -5967,10 +6057,35 @@ if (divcontenedor.innerText === '') {
             </div>
           </div>
           `
+          const cardFront = document.querySelectorAll('.front')
+          const cardBack = document.querySelectorAll('.back')
+    
+          cardFront.forEach(element => {
+            element.addEventListener('click', e => {
+            console.log(element.parentElement.children[0]);
+            const cardFront = element.parentElement.children[0]
+            const cardBack = element.parentElement.children[1]
+              cardFront.style.transform = "rotateY(180deg)";
+              cardBack.style.transform = "rotateY(360deg)";
+            })
+            });
+    
+            cardBack.forEach(element => {
+              element.addEventListener('click', e => {
+              console.log(element.parentElement.children[0]);
+              const cardFront = element.parentElement.children[0]
+              const cardBack = element.parentElement.children[1]
+                cardFront.style.transform = "rotateY(360deg)";
+                cardBack.style.transform = "rotateY(180deg)";
+              })
+              });
            
         }
     
     })
+
+  
+ 
 
 }
 getTodos();

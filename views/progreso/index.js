@@ -36,14 +36,14 @@ const getTodos = async () => {
 
   if (data[0].newDate === "Enero") {
     if (month === 'Enero') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Enero">Enero</option>
     </select>`
     }
 
     if (month === 'Febrero') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Enero">Enero</option>
     <option value="Febrero">Febrero</option>
@@ -51,7 +51,7 @@ const getTodos = async () => {
     }
     
     if (month === 'Marzo') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Enero">Enero</option>
     <option value="Febrero">Febrero</option>
@@ -60,7 +60,7 @@ const getTodos = async () => {
     }
     
     if (month === 'Abril') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -70,7 +70,7 @@ const getTodos = async () => {
     }
     
     if (month === 'Mayo') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -81,7 +81,7 @@ const getTodos = async () => {
     }
     
     if (month === 'Junio') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -93,7 +93,7 @@ const getTodos = async () => {
     }
     
     if (month === 'Julio') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -106,7 +106,7 @@ const getTodos = async () => {
     }
   
     if (month === 'Agosto') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -120,7 +120,7 @@ const getTodos = async () => {
     }
   
     if (month === 'Septiembre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -135,7 +135,7 @@ const getTodos = async () => {
     }
   
     if (month === 'Octubre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -151,7 +151,7 @@ const getTodos = async () => {
     }
   
     if (month === 'Noviembre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -168,7 +168,7 @@ const getTodos = async () => {
     }
   
     if (month === 'Diciembre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Enero">Enero</option>
       <option value="Febrero">Febrero</option>
@@ -190,7 +190,7 @@ const getTodos = async () => {
 
 if (data[0].newDate === "Febrero") {
   if (month === 'Febrero') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
   <option value="value1"selected disabled>Selecciona el mes</option>
   <option value="Febrero">Febrero</option>
   </select>`
@@ -238,7 +238,7 @@ if (data[0].newDate === "Febrero") {
   }
   
   if (month === 'Marzo') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
   <option value="value1"selected disabled>Selecciona el mes</option>
   <option value="Febrero">Febrero</option>
   <option value="Marzo">Marzo</option>
@@ -286,7 +286,7 @@ if (data[0].newDate === "Febrero") {
   }
   
   if (month === 'Abril') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -334,7 +334,7 @@ if (data[0].newDate === "Febrero") {
   }
   
   if (month === 'Mayo') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -344,7 +344,7 @@ if (data[0].newDate === "Febrero") {
   }
   
   if (month === 'Junio') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -355,7 +355,7 @@ if (data[0].newDate === "Febrero") {
   }
   
   if (month === 'Julio') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -367,7 +367,7 @@ if (data[0].newDate === "Febrero") {
   }
 
   if (month === 'Agosto') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -380,7 +380,7 @@ if (data[0].newDate === "Febrero") {
   }
 
   if (month === 'Septiembre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -394,7 +394,7 @@ if (data[0].newDate === "Febrero") {
   }
 
   if (month === 'Octubre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -409,7 +409,7 @@ if (data[0].newDate === "Febrero") {
   }
 
   if (month === 'Noviembre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -425,7 +425,7 @@ if (data[0].newDate === "Febrero") {
   }
 
   if (month === 'Diciembre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -442,7 +442,7 @@ if (data[0].newDate === "Febrero") {
   }
 
   if (month === 'Enero') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Febrero">Febrero</option>
     <option value="Marzo">Marzo</option>
@@ -466,14 +466,14 @@ if (data[0].newDate === "Febrero") {
 if (data[0].newDate === "Marzo") {
 console.log(month);
   if (month === 'Marzo') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
   <option value="value1"selected disabled>Selecciona el mes</option>
   <option value="Marzo">Marzo</option>
   </select>`
   }
   
   if (month === 'Abril') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
@@ -481,7 +481,7 @@ console.log(month);
   }
   
   if (month === 'Mayo') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
@@ -490,7 +490,7 @@ console.log(month);
   }
   
   if (month === 'Junio') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
@@ -500,7 +500,7 @@ console.log(month);
   }
   
   if (month === 'Julio') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
@@ -511,7 +511,7 @@ console.log(month);
   }
 
   if (month === 'Agosto') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
@@ -523,7 +523,7 @@ console.log(month);
   }
 
   if (month === 'Septiembre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     <option value="Marzo">Marzo</option>
     <option value="Abril">Abril</option>
@@ -536,7 +536,7 @@ console.log(month);
   }
 
   if (month === 'Octubre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
 
     <option value="Marzo">Marzo</option>
@@ -551,7 +551,7 @@ console.log(month);
   }
 
   if (month === 'Noviembre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
    
     <option value="Marzo">Marzo</option>
@@ -567,7 +567,7 @@ console.log(month);
   }
 
   if (month === 'Diciembre') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
     
     <option value="Marzo">Marzo</option>
@@ -584,7 +584,7 @@ console.log(month);
   }
 
   if (month === 'Enero') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
    
     <option value="Marzo">Marzo</option>
@@ -602,7 +602,7 @@ console.log(month);
   }
 
   if (month === 'Febrero') {
-    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+    divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
    
     <option value="Marzo">Marzo</option>
@@ -628,14 +628,14 @@ if (data[0].newDate === "Abril") {
   
     
     if (month === 'Abril') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
     </select>`
     }
     
     if (month === 'Mayo') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -643,7 +643,7 @@ if (data[0].newDate === "Abril") {
     }
     
     if (month === 'Junio') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -652,7 +652,7 @@ if (data[0].newDate === "Abril") {
     }
     
     if (month === 'Julio') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -662,7 +662,7 @@ if (data[0].newDate === "Abril") {
     }
 
     if (month === 'Agosto') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -673,7 +673,7 @@ if (data[0].newDate === "Abril") {
     }
   
     if (month === 'Septiembre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -685,7 +685,7 @@ if (data[0].newDate === "Abril") {
     }
   
     if (month === 'Octubre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -698,7 +698,7 @@ if (data[0].newDate === "Abril") {
     }
   
     if (month === 'Noviembre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -712,7 +712,7 @@ if (data[0].newDate === "Abril") {
     }
   
     if (month === 'Diciembre') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -727,7 +727,7 @@ if (data[0].newDate === "Abril") {
     }
   
     if (month === 'Enero') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -743,7 +743,7 @@ if (data[0].newDate === "Abril") {
     }
   
     if (month === 'Febrero') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -760,7 +760,7 @@ if (data[0].newDate === "Abril") {
     }
 
     if (month === 'Marzo') {
-      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
       <option value="value1"selected disabled>Selecciona el mes</option>
       <option value="Abril">Abril</option>
       <option value="Mayo">Mayo</option>
@@ -782,14 +782,14 @@ if (data[0].newDate === "Mayo") {
     console.log(month);
       
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
       </select>`
       }
       
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -797,7 +797,7 @@ if (data[0].newDate === "Mayo") {
       }
       
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -806,7 +806,7 @@ if (data[0].newDate === "Mayo") {
       }
   
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -816,7 +816,7 @@ if (data[0].newDate === "Mayo") {
       }
     
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -827,7 +827,7 @@ if (data[0].newDate === "Mayo") {
       }
     
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -839,7 +839,7 @@ if (data[0].newDate === "Mayo") {
       }
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -852,7 +852,7 @@ if (data[0].newDate === "Mayo") {
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -866,7 +866,7 @@ if (data[0].newDate === "Mayo") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -881,7 +881,7 @@ if (data[0].newDate === "Mayo") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -897,7 +897,7 @@ if (data[0].newDate === "Mayo") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -914,7 +914,7 @@ if (data[0].newDate === "Mayo") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
@@ -937,14 +937,14 @@ if (data[0].newDate === "Junio") {
     console.log(month);
       
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
       </select>`
       }
       
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -952,7 +952,7 @@ if (data[0].newDate === "Junio") {
       }
   
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -961,7 +961,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -971,7 +971,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -982,7 +982,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -994,7 +994,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -1007,7 +1007,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -1021,7 +1021,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -1036,7 +1036,7 @@ if (data[0].newDate === "Junio") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -1052,7 +1052,7 @@ if (data[0].newDate === "Junio") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -1069,7 +1069,7 @@ if (data[0].newDate === "Junio") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
         <option value="Julio">Julio</option>
@@ -1092,14 +1092,14 @@ if (data[0].newDate === "Junio") {
       
       
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
       </select>`
       }
   
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1107,7 +1107,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1116,7 +1116,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1126,7 +1126,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1137,7 +1137,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1149,7 +1149,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1162,7 +1162,7 @@ if (data[0].newDate === "Junio") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1176,7 +1176,7 @@ if (data[0].newDate === "Junio") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1191,7 +1191,7 @@ if (data[0].newDate === "Junio") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1207,7 +1207,7 @@ if (data[0].newDate === "Junio") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1224,7 +1224,7 @@ if (data[0].newDate === "Junio") {
 
 
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
         <option value="Agosto">Agosto</option>
@@ -1248,14 +1248,14 @@ if (data[0].newDate === "Agosto") {
       
   
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
       </select>`
       }
     
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1263,7 +1263,7 @@ if (data[0].newDate === "Agosto") {
       }
     
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1272,7 +1272,7 @@ if (data[0].newDate === "Agosto") {
       }
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1282,7 +1282,7 @@ if (data[0].newDate === "Agosto") {
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1293,7 +1293,7 @@ if (data[0].newDate === "Agosto") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1305,7 +1305,7 @@ if (data[0].newDate === "Agosto") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1318,7 +1318,7 @@ if (data[0].newDate === "Agosto") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1332,7 +1332,7 @@ if (data[0].newDate === "Agosto") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1347,7 +1347,7 @@ if (data[0].newDate === "Agosto") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1363,7 +1363,7 @@ if (data[0].newDate === "Agosto") {
 
 
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1380,7 +1380,7 @@ if (data[0].newDate === "Agosto") {
       }
 
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
@@ -1405,14 +1405,14 @@ if (data[0].newDate === "Septiembre") {
       
     
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
       </select>`
       }
     
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1420,7 +1420,7 @@ if (data[0].newDate === "Septiembre") {
       }
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1429,7 +1429,7 @@ if (data[0].newDate === "Septiembre") {
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1439,7 +1439,7 @@ if (data[0].newDate === "Septiembre") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1450,7 +1450,7 @@ if (data[0].newDate === "Septiembre") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1462,7 +1462,7 @@ if (data[0].newDate === "Septiembre") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1475,7 +1475,7 @@ if (data[0].newDate === "Septiembre") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1489,7 +1489,7 @@ if (data[0].newDate === "Septiembre") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1504,7 +1504,7 @@ if (data[0].newDate === "Septiembre") {
 
 
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1520,7 +1520,7 @@ if (data[0].newDate === "Septiembre") {
       }
 
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1537,7 +1537,7 @@ if (data[0].newDate === "Septiembre") {
       }
 
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
@@ -1564,14 +1564,14 @@ if (data[0].newDate === "Octubre") {
     
     
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Octubre">Octubre</option>
       </select>`
       }
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
@@ -1579,7 +1579,7 @@ if (data[0].newDate === "Octubre") {
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
@@ -1588,7 +1588,7 @@ if (data[0].newDate === "Octubre") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
@@ -1598,7 +1598,7 @@ if (data[0].newDate === "Octubre") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>   
         <option value="Octubre">Octubre</option>    
         <option value="Noviembre">Noviembre</option>
@@ -1609,7 +1609,7 @@ if (data[0].newDate === "Octubre") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Octubre">Octubre</option>    
         <option value="Noviembre">Noviembre</option>
@@ -1621,7 +1621,7 @@ if (data[0].newDate === "Octubre") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>     
         <option value="Octubre">Octubre</option> 
         <option value="Noviembre">Noviembre</option>
@@ -1634,7 +1634,7 @@ if (data[0].newDate === "Octubre") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option> 
         <option value="Octubre">Octubre</option>      
         <option value="Noviembre">Noviembre</option>
@@ -1648,7 +1648,7 @@ if (data[0].newDate === "Octubre") {
 
 
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>    
         <option value="Octubre">Octubre</option>  
         <option value="Noviembre">Noviembre</option>
@@ -1663,7 +1663,7 @@ if (data[0].newDate === "Octubre") {
       }
 
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>        
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
@@ -1679,7 +1679,7 @@ if (data[0].newDate === "Octubre") {
       }
 
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
@@ -1696,7 +1696,7 @@ if (data[0].newDate === "Octubre") {
       }
 
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
@@ -1723,14 +1723,14 @@ if (data[0].newDate === "Noviembre") {
     
     
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Noviembre">Noviembre</option>
       </select>`
       }
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1738,7 +1738,7 @@ if (data[0].newDate === "Noviembre") {
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1747,7 +1747,7 @@ if (data[0].newDate === "Noviembre") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>       
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1757,7 +1757,7 @@ if (data[0].newDate === "Noviembre") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>      
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1768,7 +1768,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>      
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1780,7 +1780,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>       
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1793,7 +1793,7 @@ if (data[0].newDate === "Noviembre") {
 
 
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>      
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1807,7 +1807,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>        
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1822,7 +1822,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1838,7 +1838,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1855,7 +1855,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
@@ -1881,14 +1881,14 @@ if (data[0].newDate === "Noviembre") {
     console.log(month);
     
       if (month === 'Diciembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Diciembre">Diciembre</option>
       </select>`
       }
     
       if (month === 'Enero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1896,7 +1896,7 @@ if (data[0].newDate === "Noviembre") {
       }
     
       if (month === 'Febrero') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>       
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1905,7 +1905,7 @@ if (data[0].newDate === "Noviembre") {
       }
   
       if (month === 'Marzo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>      
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1915,7 +1915,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Abril') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>      
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1926,7 +1926,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Mayo') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>       
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1938,7 +1938,7 @@ if (data[0].newDate === "Noviembre") {
 
 
       if (month === 'Junio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>      
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1951,7 +1951,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Julio') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>        
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1965,7 +1965,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Agosto') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1980,7 +1980,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Septiembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -1996,7 +1996,7 @@ if (data[0].newDate === "Noviembre") {
       }
 
       if (month === 'Octubre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
@@ -2014,7 +2014,7 @@ if (data[0].newDate === "Noviembre") {
 
 
       if (month === 'Noviembre') {
-        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+        divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>  
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>

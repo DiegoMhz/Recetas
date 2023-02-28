@@ -6,6 +6,26 @@ const btnProgreso = document.querySelector('#btn-progreso')
 const labelProgreso = document.querySelector('#label-progreso')
 const btnPerfil = document.querySelector('#btn-perfil')
 const svgRecetas = document.querySelector('#svg-recetas')
+const cardFront = document.querySelectorAll('.front')
+const cardBack = document.querySelectorAll('.back')
+
+cardFront.forEach(element => {
+element.addEventListener('click', e => {
+const cardFront = element.parentElement.children[0]
+const cardBack = element.parentElement.children[1]
+  cardFront.style.transform = "rotateY(180deg)";
+  cardBack.style.transform = "rotateY(360deg)";
+})
+});
+
+cardBack.forEach(element => {
+  element.addEventListener('click', e => {
+  const cardFront = element.parentElement.children[0]
+  const cardBack = element.parentElement.children[1]
+    cardFront.style.transform = "rotateY(360deg)";
+    cardBack.style.transform = "rotateY(180deg)";
+  })
+  });
 
 svgRecetas.addEventListener('click', e => {
 const id = window.location.pathname.split('/')[2]
