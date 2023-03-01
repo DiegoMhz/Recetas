@@ -1,10 +1,19 @@
 const svgRecetas = document.querySelector('#svg-recetas')
 const btnPerfil = document.querySelector('#btn-perfil')
 const btnInicio = document.querySelector('#btn-inicio')
+const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
+const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
+const btnInicioMobile = document.querySelector('#btn-inicio-mobil')
 const btnCerrarSesion = document.querySelector('#btn-cerrar')
 const btnEntrar = document.querySelector('#btn-entrar')
 const divSelectorMes = document.querySelector('#selector-mes')
+const btnMenuMobile = document.querySelector('.btn-mobil')
+const menuMobile = document.querySelector('.menu-mobil')
 
+
+btnMenuMobile.addEventListener('click', e =>{
+  menuMobile.classList.toggle('top-20')
+})
 
 // NewDATE
 const MONTHS = [
@@ -5487,10 +5496,22 @@ svgRecetas.addEventListener('click', e =>{
 const ctx = document.getElementById('my');
 
 
+// Telefono
+btnPerfilMobile.addEventListener('click', e =>{
+  const id = window.location.pathname.split('/')[2];
+  window.location.pathname = `perfil/${id}`
+})
 
+svgRecetasMobile.addEventListener('click', e => {
+  const id = window.location.pathname.split('/')[2]
+  window.location.pathname = `/recetas/${id}`;
+  })
 
-
-
+  btnInicioMobile.addEventListener('click', e => {
+    const id = window.location.pathname.split('/')[2]
+    window.location.pathname = `/principal/${id}`;
+    })
+    
 
 
 // btnEntrar.addEventListener('click',async e => {

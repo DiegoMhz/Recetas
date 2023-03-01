@@ -3,11 +3,29 @@ const divcontenedor = document.querySelector('#contenedor')
 const select = document.querySelector('#select-semanas')
 const btnProgreso = document.querySelector('#btn-progreso')
 const btnPerfil = document.querySelector('#btn-perfil')
-const btnInicio = document.querySelector('#btn-inicio')
+const btnInicio = document.querySelector('#btn-inicio-mobil')
+const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
+const btnInicioMobile = document.querySelector('#btn-inicio-mobil')
 const btnCerrarSesion = document.querySelector('#btn-cerrar')
 const labelProgreso = document.querySelector('#label-progreso')
 const divSelect = document.querySelector('#select')
+const btnMenuMobile = document.querySelector('.btn-mobil')
+const menuMobile = document.querySelector('.menu-mobil')
 
+
+// Telefono
+btnInicioMobile.addEventListener('click', e => {
+  const id = window.location.pathname.split('/')[2]
+  window.location.pathname = `/principal/${id}`;
+  })
+
+  btnMenuMobile.addEventListener('click', e =>{
+    menuMobile.classList.toggle('top-20')
+  })
+  btnPerfilMobile.addEventListener('click', e =>{
+    const id = window.location.pathname.split('/')[2];
+    window.location.pathname = `perfil/${id}`
+  })
 
 btnInicio.addEventListener('click', e => {
   const id = window.location.pathname.split('/')[2]

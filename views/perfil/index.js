@@ -2,12 +2,15 @@
 const form = document.querySelector('#form');
 const divCalorias = document.querySelector('#div-calorias');
 const inputDieta = document.querySelector('#tipo-dieta');
-const svgRecetas = document.querySelector('#svg-recetas');
-const btnInicio = document.querySelector('#btn-inicio');
 const btnCerrarSesion = document.querySelector('#btn-cerrar');
 const btnEntrar = document.querySelector('#btn-entrar');
-const btnProgreso = document.querySelector('#btn-progreso')
-const btnCerrar = document.querySelector('#btn-cerrar')
+const btnCerrar = document.querySelector('#btn-cerrar');
+const btnProgreso = document.querySelector('#btn-progreso');
+const btnInicio = document.querySelector('#btn-inicio');
+const svgRecetas = document.querySelector('#svg-recetas');
+const btnProgresoMobile = document.querySelector('#btn-progreso-mobil');
+const btnInicioMobile = document.querySelector('#btn-inicio-mobil');
+const svgRecetasMobile = document.querySelector('#svg-recetas-mobil');
 
 // BOTONES PESO
 const divInputContainer = document.querySelector('#div-input-container')
@@ -31,8 +34,14 @@ const divInputContainerMeta = document.querySelector('#div-input-container-meta'
 const btnAceptarMeta = document.querySelector('#btn-aceptar-meta')
 const inputMeta = document.querySelector('#input-meta')
 
+// Telefono
+const btnMenuMobile = document.querySelector('.btn-mobil')
+const menuMobile = document.querySelector('.menu-mobil')
 
 
+btnMenuMobile.addEventListener('click', e =>{
+  menuMobile.classList.toggle('top-20')
+})
 
 btnInicio.addEventListener('click', e => {
   const id = window.location.pathname.split('/')[2]
@@ -49,147 +58,31 @@ btnInicio.addEventListener('click', e => {
 
 
 
+
 btnCerrar.addEventListener('click', e => {
   window.location.pathname = '/signup/'
 })
 
 
 btnProgreso.addEventListener('click', async e => {
-
-  //   const innerTextPeso = divPeso.children[1].children[0].innerText;
-  // if (month === 'Febrero') {
-  //   await axios.patch(`/api/todos/${data[0].id}`,{
-  //     Febrero: [{
-  //       mes : 'Febrero',
-  //       pesoinicial : data[0].peso,
-  //       pesoActual : parseInt(innerTextPeso)
-  //     }],
-  //     Marzo : [{
-  //       mes : 'Marzo',
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //    Abril : [{
-  //       mes : 'Abril',
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //     Mayo : [{
-  //       mes : 'Mayo',
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //     Junio : [{
-  //       mes : 'Junio',
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //     Julio : [{
-  //       mes : 'Julio',
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  
-  
-  // });  
-  // }
-  
-  // if (month === 'Marzo') {
-  
-  //   await axios.patch(`/api/todos/${data[0].id}`,{
-  //     Marzo: [{
-  //       mes : 'Marzo',
-  //       pesoActual : parseInt(innerTextPeso),
-  //       pesoinicial : data[0].Febrero[0].pesoActual
-  //   }],
-  //     Abril : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //   Mayo : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //   Junio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //   Julio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  // });  
-  // }
-  
-  // if (month === 'Abril') {
-  //   await axios.patch(`/api/todos/${data[0].id}`,{
-  //     Abril: [{
-  //       mes : 'Abril',
-  //       pesoActual : parseInt(innerTextPeso),
-  //       pesoinicial : data[0].Marzo[0].pesoActual
-  //     }],
-  //     Mayo : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //   Junio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //   Julio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  // });  
-  // }
-  
-  // if (month === 'Mayo') {
-  //   await axios.patch(`/api/todos/${data[0].id}`,{
-  //     Mayo: [{
-  //       mes : 'Mayo',
-  //       pesoActual : parseInt(innerTextPeso),
-  //       pesoinicial : data[0].Mayo[0].pesoActual
-  //     }],
-  //     Junio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  //   Julio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  // });  
-  // }
-  
-  // if (month === 'Junio') {
-  //   await axios.patch(`/api/todos/${data[0].id}`,{
-  //     Junio: [{
-  //       mes : 'Junio',
-  //       pesoActual : parseInt(innerTextPeso),
-  //       pesoinicial : data[0].Mayo[0].pesoActual
-  //     }],
-  //     Julio : [{
-  //       pesoinicial :  parseInt(innerTextPeso),
-  //       pesoActual :  parseInt(innerTextPeso)
-  //   }],
-  // });  
-  // }
-  
-  // if (month === 'Julio') {
-  //   await axios.patch(`/api/todos/${data[0].id}`,{
-  //     Julio: [{
-  //       mes : 'Julio',
-  //       pesoActual : parseInt(innerTextPeso),
-  //       pesoinicial : data[0].Junio[0].pesoActual
-  //     }]
-  // });  
-  // }
-  
     id = window.location.pathname.split('/') [2]
     window.location.pathname = `/progreso/${id}`;
   })
 
+btnProgresoMobile.addEventListener('click', async e => {
+    id = window.location.pathname.split('/') [2]
+    window.location.pathname = `/progreso/${id}`;
+  });
 
+svgRecetasMobile.addEventListener('click', e =>{
+    const id = window.location.pathname.split('/')[2];
+    window.location.pathname = `recetas/${id}`
+  })
+
+btnInicioMobile.addEventListener('click', e => {
+  const id = window.location.pathname.split('/')[2]
+  window.location.pathname = `/principal/${id}`;
+  })
 
 
 // AXIOS GET

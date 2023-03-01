@@ -28,6 +28,23 @@
 }
 
 
+.menu-mobil{
+  position: absolute;
+  top: -40rem;
+  right: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 5px 10px #000;
+  height: 9rem;
+  background-color: white;
+  transition: 1s
+};
+
+
+
 /* #card:hover .front{
   transform: perspective(600px) rotateY(180deg);
 }

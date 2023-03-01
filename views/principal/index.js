@@ -8,15 +8,15 @@ const btnPerfil = document.querySelector('#btn-perfil')
 const svgRecetas = document.querySelector('#svg-recetas')
 const cardFront = document.querySelectorAll('.front')
 const cardBack = document.querySelectorAll('.back')
-const menuMobile = document.querySelector('.btn-mobil')
-const mobile = document.querySelector('.menu-mobil')
+const btnMenuMobile = document.querySelector('.btn-mobil')
+const menuMobile = document.querySelector('.menu-mobil')
 const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
 const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
 const btnProgresoMobile = document.querySelector('#btn-progreso-mobil')
 
 
-menuMobile.addEventListener('click', e =>{
-  mobile.classList.toggle('top-20')
+btnMenuMobile.addEventListener('click', e =>{
+  menuMobile.classList.toggle('top-20')
 })
 
 cardFront.forEach(element => {
