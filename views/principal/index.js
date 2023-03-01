@@ -8,6 +8,16 @@ const btnPerfil = document.querySelector('#btn-perfil')
 const svgRecetas = document.querySelector('#svg-recetas')
 const cardFront = document.querySelectorAll('.front')
 const cardBack = document.querySelectorAll('.back')
+const menuMobile = document.querySelector('.btn-mobil')
+const mobile = document.querySelector('.menu-mobil')
+const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
+const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
+const btnProgresoMobile = document.querySelector('#btn-progreso-mobil')
+
+
+menuMobile.addEventListener('click', e =>{
+  mobile.classList.toggle('top-20')
+})
 
 cardFront.forEach(element => {
 element.addEventListener('click', e => {
@@ -621,6 +631,8 @@ btnProgreso.addEventListener('click', e =>{
   window.location.pathname = `progreso/${id}`
 })
 
+
+
 labelProgreso.addEventListener('click', e =>{
   const id = window.location.pathname.split('/')[2];
   window.location.pathname = `progreso/:${id}`
@@ -631,7 +643,21 @@ btnPerfil.addEventListener('click', e =>{
   window.location.pathname = `perfil/${id}`
 })
 
+// Telefono
+btnPerfilMobile.addEventListener('click', e =>{
+  const id = window.location.pathname.split('/')[2];
+  window.location.pathname = `perfil/${id}`
+})
+btnProgresoMobile.addEventListener('click', e =>{
+  const id = window.location.pathname.split('/')[2];
+  window.location.pathname = `progreso/${id}`
+})
 
+
+svgRecetasMobile.addEventListener('click', e => {
+  const id = window.location.pathname.split('/')[2]
+  window.location.pathname = `/recetas/${id}`;
+  })
 
 
 
