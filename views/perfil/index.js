@@ -5,6 +5,7 @@ const inputDieta = document.querySelector('#tipo-dieta');
 const btnCerrarSesion = document.querySelector('#btn-cerrar');
 const btnEntrar = document.querySelector('#btn-entrar');
 const btnCerrar = document.querySelector('#btn-cerrar');
+const btnCerrarMobile = document.querySelector('#btn-cerrar-mobil');
 const btnProgreso = document.querySelector('#btn-progreso');
 const btnInicio = document.querySelector('#btn-inicio');
 const svgRecetas = document.querySelector('#svg-recetas');
@@ -60,6 +61,10 @@ btnInicio.addEventListener('click', e => {
 
 
 btnCerrar.addEventListener('click', e => {
+  window.location.pathname = '/signup/'
+})
+
+btnCerrarMobile.addEventListener('click', e => {
   window.location.pathname = '/signup/'
 })
 

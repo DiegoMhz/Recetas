@@ -2,6 +2,7 @@ const divcontenedor = document.querySelector('#contenedor')
 const select = document.querySelector('#select-semanas')
 const btnRecetas = document.querySelector('#btn-recetas')
 const btnCerrarSesion = document.querySelector('#btn-cerrar')
+const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
 const btnProgreso = document.querySelector('#btn-progreso')
 const labelProgreso = document.querySelector('#label-progreso')
 const btnPerfil = document.querySelector('#btn-perfil')
@@ -659,6 +660,9 @@ svgRecetasMobile.addEventListener('click', e => {
   window.location.pathname = `/recetas/${id}`;
   })
 
+  btnCerrarSesionMobile.addEventListener('click', e =>{
+    window.location.pathname =  '/signup/'
+  })
 
 
 

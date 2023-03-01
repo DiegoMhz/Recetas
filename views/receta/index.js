@@ -3,10 +3,11 @@ const divcontenedor = document.querySelector('#contenedor')
 const select = document.querySelector('#select-semanas')
 const btnProgreso = document.querySelector('#btn-progreso')
 const btnPerfil = document.querySelector('#btn-perfil')
-const btnInicio = document.querySelector('#btn-inicio-mobil')
+const btnInicio = document.querySelector('#btn-inicio')
 const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
 const btnInicioMobile = document.querySelector('#btn-inicio-mobil')
 const btnCerrarSesion = document.querySelector('#btn-cerrar')
+const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
 const labelProgreso = document.querySelector('#label-progreso')
 const divSelect = document.querySelector('#select')
 const btnMenuMobile = document.querySelector('.btn-mobil')
@@ -36,6 +37,11 @@ btnInicio.addEventListener('click', e => {
   btnCerrarSesion.addEventListener('click', e =>{
     window.location.pathname =  '/signup/'
   })
+  
+  btnCerrarSesionMobile.addEventListener('click', e =>{
+    window.location.pathname =  '/signup/'
+  })
+  
   
   
   btnProgreso.addEventListener('click', e =>{

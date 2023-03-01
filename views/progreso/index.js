@@ -4,6 +4,7 @@ const btnInicio = document.querySelector('#btn-inicio')
 const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
 const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
 const btnInicioMobile = document.querySelector('#btn-inicio-mobil')
+const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
 const btnCerrarSesion = document.querySelector('#btn-cerrar')
 const btnEntrar = document.querySelector('#btn-entrar')
 const divSelectorMes = document.querySelector('#selector-mes')
@@ -5512,7 +5513,9 @@ svgRecetasMobile.addEventListener('click', e => {
     window.location.pathname = `/principal/${id}`;
     })
     
-
+    btnCerrarSesionMobile.addEventListener('click', e =>{
+      window.location.pathname =  '/signup/'
+    })
 
 // btnEntrar.addEventListener('click',async e => {
 //   e.preventDefault();
