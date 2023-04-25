@@ -120,7 +120,6 @@ todosRouter.patch('/:id', async (request, response) => {
         peso: peso,
         edad: edad,
         meta:meta
-
     });
     response.sendStatus(200);
 

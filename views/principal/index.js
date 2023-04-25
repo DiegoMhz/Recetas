@@ -1,5 +1,4 @@
 const divcontenedor = document.querySelector('#contenedor')
-const select = document.querySelector('#select-semanas')
 const btnRecetas = document.querySelector('#btn-recetas')
 const btnCerrarSesion = document.querySelector('#btn-cerrar')
 const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
@@ -16,39 +15,8 @@ const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
 const btnProgresoMobile = document.querySelector('#btn-progreso-mobil')
 
 
-btnMenuMobile.addEventListener('click', e =>{
-  menuMobile.classList.toggle('top-20')
-})
-
-cardFront.forEach(element => {
-element.addEventListener('click', e => {
-const cardFront = element.parentElement.children[0]
-const cardBack = element.parentElement.children[1]
-  cardFront.style.transform = "rotateY(180deg)";
-  cardBack.style.transform = "rotateY(360deg)";
-})
-});
-
-cardBack.forEach(element => {
-  element.addEventListener('click', e => {
-  const cardFront = element.parentElement.children[0]
-  const cardBack = element.parentElement.children[1]
-    cardFront.style.transform = "rotateY(360deg)";
-    cardBack.style.transform = "rotateY(180deg)";
-  })
-  });
-
-svgRecetas.addEventListener('click', e => {
-const id = window.location.pathname.split('/')[2]
-window.location.pathname = `/recetas/${id}`;
-})
-
-
-
-btnRecetas.addEventListener('click', e => {
-  const addTodo = async () => {
+ const addRecetas = async ()=>{
     const { data } = await axios.post('/api/recetas', {
-  
       SemanaUno: [
         {Lunes:{Desayuno:{Titulo:'Tostadas de pan integral con queso fresco y frutas',
         Ingredientes:'Pan integral: 2 rebanadas. Queso fresco: 2 cucharadas. Frutas frescas: 1/2 taza.',
@@ -607,16 +575,388 @@ btnRecetas.addEventListener('click', e => {
   
   }],
   
-  
+  CardUno:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  CardDos:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  CardTres:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card4:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card5:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card6:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card7:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card8:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card9:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card10:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card11:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card12:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card13:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card14:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card15:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card16:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+
+  Card17:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card18:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+ 
+  Card19:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card20:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card21:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card22:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card23:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card24:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card25:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card26:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card27:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card28:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card29:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card30:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card31:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card32:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card33:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card34:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card35:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card36:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card37:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card38:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card39:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card40:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card41:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card42:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card43:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card44:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card45:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card46:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card47:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card48:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card49:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card50:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card51:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card52:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card53:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card54:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card55:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card56:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card57:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card58:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card59:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card60:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card61:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card62:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card63:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card64:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card65:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card66:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card67:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card68:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card69:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card70:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card71:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card72:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card73:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card74:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card75:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card76:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card77:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card78:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card79:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card80:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card81:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card82:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card83:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card84:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  calorias :0,
+  comidasCompletadas : 0,
   
   
     }, {
         withCredentials: true
     })
-    console.log(data);
-    
   }
-addTodo();
+
+btnMenuMobile.addEventListener('click', e =>{
+  menuMobile.classList.toggle('top-20')
+  divcontenedor.classList.toggle('displaynone')
+})
+
+cardFront.forEach(element => {
+element.addEventListener('click', e => {
+const cardFront = element.parentElement.children[0]
+const cardBack = element.parentElement.children[1]
+  cardFront.style.transform = "rotateY(180deg)";
+  cardBack.style.transform = "rotateY(360deg)";
+  cardBack.classList.add('back-overflow')
+})
+});
+
+cardBack.forEach(element => {
+  element.addEventListener('click', e => {
+  const cardFront = element.parentElement.children[0]
+  const cardBack = element.parentElement.children[1]
+    cardFront.style.transform = "rotateY(360deg)";
+    cardBack.style.transform = "rotateY(180deg)";
+    cardBack.classList.remove('back-overflow')
+  })
+  });
+
+svgRecetas.addEventListener('click', e => {
+const id = window.location.pathname.split('/')[2]
+window.location.pathname = `/recetas/${id}`;
+})
+
+
+
+btnRecetas.addEventListener('click', e => {
+ 
+  addRecetas()
 const id = window.location.pathname.split('/')[2]
 window.location.pathname = `/recetas/${id}`;
 })

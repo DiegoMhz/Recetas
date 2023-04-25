@@ -10,7 +10,9 @@ const btnEntrar = document.querySelector('#btn-entrar')
 const divSelectorMes = document.querySelector('#selector-mes')
 const btnMenuMobile = document.querySelector('.btn-mobil')
 const menuMobile = document.querySelector('.menu-mobil')
-
+const btnCalorias = document.querySelector('#btn-calorias')
+const btnPeso = document.querySelector('#btn-peso')
+const ctx = document.getElementById('my');
 
 btnMenuMobile.addEventListener('click', e =>{
   menuMobile.classList.toggle('top-20')
@@ -41,10 +43,9 @@ const getTodos = async () => {
       withCredentials: true
   })
   console.log(data[0].newDate);
-
   const ctx = document.getElementById('my');
-
-  if (data[0].newDate === "Enero") {
+const Peso = ()=>{
+if (data[0].newDate === "Enero") {
     if (month === 'Enero') {
       divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
     <option value="value1"selected disabled>Selecciona el mes</option>
@@ -2164,12 +2165,17 @@ if (data[0].newDate === "Noviembre") {
 
       }
    }   
-  
-  
+  }
+Peso()
 
-
+btnPeso.addEventListener('click', e =>{
+  divSelectorMes.classList.remove('hidden')
+  myChart.destroy();
+  Peso()
+  FuncionSelect()
+})
+const FuncionSelect = () =>{
 const select = divSelectorMes.children[0];
-
 select.addEventListener('input', async e =>{
   console.log(e.target.value);
 
@@ -5505,10 +5511,73 @@ if (e.target.value === 'Junio') {
 
 });
 }
-
-
+FuncionSelect()
+}
 getTodos()
 
+const getCalorias = async () => {
+  const { data } = await axios.get('/api/recetas', {
+    withCredentials: true
+})
+btnCalorias.addEventListener('click', e =>{
+  divSelectorMes.classList.add('hidden') 
+  if (data[0].calorias === 0) {
+    console.log('aqio');
+    myChart.destroy();
+  const p = [data[0].calorias]
+   myChart =  new Chart(ctx, {
+     type: 'bar',
+     options: {
+      responsive: true,
+      plugins: {
+          legend: {
+              position: 'top',
+         },
+         title: {
+          display: true,
+          text: 'Aun no has comido ningun plato'
+      }
+       }
+     },
+   });
+  }
+  else{
+    console.log('ooooo');
+  myChart.destroy();
+  const p = [data[0].calorias]
+   myChart =  new Chart(ctx, {
+     type: 'bar',
+     data: {
+      // Peso inicial
+       labels: ['Calorias'],
+       datasets: [{
+         label: 'Calorias consumidas',
+         data: p,
+         borderColor: '#36A2EB',
+         backgroundColor: '#9BD0F5',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       },
+      ]
+     },
+     options: {
+      responsive: true,
+      plugins: {
+          legend: {
+              position: 'top',
+         },
+         title: {
+          display: true,
+          text: 'Tu progreso'
+      }
+       }
+     },
+   });
+  }
+})
+}
+getCalorias()
 
 
 btnInicio.addEventListener('click', e => {
@@ -5534,8 +5603,6 @@ svgRecetas.addEventListener('click', e =>{
   })
 
 
-
-const ctx = document.getElementById('my');
 
 
 // Telefono

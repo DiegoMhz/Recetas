@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="index.css">
     <title>Progreso</title>
 </head>
-<body class="bg-slate-300 h-screen" >
+<body class="bg-slate-300 h-screen flex flex-col">
   <!-- NAV BAR -->
-  <nav class="relative top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 px-4">
+  <nav class="absolute top-0 left-0 right-0 flex flex-row justify-between h-20 items-center bg-green-600 px-4">
     <div class="menu-mobil">
    
       <div class="flex flex-col items-center">
@@ -70,27 +70,26 @@
         
     </nav>
 
-<div id="contenedor" class="h-full flex flex-col justify-center items-center">
-  <div class="font-medium text-2xl">
-    Seguimiento de tu progreso
+<div id="container">
+  <div class="flex justify-center w-full" id="selector-mes">
+    <!-- <select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+      <option value="value1"selected disabled>Selecciona el mes</option>
+      <option value="Enero">Enero</option>
+      <option value="Febrero">Febrero</option>
+      <option value="Marzo">Marzo</option>
+      <option value="Abril">Abril</option>
+      <option value="Mayo">Mayo</option>
+      <option value="Junio">Junio</option>
+      <option value="Julio">Julio</option>
+    </select> -->
   </div>
-      <div class="h-3/4 w-3/4">
+      <div id="div-canvas">
         <canvas id="my"></canvas>
       </div>
-
-      <div class="flex justify-center w-full" id="selector-mes">
-        <!-- <select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
-          <option value="value1"selected disabled>Selecciona el mes</option>
-          <option value="Enero">Enero</option>
-          <option value="Febrero">Febrero</option>
-          <option value="Marzo">Marzo</option>
-          <option value="Abril">Abril</option>
-          <option value="Mayo">Mayo</option>
-          <option value="Junio">Junio</option>
-          <option value="Julio">Julio</option>
-        </select> -->
-      </div>
-
+    </div>
+    <div id="div-btn">
+      <button id="btn-peso">Peso</button>
+      <button id="btn-calorias">Calorias</button>
     </div>
 
 <script src="index.js"></script>

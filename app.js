@@ -8,6 +8,7 @@ const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
 const todosRouter = require('./controllers/todos');
 const recetasRouter = require('./controllers/recetas');
+const progresoRouter = require('./controllers/progreso');
 const auth = require('./middleware/auth');
 const cookieParser = require('cookie-parser');
 const logoutRouter = require('./controllers/logout');
@@ -34,6 +35,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/todos', auth, todosRouter);
 app.use('/api/recetas', auth, recetasRouter);
+app.use('/api/progreso', auth, progresoRouter);
 app.use('/api/logout', logoutRouter);
 // FRONT END
 app.use('/', express.static(path.join(__dirname, 'views', 'home')));

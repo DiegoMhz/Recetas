@@ -13,6 +13,8 @@ const btnProgresoMobile = document.querySelector('#btn-progreso-mobil');
 const btnInicioMobile = document.querySelector('#btn-inicio-mobil');
 const svgRecetasMobile = document.querySelector('#svg-recetas-mobil');
 
+const divComidasCompletadas = document.querySelector('#comidas-completadas')
+
 // BOTONES PESO
 const divInputContainer = document.querySelector('#div-input-container')
 const btnAceptar = document.querySelector('#btn-aceptar')
@@ -95,7 +97,6 @@ const getTodos = async () => {
     const { data } = await axios.get('/api/todos', {
         withCredentials: true
     })
-    console.log(divInputContainer);
 
     const MONTHS = [
       'Enero',
@@ -117,121 +118,140 @@ const getTodos = async () => {
 
 
     divPeso.innerHTML = `
-    <div id="div-input-container" class="flex gap-4 hidden">
-    <input type="text"  id="input-peso" placeholder="${data[0].pesoEdit}" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
-    <span id="spam-peso" class="text-3xl">kg</span>
-  </div>
-    <div  id="x" class="flex gap-2.5">
-    <label for="spam-peso" class="text-3xl">${data[0].pesoEdit}</label>
-    <span id="spam-peso" class="text-3xl">kg</span>
+    <h1 class="h1">${data[0].pesoEdit}</h1>
   `
  
   divEdad.innerHTML = `
-    <div id="div-input-container" class="flex gap-4 hidden">
-    <input type="text"  id="input-edad" placeholder="${data[0].edad}" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
-    <span id="spam-edad" class="text-3xl">Años</span>
-  </div>
-    <div  id="x-edad" class="flex gap-2.5">
-    <label for="spam-edad" class="text-3xl">${data[0].edad}</label>
-    <span id="spam-edad" class="text-3xl">años</span>
+     <h1 class="h1">${data[0].edad}</h1>
   `
+};
 
-  divMeta.innerHTML = `
-  <div id="div-input-container" class="flex gap-4 hidden">
-  <select name="meta" class="outline-none p-2 rounded-lg bg-slate-200  dark:bg-slate-600" id="input-meta">
-  <option value="Bajar de peso"selected disabled>Bajar de peso</option>
-  <option value="Subir de peso">Subir de peso</option>
-  </select>
-</div>
-  <div  id="x-meta" class="flex gap-2.5">
-  <label for="spam-meta" class="text-3xl">${data[0].meta}</label>
+getTodos();
+
+
+const getRecetas = async () => {
+  const { data } = await axios.get('/api/recetas', {
+      withCredentials: true
+  })
+  if (data[0] === undefined) {
+    divComidasCompletadas.innerHTML = `
+    <h1 class="h1">0</h1>
+    <span>Comidas completadas</span>
+  `
+  }
+  else {
+  divComidasCompletadas.innerHTML = `
+  <h1 class="h1">${data[0].comidasCompletadas}</h1>
+  <span>Comidas completadas</span>
 `
+}
+
+};
+
+getRecetas();
 
 
-// AXIOS EDIT
+const axiosPatch = async () => {
+  const { data } = await axios.get('/api/todos', {
+    withCredentials: true
+})
 
-
+const MONTHS = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
+];
+const newDate = new Date();
+let month = MONTHS[newDate.getMonth()];
+console.log(month);
 
 
   btnPeso.addEventListener('click', e =>{
     if (e.target) {
-      btnMeta.disabled = true
       btnEdad.disabled = true
     }
+    divPeso.classList.add('hidden')
     document.querySelector('#btn-aceptar').classList.remove('hidden')
     btnPeso.classList.add('hidden');
-    document.querySelector('#x').classList.add('hidden');
-    divInputContainer.classList.remove('hidden');
-    divPeso.children[0].classList.remove('hidden');
-   const inputPesoValue = divPeso.children[0].children[0]
-
+    const inputPeso = document.querySelector('#input-editar-peso')
+    inputPeso.classList.remove('hidden')
+    inputPeso.placeholder= `${data[0].pesoEdit}`
 
     btnAceptar.addEventListener('click', async e =>{
-      console.log(inputPesoValue.value);
-
+      console.log(inputPeso);
+const axiosPatchPeso = async () => {
       if (data[0].newDate === "Enero") {
         if (month === 'Enero') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Enero: [{
               mes : 'Enero',
-              pesoinicial : parseInt(inputPesoValue.value),
+              pesoinicial : parseInt(inputPeso.value),
               pesoActual : data[0].peso
             }], 
             Febrero: [{
               mes : 'Febrero',
-              pesoinicial : parseInt(inputPesoValue.value),
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoinicial : parseInt(inputPeso.value),
+              pesoActual : parseInt(inputPeso.value),
             }], 
             Marzo: [{
               mes : 'Marzo',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial : parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial : parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial : parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial : parseInt(inputPeso.value)
             }],
             Mayo: [{
               mes : 'Mayo',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial : parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial : parseInt(inputPeso.value)
             }],
             Junio: [{
               mes : 'Junio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Julio: [{
               mes : 'Julio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Agosto: [{
               mes : 'Agosto',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
       }); 
       }
@@ -239,395 +259,395 @@ const getTodos = async () => {
 
       if (month === 'Febrero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Febrero: [{
             mes : 'Febrero',
-            pesoinicial : parseInt(inputPesoValue.value),
+            pesoinicial : parseInt(inputPeso.value),
             pesoActual : data[0].Febrero[0].pesoinicial,
           }], 
           Marzo: [{
             mes : 'Marzo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
     }); 
     }
       
         if (month === 'Marzo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Marzo: [{
             mes : 'Marzo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Marzo[0].pesoinicial
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Abril') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Abril[0].pesoinicial
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Mayo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Mayo[0].pesoinicial
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Junio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Junio[0].pesoinicial
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value),
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Julio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Julio[0].pesoinicial
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Agosto') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Agosto[0].pesoinicial
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Septiembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Septiembre[0].pesoinicial
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Octubre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Octubre[0].pesoinicial
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Noviembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Noviembre[0].pesoinicial
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Diciembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Diciembre[0].pesoinicial
           }],
       }); 
@@ -639,66 +659,66 @@ const getTodos = async () => {
     if (data[0].newDate === "Febrero") {
         if (month === 'Febrero') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Febrero: [{
               mes : 'Febrero',
               pesoinicial : data[0].peso,
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
             }], 
             Marzo: [{
               mes : 'Marzo',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial : parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial : parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial : parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial : parseInt(inputPeso.value)
             }],
             Mayo: [{
               mes : 'Mayo',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial : parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial : parseInt(inputPeso.value)
             }],
             Junio: [{
               mes : 'Junio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Julio: [{
               mes : 'Julio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Agosto: [{
               mes : 'Agosto',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
     
       }); 
@@ -706,395 +726,395 @@ const getTodos = async () => {
       
         if (month === 'Marzo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Marzo: [{
             mes : 'Marzo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Marzo[0].pesoinicial
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Abril') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Abril[0].pesoinicial
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Mayo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Mayo[0].pesoinicial
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Junio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Junio[0].pesoinicial
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value),
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Julio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Julio[0].pesoinicial
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Agosto') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Agosto[0].pesoinicial
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Septiembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Septiembre[0].pesoinicial
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Octubre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Octubre[0].pesoinicial
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Noviembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Noviembre[0].pesoinicial
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Diciembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Diciembre[0].pesoinicial
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Enero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Enero[0].pesoinicial
           }],
       }); 
@@ -1103,327 +1123,324 @@ const getTodos = async () => {
 
     }
 
-
-
-
     if (data[0].newDate === "Marzo") {
         if (month === 'Marzo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Marzo: [{
             mes : 'Marzo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].peso
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Abril') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Abril[0].pesoinicial
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Mayo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Mayo[0].pesoinicial
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Junio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Junio[0].pesoinicial
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value),
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Julio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Julio[0].pesoinicial
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Agosto') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Agosto[0].inicial
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1431,67 +1448,67 @@ const getTodos = async () => {
 
       if (month === 'Septiembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :   data[0].Agosto[0].pesoinicial
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Octubre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Octubre[0].pesoinicial
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1499,26 +1516,26 @@ const getTodos = async () => {
 
       if (month === 'Noviembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :   data[0].Noviembre[0].pesoinicial
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1526,37 +1543,37 @@ const getTodos = async () => {
 
       if (month === 'Diciembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Diciembre[0].pesoinicial
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Enero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Enero[0].pesoinicial
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1564,11 +1581,11 @@ const getTodos = async () => {
 
       if (month === 'Febrero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Febrero: [{
             mes : 'Febrero',
             pesoActual : data[0].Febrero[0].pesoinicial,
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1580,349 +1597,349 @@ const getTodos = async () => {
     if (data[0].newDate === "Abril") {
       if (month === 'Abril') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].peso
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial : parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial : parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Mayo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Mayo[0].pesoinicial
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Junio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Junio[0].pesoinicial
           }],
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value),
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
       
       if (month === 'Julio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Julio[0].inicial
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Agosto') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Agosto[0].inicial
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Septiembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
 
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Septiembre[0].inicial
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Octubre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Octubre[0].pesoinicial
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Noviembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Noviembre[0].pesoinicial
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1930,21 +1947,21 @@ const getTodos = async () => {
 
       if (month === 'Diciembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Diciembre[0].pesoinicial
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1952,16 +1969,16 @@ const getTodos = async () => {
 
       if (month === 'Enero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Enero[0].pesoinicial
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -1969,10 +1986,10 @@ const getTodos = async () => {
 
       if (month === 'Febrero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Febrero[0].pesoinicial
           }],
       }); 
@@ -1990,323 +2007,323 @@ const getTodos = async () => {
         
         if (month === 'Mayo') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Mayo: [{
               mes : 'Mayo',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].peso
             }],
             Junio: [{
               mes : 'Junio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Julio: [{
               mes : 'Julio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Agosto: [{
               mes : 'Agosto',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
         
         if (month === 'Junio') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Junio: [{
               mes : 'Junio',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial : data[0].Junio[0].pesoinicial
             }],
             Julio: [{
               mes : 'Julio',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value),
             }],
             Agosto: [{
               mes : 'Agosto',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
         
         if (month === 'Julio') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Julio: [{
               mes : 'Julio',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial : data[0].Julio[0].inicial
             }],
             Agosto: [{
               mes : 'Agosto',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
   
         if (month === 'Agosto') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Agosto: [{
               mes : 'Agosto',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].Agosto[0].inicial
             }],
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
   
         if (month === 'Septiembre') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
   
             Septiembre: [{
               mes : 'Septiembre',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].Septiembre[0].inicial
             }],
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
   
         if (month === 'Octubre') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Octubre: [{
               mes : 'Octubre',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].Octubre[0].pesoinicial
             }],
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
   
         if (month === 'Noviembre') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Noviembre: [{
               mes : 'Noviembre',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial : data[0].Noviembre[0].pesoinicial
             }],
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
@@ -2314,26 +2331,26 @@ const getTodos = async () => {
   
         if (month === 'Diciembre') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Diciembre: [{
               mes : 'Diciembre',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].Diciembre[0].pesoinicial
             }],
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
@@ -2341,21 +2358,21 @@ const getTodos = async () => {
   
         if (month === 'Enero') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Enero: [{
               mes : 'Enero',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial : data[0].Enero[0].pesoinicial
             }],
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
@@ -2363,26 +2380,26 @@ const getTodos = async () => {
   
         if (month === 'Febrero') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Febrero: [{
               mes : 'Febrero',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].Febrero[0].pesoinicial
             }],
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
-              pesoinicial :  parseInt(inputPesoValue.value)
+              pesoActual : parseInt(inputPeso.value),
+              pesoinicial :  parseInt(inputPeso.value)
             }],
         }); 
         }
 
         if (month === 'Abril') {
           await axios.patch(`/api/todos/${data[0].id}`,{
-            pesoEdit : inputPesoValue.value,
+            pesoEdit : inputPeso.value,
             Abril: [{
               mes : 'Abril',
-              pesoActual : parseInt(inputPesoValue.value),
+              pesoActual : parseInt(inputPeso.value),
               pesoinicial :  data[0].Abril[0].pesoinicial
             }],
         }); 
@@ -2397,292 +2414,292 @@ const getTodos = async () => {
           
           if (month === 'Junio') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Junio: [{
                 mes : 'Junio',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].peso
               }],
               Julio: [{
                 mes : 'Julio',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value),
               }],
               Agosto: [{
                 mes : 'Agosto',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Septiembre: [{
                 mes : 'Septiembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Octubre: [{
                 mes : 'Octubre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Noviembre: [{
                 mes : 'Noviembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
           
           if (month === 'Julio') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Julio: [{
                 mes : 'Julio',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial : data[0].Julio[0].inicial
               }],
               Agosto: [{
                 mes : 'Agosto',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Septiembre: [{
                 mes : 'Septiembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Octubre: [{
                 mes : 'Octubre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Noviembre: [{
                 mes : 'Noviembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
     
           if (month === 'Agosto') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Agosto: [{
                 mes : 'Agosto',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].Agosto[0].inicial
               }],
               Septiembre: [{
                 mes : 'Septiembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Octubre: [{
                 mes : 'Octubre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Noviembre: [{
                 mes : 'Noviembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
     
           if (month === 'Septiembre') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
     
               Septiembre: [{
                 mes : 'Septiembre',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].Septiembre[0].inicial
               }],
               Octubre: [{
                 mes : 'Octubre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Noviembre: [{
                 mes : 'Noviembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
     
           if (month === 'Octubre') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Octubre: [{
                 mes : 'Octubre',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].Octubre[0].pesoinicial
               }],
               Noviembre: [{
                 mes : 'Noviembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
     
           if (month === 'Noviembre') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Noviembre: [{
                 mes : 'Noviembre',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial : data[0].Noviembre[0].pesoinicial
               }],
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
@@ -2690,31 +2707,31 @@ const getTodos = async () => {
     
           if (month === 'Diciembre') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Diciembre: [{
                 mes : 'Diciembre',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].Diciembre[0].pesoinicial
               }],
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
@@ -2722,26 +2739,26 @@ const getTodos = async () => {
     
           if (month === 'Enero') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Enero: [{
                 mes : 'Enero',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial : data[0].Enero[0].pesoinicial
               }],
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
@@ -2749,47 +2766,47 @@ const getTodos = async () => {
     
           if (month === 'Febrero') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Febrero: [{
                 mes : 'Febrero',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].Febrero[0].pesoinicial
               }],
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
   
           if (month === 'Abril') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Abril: [{
                 mes : 'Abril',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :  data[0].Abril[0].pesoinicial
               }],
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
-                pesoinicial :  parseInt(inputPesoValue.value)
+                pesoActual : parseInt(inputPeso.value),
+                pesoinicial :  parseInt(inputPeso.value)
               }],
           }); 
           }
 
           if (month === 'Mayo') {
             await axios.patch(`/api/todos/${data[0].id}`,{
-              pesoEdit : inputPesoValue.value,
+              pesoEdit : inputPeso.value,
               Mayo: [{
                 mes : 'Mayo',
-                pesoActual : parseInt(inputPesoValue.value),
+                pesoActual : parseInt(inputPeso.value),
                 pesoinicial :   data[0].Mayo[0].pesoinicial
               }],
           }); 
@@ -2805,256 +2822,256 @@ const getTodos = async () => {
           
       if (month === 'Julio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Julio: [{
             mes : 'Julio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].peso,
           }],
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Agosto') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Agosto: [{
             mes : 'Agosto',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Agosto[0].inicial
           }],
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Septiembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
 
           Septiembre: [{
             mes : 'Septiembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Septiembre[0].inicial
           }],
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Octubre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Octubre: [{
             mes : 'Octubre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Octubre[0].pesoinicial
           }],
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Noviembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Noviembre: [{
             mes : 'Noviembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Noviembre[0].pesoinicial
           }],
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -3062,36 +3079,36 @@ const getTodos = async () => {
 
       if (month === 'Diciembre') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Diciembre: [{
             mes : 'Diciembre',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Diciembre[0].pesoinicial
           }],
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -3099,31 +3116,31 @@ const getTodos = async () => {
 
       if (month === 'Enero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Enero: [{
             mes : 'Enero',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial : data[0].Enero[0].pesoinicial
           }],
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
@@ -3131,73 +3148,73 @@ const getTodos = async () => {
 
       if (month === 'Febrero') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Febrero: [{
             mes : 'Febrero',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Febrero[0].pesoinicial
           }],
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Abril') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Abril: [{
             mes : 'Abril',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Abril[0].pesoinicial
           }],
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Mayo') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Mayo: [{
             mes : 'Mayo',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :   data[0].Mayo[0].pesoinicial
           }],
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
-            pesoinicial :  parseInt(inputPesoValue.value)
+            pesoActual : parseInt(inputPeso.value),
+            pesoinicial :  parseInt(inputPeso.value)
           }],
       }); 
       }
 
       if (month === 'Junio') {
         await axios.patch(`/api/todos/${data[0].id}`,{
-          pesoEdit : inputPesoValue.value,
+          pesoEdit : inputPeso.value,
           Junio: [{
             mes : 'Junio',
-            pesoActual : parseInt(inputPesoValue.value),
+            pesoActual : parseInt(inputPeso.value),
             pesoinicial :  data[0].Junio[0].pesoinicial
           }],
       }); 
@@ -3213,215 +3230,215 @@ if (data[0].newDate === "Agosto") {
           
   if (month === 'Agosto') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].peso,
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Septiembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
 
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Septiembre[0].inicial
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Octubre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Octubre[0].pesoinicial
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Noviembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Noviembre[0].pesoinicial
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3429,41 +3446,41 @@ if (data[0].newDate === "Agosto") {
 
   if (month === 'Diciembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Diciembre[0].pesoinicial
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3471,36 +3488,36 @@ if (data[0].newDate === "Agosto") {
 
   if (month === 'Enero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Enero[0].pesoinicial
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3508,94 +3525,94 @@ if (data[0].newDate === "Agosto") {
 
   if (month === 'Febrero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Febrero[0].pesoinicial
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Abril') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Abril[0].pesoinicial
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Mayo') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Mayo[0].pesoinicial
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Junio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Junio[0].pesoinicial
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3604,10 +3621,10 @@ if (data[0].newDate === "Agosto") {
 
   if (month === 'Julio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Julio[0].pesoinicial
       }],
   }); 
@@ -3621,169 +3638,169 @@ if (data[0].newDate === "Septiembre") {
 
   if (month === 'Septiembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
 
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].peso
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Octubre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Octubre[0].pesoinicial
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Noviembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Noviembre[0].pesoinicial
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3791,46 +3808,46 @@ if (data[0].newDate === "Septiembre") {
 
   if (month === 'Diciembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Diciembre[0].pesoinicial
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3838,41 +3855,41 @@ if (data[0].newDate === "Septiembre") {
 
   if (month === 'Enero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Enero[0].pesoinicial
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3880,109 +3897,109 @@ if (data[0].newDate === "Septiembre") {
 
   if (month === 'Febrero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Febrero[0].pesoinicial
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Abril') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Abril[0].pesoinicial
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Mayo') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Mayo[0].pesoinicial
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Junio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Junio[0].pesoinicial
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -3991,26 +4008,26 @@ if (data[0].newDate === "Septiembre") {
 
   if (month === 'Julio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Julio[0].pesoinicial
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Agosto') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :    data[0].Agosto[0].pesoinicial
       }],
   }); 
@@ -4023,117 +4040,117 @@ if (data[0].newDate === "Octubre") {
 
   if (month === 'Octubre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].peso
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Noviembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Noviembre[0].pesoinicial
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4141,51 +4158,51 @@ if (data[0].newDate === "Octubre") {
 
   if (month === 'Diciembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Diciembre[0].pesoinicial
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4193,46 +4210,46 @@ if (data[0].newDate === "Octubre") {
 
   if (month === 'Enero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Enero[0].pesoinicial
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4240,129 +4257,129 @@ if (data[0].newDate === "Octubre") {
 
   if (month === 'Febrero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Febrero[0].pesoinicial
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Abril') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Abril[0].pesoinicial
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Mayo') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Mayo[0].pesoinicial
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Junio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Junio[0].pesoinicial
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4371,37 +4388,37 @@ if (data[0].newDate === "Octubre") {
 
   if (month === 'Julio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Julio[0].pesoinicial
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Agosto') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :    data[0].Agosto[0].pesoinicial
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4409,10 +4426,10 @@ if (data[0].newDate === "Octubre") {
 
   if (month === 'Septiembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Septiembre[0].pesoinicial
       }],
   }); 
@@ -4426,61 +4443,61 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Noviembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].peso
       }],
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4488,56 +4505,56 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Diciembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Diciembre[0].pesoinicial
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4545,51 +4562,51 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Enero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Enero[0].pesoinicial
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4597,149 +4614,149 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Febrero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Febrero[0].pesoinicial
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Abril') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Abril[0].pesoinicial
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Mayo') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Mayo[0].pesoinicial
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Junio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Junio[0].pesoinicial
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4748,47 +4765,47 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Julio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Julio[0].pesoinicial
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Agosto') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :    data[0].Agosto[0].pesoinicial
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4796,16 +4813,16 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Septiembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Septiembre[0].pesoinicial
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4813,10 +4830,10 @@ if (data[0].newDate === "Noviembre") {
 
   if (month === 'Octubre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Octubre[0].pesoinicial
       }],
   }); 
@@ -4831,61 +4848,61 @@ if (data[0].newDate === "Diciembre") {
 
   if (month === 'Diciembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Diciembre: [{
         mes : 'Diciembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].peso
       }],
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4893,56 +4910,56 @@ if (data[0].newDate === "Diciembre") {
 
   if (month === 'Enero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Enero: [{
         mes : 'Enero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Enero[0].pesoinicial
       }],
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -4950,169 +4967,169 @@ if (data[0].newDate === "Diciembre") {
 
   if (month === 'Febrero') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Febrero: [{
         mes : 'Febrero',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Febrero[0].pesoinicial
       }],
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Abril') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Abril: [{
         mes : 'Abril',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Abril[0].pesoinicial
       }],
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Mayo') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Mayo: [{
         mes : 'Mayo',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Mayo[0].pesoinicial
       }],
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Junio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Junio: [{
         mes : 'Junio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Junio[0].pesoinicial
       }],
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -5121,57 +5138,57 @@ if (data[0].newDate === "Diciembre") {
 
   if (month === 'Julio') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Julio: [{
         mes : 'Julio',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :  data[0].Julio[0].pesoinicial
       }],
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Agosto') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Agosto: [{
         mes : 'Agosto',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :    data[0].Agosto[0].pesoinicial
       }],
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -5179,21 +5196,21 @@ if (data[0].newDate === "Diciembre") {
 
   if (month === 'Septiembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Septiembre: [{
         mes : 'Septiembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Septiembre[0].pesoinicial
       }],
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
@@ -5201,26 +5218,26 @@ if (data[0].newDate === "Diciembre") {
 
   if (month === 'Octubre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Octubre: [{
         mes : 'Octubre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial : data[0].Octubre[0].pesoinicial
       }],
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
-        pesoinicial :  parseInt(inputPesoValue.value)
+        pesoActual : parseInt(inputPeso.value),
+        pesoinicial :  parseInt(inputPeso.value)
       }],
   }); 
   }
 
   if (month === 'Noviembre') {
     await axios.patch(`/api/todos/${data[0].id}`,{
-      pesoEdit : inputPesoValue.value,
+      pesoEdit : inputPeso.value,
       Noviembre: [{
         mes : 'Noviembre',
-        pesoActual : parseInt(inputPesoValue.value),
+        pesoActual : parseInt(inputPeso.value),
         pesoinicial :   data[0].Noviembre[0].pesoinicial
       }],
   }); 
@@ -5228,28 +5245,21 @@ if (data[0].newDate === "Diciembre") {
 
 
 }
-      
-
-
-            
-  
-
+ 
 
 
   divPeso.innerHTML = `
-  <div id="div-input-container" class="flex gap-4 hidden">
-  <input type="text"  id="input-peso" placeholder="20" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
-  <span id="spam-peso" class="text-4xl">kg</span>
-</div>
-  <div  id="x" class="flex gap-2.5">
-  <label for="spam-peso" class="text-4xl">${inputPesoValue.value}</label>
-  <span id="spam-peso" class="text-4xl">kg</span>
+     <h1 class="h1">${inputPeso.value}</h1>
 `
 
 btnPeso.classList.remove('hidden');
 btnAceptar.classList.add('hidden');
-location.reload();
+inputPeso.classList.add('hidden');
+divPeso.classList.remove('hidden');
 
+// location.reload();
+}     
+axiosPatchPeso();
 })
   })
 
@@ -5258,91 +5268,72 @@ location.reload();
 // EDIT EDAD
   btnEdad.addEventListener('click', e =>{
     if (e.target) {
-      btnMeta.disabled = true
       btnPeso.disabled = true
     }
+    divEdad.classList.add('hidden')
+    const inputEdad = document.querySelector('#input-editar-edad')
     document.querySelector('#btn-aceptar-edad').classList.remove('hidden')
     btnEdad.classList.add('hidden');
-    document.querySelector('#x-edad').classList.add('hidden');
-    divInputContainerEdad.classList.remove('hidden');
-    console.log('MUTE');
-    divEdad.children[0].classList.remove('hidden');
-   const inputEdadValue = divEdad.children[0].children[0]
-
+    inputEdad.classList.remove('hidden')
+    inputEdad.placeholder= `${data[0].edad}`
+    
     btnAceptarEdad.addEventListener('click', async e =>{
-      console.log(inputEdadValue.value);
       await axios.patch(`/api/todos/${data[0].id}`,{ 
-        edad: inputEdadValue.value,
+        edad: inputEdad.value,
       })
+
   divEdad.innerHTML = `
-  <div id="div-input-container" class="flex gap-4 hidden">
-  <input type="text"  id="input-edad" placeholder="20" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
-  <span id="spam-edad" class="text-4xl">Años</span>
-</div>
-  <div  id="x-edad" class="flex gap-2.5">
-  <label for="spam-edad" class="text-4xl">${inputEdadValue.value}</label>
-  <span id="spam-edad" class="text-4xl">años</span>
+  <h1 class="h1">${inputEdad.value}</h1>
+ </div>
 `
 
+inputEdad.classList.add('hidden')
 btnEdad.classList.remove('hidden');
 btnAceptarEdad.classList.add('hidden');
-location.reload();
-     
+divEdad.classList.remove('hidden')
 })
+
   })
 
 
 // META Edit
 
-  btnMeta.addEventListener('click', e =>{
-    if (e.target) {
-      btnEdad.disabled = true
-      btnPeso.disabled = true
-    }
-    document.querySelector('#btn-aceptar-meta').classList.remove('hidden')
-    btnMeta.classList.add('hidden');
-    document.querySelector('#x-meta').classList.add('hidden');
-    divInputContainerMeta.classList.remove('hidden');
-    console.log('MUTE');
-    divMeta.children[0].classList.remove('hidden');
-   const inputMetaValue = divMeta.children[0].children[0]
+//   btnMeta.addEventListener('click', e =>{
+//     if (e.target) {
+//       btnEdad.disabled = true
+//       btnPeso.disabled = true
+//     }
+//     document.querySelector('#btn-aceptar-meta').classList.remove('hidden')
+//     btnMeta.classList.add('hidden');
+//     document.querySelector('#x-meta').classList.add('hidden');
+//     divInputContainerMeta.classList.remove('hidden');
+//     console.log('MUTE');
+//     divMeta.children[0].classList.remove('hidden');
+//    const inputMetaValue = divMeta.children[0].children[0]
    
-    btnAceptarMeta.addEventListener('click', async e =>{
-      console.log(inputMetaValue.value);
-      await axios.patch(`/api/todos/${data[0].id}`,{ 
-        meta: inputMetaValue.value,
-      })
-  divMeta.innerHTML = `
-  <div id="div-input-container" class="flex gap-4 hidden">
-  <input type="text"  id="input-meta" placeholder="20" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
+//     btnAceptarMeta.addEventListener('click', async e =>{
+//       console.log(inputMetaValue.value);
+//       await axios.patch(`/api/todos/${data[0].id}`,{ 
+//         meta: inputMetaValue.value,
+//       })
+//   divMeta.innerHTML = `
+//   <div id="div-input-container" class="flex gap-4 hidden">
+//   <input type="text"  id="input-meta" placeholder="20" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
   
-</div>
-  <div  id="x-meta" class="flex gap-2.5">
-  <label for="spam-meta" class="text-4xl">${inputMetaValue.value}</label>
-`
+// </div>
+//   <div  id="x-meta" class="flex gap-2.5">
+//   <label for="spam-meta" class="text-4xl">${inputMetaValue.value}</label>
+// `
 
-btnMeta.classList.remove('hidden');
-btnAceptarMeta.classList.add('hidden');
-location.reload();
+// btnMeta.classList.remove('hidden');
+// btnAceptarMeta.classList.add('hidden');
+// location.reload();
 
-})
-  })
+// })
+//   })
 
-    console.log(data);
-    console.log(data[0].actividad);
-    console.log(data[0].meta);
-    console.log(data[0].altura);
-    console.log(data[0].peso);
-    console.log(data[0].masculino);
-    console.log(data[0].femenino);
-    console.log(data[0].edad);
-
-
-
-
-};
-getTodos();
-
+  }
+axiosPatch()
 
 
 

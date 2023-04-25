@@ -11,9 +11,9 @@
 </head>
 <body class="bg-slate-300 flex min-h-screen justify-center items-center bg-white flex-wrap">
     <!-- NAV BAR -->
-    <nav class="relative flex flex-row justify-between items-center w-full bg-green-600 h-20 px-4">
-      <div class="menu-mobil" style="width: 20rem;">
-        <div class=" flex items-center justify-center flex-col h-full" style="padding-top: 6px;">
+    <nav class="absolute top-0 flex flex-row justify-between items-center w-full bg-green-600 h-20 px-4">
+      <div class="menu-mobil">
+        <div class=" flex items-center justify-center flex-col " style="padding-top: 6px;">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" style="height: 25px;" id="btn-progreso-mobil" class="cursor-pointer" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm8 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-19 0c0-6.065 4.935-11 11-11v2c-4.962 0-9 4.038-9 9 0 2.481 1.009 4.731 2.639 6.361l-1.414 1.414.015.014c-2-1.994-3.24-4.749-3.24-7.789z"/></svg>
         <label id="label-progreso" class="text-black text-sm">Progreso</label>
       </div>
@@ -38,7 +38,7 @@
       <div class="flex gap-4 text-white items-center relative" id="svg-container">
 
 
-        <div class="hidden md:flex flex items-center justify-center flex-col h-full">
+        <div class="hidden md:flex flex items-center justify-center flex-col ">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" style="height: 25px;" id="btn-progreso" class="cursor-pointer" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm8 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-19 0c0-6.065 4.935-11 11-11v2c-4.962 0-9 4.038-9 9 0 2.481 1.009 4.731 2.639 6.361l-1.414 1.414.015.014c-2-1.994-3.24-4.749-3.24-7.789z"/></svg>
         <label id="label-progreso" class="text-black text-sm">Progreso</label>
       </div>
@@ -66,13 +66,10 @@
 
       </nav>
 
-  <div> 
-    
 <div id="contenedor">
   <h1 class="text-center mt-4 font-bold" style="font-size: 28px;">Bienvenido</h1>
-
-      <p class="text-end pr-4">Para generar su dieta mensual</p>
-      <div class="flex justify-end pr-20">
+  <div class="flex-col flex items-center">
+      <p>Para generar su dieta mensual</p>
       <button id="btn-recetas" type="button" class="bg-green-500 hover:bg-green-600" style="border-radius: 0.5rem; padding: 0.5rem;">Presione aqui</button>
     </div>
 
@@ -715,9 +712,9 @@
 
     </div>
 
-  </div>    
 
-</div>    
+      
+</div>  
    
 
 

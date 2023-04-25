@@ -24,25 +24,34 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 5px 10px #000;
+}
+
+.back-overflow{
   overflow: auto;
 }
 
 .menu-mobil{
   position: absolute;
-  background-color: red;
-  top: -40rem;
-  width: 30rem;
+  top: -29rem;
+  height: 28rem;
+  width: 100%;
   right: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 1rem;
-  box-shadow: 0 5px 10px #000;
-  width: 17rem;
+  gap: 0;
   background-color: white;
   transition: 1s
-};
+}
+
+#contenedor{
+  padding-top: 5rem;
+}
+
+.displaynone{
+  display: none;
+}
 
 @media (max-width: 700px) {
   #btn-mobil {

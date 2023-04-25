@@ -13,7 +13,6 @@ const divSelect = document.querySelector('#select')
 const btnMenuMobile = document.querySelector('.btn-mobil')
 const menuMobile = document.querySelector('.menu-mobil')
 
-
 // Telefono
 btnInicioMobile.addEventListener('click', e => {
   const id = window.location.pathname.split('/')[2]
@@ -22,6 +21,7 @@ btnInicioMobile.addEventListener('click', e => {
 
   btnMenuMobile.addEventListener('click', e =>{
     menuMobile.classList.toggle('top-20')
+    divcontenedor.classList.toggle('hidden')
   })
   btnPerfilMobile.addEventListener('click', e =>{
     const id = window.location.pathname.split('/')[2];
@@ -59,29 +59,7 @@ btnInicio.addEventListener('click', e => {
     window.location.pathname = `perfil/${id}`
   })
 
-
-
-
-const getTodos = async () => {
-    const { data } = await axios.get('/api/recetas', {
-        withCredentials: true
-    })
-console.log(divcontenedor.innerText);
-if (divcontenedor.innerText === '') {
-  divcontenedor.innerHTML = `<div id="div-btn-recetas">
-  <p>Aun no tienes tu receta mensual,para obtenerla</p>
-  <div class="flex justify-center">
-  <button  type="button" id="btn-recetas" class="bg-green-500 hover:bg-green-600 p-2 rounded-lg">Presiona aqui</button>
-  </div>
-</div>
-  </div> `
-  console.log('EL IF');
-  console.log(divcontenedor.children[0].children[1].children[0]);
-  const botonRecetas = divcontenedor.children[0].children[1].children[0]
-
-
-  botonRecetas.addEventListener('click', async e => {
-    
+  const addRecetas = async ()=>{
     const { data } = await axios.post('/api/recetas', {
       SemanaUno: [
         {Lunes:{Desayuno:{Titulo:'Tostadas de pan integral con queso fresco y frutas',
@@ -641,22 +619,385 @@ if (divcontenedor.innerText === '') {
   
   }],
   
-  
+  CardUno:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  CardDos:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  CardTres:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card4:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card5:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card6:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card7:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card8:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card9:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card10:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card11:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card12:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card13:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card14:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card15:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card16:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+
+  Card17:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card18:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+ 
+  Card19:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card20:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card21:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card22:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card23:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card24:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card25:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card26:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card27:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card28:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card29:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card30:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card31:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card32:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card33:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card34:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card35:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card36:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card37:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card38:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card39:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card40:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card41:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card42:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card43:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card44:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card45:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card46:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card47:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card48:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card49:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card50:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card51:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card52:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card53:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card54:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card55:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card56:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card57:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card58:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card59:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card60:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card61:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card62:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card63:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card64:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card65:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card66:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card67:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card68:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card69:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card70:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card71:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card72:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card73:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card74:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card75:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card76:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card77:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card78:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card79:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card80:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card81:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card82:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card83:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  Card84:[{
+    completed: 'completed',
+    incompleted: 'incompleted'
+  }],
+  calorias :0,
+  comidasCompletadas : 0,
   
   
     }, {
         withCredentials: true
     })
+  }
+
+
+
+const getTodos = async () => {
+    const { data } = await axios.get('/api/recetas', {
+        withCredentials: true
+    })
+    console.log(data);
+if (divcontenedor.innerText === '') {
+  divcontenedor.innerHTML = `<div id="div-btn-recetas" class= "text-center">
+  <p>Aun no tienes tu receta mensual,para obtenerla</p>
+  <div class="flex justify-center">
+  <button  type="button" id="btn-recetas" class="bg-green-500 hover:bg-green-600 p-2 rounded-lg">Presiona aqui</button>
+  </div>
+</div>
+  </div> `
+  console.log('EL IF');
+  console.log(divcontenedor.children[0].children[1].children[0]);
+  const botonRecetas = divcontenedor.children[0].children[1].children[0]
+
+
+  botonRecetas.addEventListener('click', async e => {
+   addRecetas();
     location.reload();
   })
 }
 
    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Lunes</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
 
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card"  class="h-96 w-72 relative m-4 1">
 
         <div class="face front">
           <img src="//assets.kraftfoods.com/recipe_images/opendeploy/197047_640x428.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -664,9 +1005,11 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Lunes.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Lunes.Desayuno.Titulo}</h3>
-
           <div id="Contenedor-ingredientes">
             <p class="text-center mt-4 font-bold">Ingredientes</p>
             <ul>
@@ -697,6 +1040,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Lunes.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].CardUno[0].completed}">Listo</button>
+            <button class="${data[0].CardUno[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
       </div>
 
@@ -706,14 +1051,17 @@ if (divcontenedor.innerText === '') {
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 2">
         <div class="face front">
           <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Lunes.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Lunes.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -744,12 +1092,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Lunes.Almuerzo.Fibra}g</li>
             </ul>
             </div>
-        </div>
-        
+            <button id="btn-cheked-card"  class="${data[0].CardDos[0].completed}">Listo</button>
+            <button class="${data[0].CardDos[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div> 
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 3">
 
         <div class="face front">
           <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2018/03/ensalada-de-aguacate-con-pollo-y-nuez-de-la-india.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -757,7 +1106,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Lunes.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Lunes.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -790,6 +1142,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Lunes.Cena.Fibra}5g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].CardTres[0].completed}">Listo</button>
+            <button class="${data[0].CardTres[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
       </div>
 
@@ -801,11 +1155,11 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Martes</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Martes</h3>
 
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 4">
 
         <div class="face front">
           <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -813,7 +1167,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Martes.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Martes.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -847,11 +1204,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Martes.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card4[0].completed}">Listo</button>
+            <button class="${data[0].Card4[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 5">
 
         <div class="face front">
           <img src="https://www.recetasmundo.com/wp-content/uploads/2022/11/Wraps-de-tortilla-con-salmon-lechuga-y-pimientos.jpg.webp" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -859,7 +1218,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Martes.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Martes.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -891,19 +1253,24 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Martes.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card5[0].completed}">Listo</button>
+            <button class="${data[0].Card5[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 6">
         <div class="face front">
           <img src="https://assets.unileversolutions.com/recipes-v2/117229.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Martes.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Martes.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -936,6 +1303,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Martes.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card6[0].completed}">Listo</button>
+            <button class="${data[0].Card6[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -946,12 +1315,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Miercoles</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Miercoles</h3>
 
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 7">
 
         <div class="face front">
           <img src="https://deliciaskitchen.com/wp-content/uploads/2021/11/gachas-de-avena-porridge.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -959,7 +1328,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Miercoles.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Miercoles.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -993,11 +1365,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Miercoles.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card7[0].completed}">Listo</button>
+            <button class="${data[0].Card7[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 8">
 
         <div class="face front">
           <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1005,7 +1379,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Miercoles.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Miercoles.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1038,12 +1415,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Miercoles.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card8[0].completed}">Listo</button>
+            <button class="${data[0].Card8[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 9">
 
         <div class="face front">
           <img src="https://thumbs.dreamstime.com/b/salmón-al-horno-o-frito-y-ensalada-paleo-keto-fodmap-dieta-comida-mediterránea-con-pescado-vapor-plato-asiático-de-teriyaki-209299279.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1051,7 +1430,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Miercoles.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Miercoles.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1084,6 +1466,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Miercoles.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card9[0].completed}">Listo</button>
+            <button class="${data[0].Card9[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -1092,12 +1476,12 @@ if (divcontenedor.innerText === '') {
 
     </div>
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jueves</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Jueves</h3>
 
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 10">
 
         <div class="face front">
           <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/tostada-de-aguacate-y-huevo-frito/900/tostada-de-aguacate-y-huevo-frito.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1105,7 +1489,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Jueves.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Jueves.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1138,11 +1525,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Jueves.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card10[0].completed}">Listo</button>
+            <button class="${data[0].Card10[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 11">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20200312162929/receta-arroz-pollo-menestra-verduras/1-39-435/arroz-adobe-t.jpg?tx=w_680" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1150,7 +1539,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Jueves.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Jueves.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1183,12 +1575,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Jueves.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card11[0].completed}">Listo</button>
+            <button class="${data[0].Card11[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 12">
 
         <div class="face front">
           <img src="https://elikaeskola.com/wp-content/uploads/me-siento-culpable-por-comer.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1196,7 +1590,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Jueves.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Jueves.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1232,6 +1629,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Jueves.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card12[0].completed}">Listo</button>
+            <button class="${data[0].Card12[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -1242,12 +1641,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Viernes</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Viernes</h3>
 
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 13">
 
         <div class="face front">
           <img src="https://www.recetasnestlecam.com/sites/default/files/srh_recipes/84cd4a5713e4036ca0b3b796400fda1b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1255,7 +1654,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Viernes.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Viernes.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1294,11 +1696,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Viernes.Desayuno.Fibra}5g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card13[0].completed}">Listo</button>
+            <button class="${data[0].Card13[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 14">
 
         <div class="face front">
           <img src="https://cdn.optipic.io/site-102199/wp-content/uploads/2022/08/Lasana-Espinaca-Ricotta--500x450.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1306,7 +1710,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Viernes.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Viernes.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1345,12 +1752,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Viernes.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card14[0].completed}">Listo</button>
+            <button class="${data[0].Card14[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 15">
 
         <div class="face front">
           <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1358,7 +1767,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Viernes.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Viernes.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1391,6 +1803,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Viernes.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card15[0].completed}">Listo</button>
+            <button class="${data[0].Card15[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -1401,12 +1815,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Sabado</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Sabado</h3>
 
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 16">
 
         <div class="face front">
           <img src="https://www.cucute.com/blog/wp-content/uploads/2020/08/huevos-con-espinacas-champinones-jamon-menta-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1414,7 +1828,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Sabado.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Sabado.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1449,11 +1866,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Sabado.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card16[0].completed}">Listo</button>
+            <button class="${data[0].Card16[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 17">
 
         <div class="face front">
           <img src="https://cdn0.recetasgratis.net/es/posts/7/6/4/ensalada_de_garbanzos_y_pollo_61467_600.jpg"" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1461,7 +1880,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Sabado.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Sabado.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1497,12 +1919,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Sabado.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card17[0].completed}">Listo</button>
+            <button class="${data[0].Card17[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 18">
 
         <div class="face front">
           <img src="https://mejorconsalud.as.com/wp-content/uploads/2022/02/ensalada-quinoa-pollo-768x512.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1510,7 +1934,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Sabado.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Sabado.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1546,6 +1973,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Sabado.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card18[0].completed}">Listo</button>
+            <button class="${data[0].Card18[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -1556,12 +1985,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Domingo</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Domingo</h3>
 
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 19">
 
         <div class="face front">
           <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1569,7 +1998,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Domingo.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Domingo.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1601,11 +2033,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Domingo.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card19[0].completed}">Listo</button>
+            <button class="${data[0].Card19[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 20">
 
         <div class="face front">
           <img src="https://img.freepik.com/fotos-premium/brocheta-pollo-calabaza-setas-brochetas_75924-22681.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1613,7 +2047,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Domingo.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Domingo.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1646,12 +2083,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Domingo.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card20[0].completed}">Listo</button>
+            <button class="${data[0].Card20[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 21">
 
         <div class="face front">
           <img src="https://okdiario.com/img/2018/05/19/nuggets-de-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1659,7 +2098,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Domingo.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Domingo.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1696,44 +2138,21 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Domingo.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card21[0].completed}">Listo</button>
+            <button class="${data[0].Card21[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
       </div>
     </div>
  `
- divSelect.classList.remove('hidden')
-
- const cardFront = document.querySelectorAll('.front')
- const cardBack = document.querySelectorAll('.back')
-
- cardFront.forEach(element => {
-  element.addEventListener('click', e => {
-  console.log(element.parentElement.children[0]);
-  const cardFront = element.parentElement.children[0]
-  const cardBack = element.parentElement.children[1]
-    cardFront.style.transform = "rotateY(180deg)";
-    cardBack.style.transform = "rotateY(360deg)";
-  })
-  });
-  
-  cardBack.forEach(element => {
-    element.addEventListener('click', e => {
-    console.log(element.parentElement.children[0]);
-    const cardFront = element.parentElement.children[0]
-    const cardBack = element.parentElement.children[1]
-      cardFront.style.transform = "rotateY(360deg)";
-      cardBack.style.transform = "rotateY(180deg)";
-    })
-    });
-
-    select.addEventListener('input', e => {
+ select.addEventListener('input', e => {
     
-        if (e.target.value === 'SemanaUno') {
-            divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Lunes</h3>
+  if (e.target.value === 'SemanaUno') {
+    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
 
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card"  class="h-96 w-72 relative m-4 1">
 
         <div class="face front">
           <img src="//assets.kraftfoods.com/recipe_images/opendeploy/197047_640x428.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1741,9 +2160,11 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Lunes.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Lunes.Desayuno.Titulo}</h3>
-
           <div id="Contenedor-ingredientes">
             <p class="text-center mt-4 font-bold">Ingredientes</p>
             <ul>
@@ -1774,6 +2195,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Lunes.Desayuno.Fibra}g</li>
             </ul>
             </div>
+             <button id="btn-cheked-card"  class="${data[0].CardUno[0].completed}">Listo</button>
+              <button class="${data[0].CardUno[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
       </div>
 
@@ -1783,14 +2206,17 @@ if (divcontenedor.innerText === '') {
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 2">
         <div class="face front">
           <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Lunes.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Lunes.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1821,12 +2247,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Lunes.Almuerzo.Fibra}g</li>
             </ul>
             </div>
-        </div>
-        
+            <button id="btn-cheked-card"  class="${data[0].CardDos[0].completed}">Listo</button>
+            <button class="${data[0].CardDos[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div> 
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 3">
 
         <div class="face front">
           <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2018/03/ensalada-de-aguacate-con-pollo-y-nuez-de-la-india.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1834,7 +2261,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Lunes.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Lunes.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1867,6 +2297,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Lunes.Cena.Fibra}5g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].CardTres[0].completed}">Listo</button>
+            <button class="${data[0].CardTres[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
       </div>
 
@@ -1878,11 +2310,11 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Martes</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Martes</h3>
 
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 4">
 
         <div class="face front">
           <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1890,7 +2322,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Martes.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Martes.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1924,11 +2359,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Martes.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card4[0].completed}">Listo</button>
+            <button class="${data[0].Card4[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 5">
 
         <div class="face front">
           <img src="https://www.recetasmundo.com/wp-content/uploads/2022/11/Wraps-de-tortilla-con-salmon-lechuga-y-pimientos.jpg.webp" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1936,7 +2373,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Martes.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Martes.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -1968,19 +2408,24 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Martes.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card5[0].completed}">Listo</button>
+            <button class="${data[0].Card5[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 6">
         <div class="face front">
           <img src="https://assets.unileversolutions.com/recipes-v2/117229.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Martes.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Martes.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2013,6 +2458,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Martes.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card6[0].completed}">Listo</button>
+            <button class="${data[0].Card6[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -2023,12 +2470,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Miercoles</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Miercoles</h3>
 
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 7">
 
         <div class="face front">
           <img src="https://deliciaskitchen.com/wp-content/uploads/2021/11/gachas-de-avena-porridge.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2036,7 +2483,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Miercoles.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Miercoles.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2070,11 +2520,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Miercoles.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card7[0].completed}">Listo</button>
+            <button class="${data[0].Card7[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 8">
 
         <div class="face front">
           <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2082,7 +2534,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Miercoles.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Miercoles.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2115,12 +2570,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Miercoles.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card8[0].completed}">Listo</button>
+            <button class="${data[0].Card8[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 9">
 
         <div class="face front">
           <img src="https://thumbs.dreamstime.com/b/salmón-al-horno-o-frito-y-ensalada-paleo-keto-fodmap-dieta-comida-mediterránea-con-pescado-vapor-plato-asiático-de-teriyaki-209299279.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2128,7 +2585,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Miercoles.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Miercoles.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2161,6 +2621,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Miercoles.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card9[0].completed}">Listo</button>
+            <button class="${data[0].Card9[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -2169,12 +2631,12 @@ if (divcontenedor.innerText === '') {
 
     </div>
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jueves</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Jueves</h3>
 
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 10">
 
         <div class="face front">
           <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/tostada-de-aguacate-y-huevo-frito/900/tostada-de-aguacate-y-huevo-frito.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2182,7 +2644,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Jueves.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Jueves.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2215,11 +2680,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Jueves.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card10[0].completed}">Listo</button>
+            <button class="${data[0].Card10[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 11">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20200312162929/receta-arroz-pollo-menestra-verduras/1-39-435/arroz-adobe-t.jpg?tx=w_680" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2227,7 +2694,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Jueves.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Jueves.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2260,12 +2730,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Jueves.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card11[0].completed}">Listo</button>
+            <button class="${data[0].Card11[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 12">
 
         <div class="face front">
           <img src="https://elikaeskola.com/wp-content/uploads/me-siento-culpable-por-comer.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2273,7 +2745,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Jueves.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Jueves.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2309,6 +2784,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Jueves.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card12[0].completed}">Listo</button>
+            <button class="${data[0].Card12[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -2319,12 +2796,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Viernes</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Viernes</h3>
 
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 13">
 
         <div class="face front">
           <img src="https://www.recetasnestlecam.com/sites/default/files/srh_recipes/84cd4a5713e4036ca0b3b796400fda1b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2332,7 +2809,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Viernes.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Viernes.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2371,11 +2851,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Viernes.Desayuno.Fibra}5g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card13[0].completed}">Listo</button>
+            <button class="${data[0].Card13[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 14">
 
         <div class="face front">
           <img src="https://cdn.optipic.io/site-102199/wp-content/uploads/2022/08/Lasana-Espinaca-Ricotta--500x450.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2383,7 +2865,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Viernes.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Viernes.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2422,12 +2907,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Viernes.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card14[0].completed}">Listo</button>
+            <button class="${data[0].Card14[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 15">
 
         <div class="face front">
           <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2435,7 +2922,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Viernes.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Viernes.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2468,6 +2958,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Viernes.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card15[0].completed}">Listo</button>
+            <button class="${data[0].Card15[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -2478,12 +2970,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Sabado</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Sabado</h3>
 
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 16">
 
         <div class="face front">
           <img src="https://www.cucute.com/blog/wp-content/uploads/2020/08/huevos-con-espinacas-champinones-jamon-menta-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2491,7 +2983,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Sabado.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Sabado.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2526,11 +3021,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Sabado.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card16[0].completed}">Listo</button>
+            <button class="${data[0].Card16[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 17">
 
         <div class="face front">
           <img src="https://cdn0.recetasgratis.net/es/posts/7/6/4/ensalada_de_garbanzos_y_pollo_61467_600.jpg"" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2538,7 +3035,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Sabado.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Sabado.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2574,12 +3074,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Sabado.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card17[0].completed}">Listo</button>
+            <button class="${data[0].Card17[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 18">
 
         <div class="face front">
           <img src="https://mejorconsalud.as.com/wp-content/uploads/2022/02/ensalada-quinoa-pollo-768x512.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2587,7 +3089,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Sabado.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Sabado.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2623,6 +3128,8 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Sabado.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card18[0].completed}">Listo</button>
+            <button class="${data[0].Card18[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
@@ -2633,12 +3140,12 @@ if (divcontenedor.innerText === '') {
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Domingo</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Domingo</h3>
 
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 19">
 
         <div class="face front">
           <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2646,7 +3153,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Domingo.Desayuno.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Domingo.Desayuno.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2678,11 +3188,13 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Domingo.Desayuno.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card19[0].completed}">Listo</button>
+            <button class="${data[0].Card19[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 20">
 
         <div class="face front">
           <img src="https://img.freepik.com/fotos-premium/brocheta-pollo-calabaza-setas-brochetas_75924-22681.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2690,7 +3202,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Domingo.Almuerzo.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Domingo.Almuerzo.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2723,12 +3238,14 @@ if (divcontenedor.innerText === '') {
               <li>Fibra:  ${data[0].SemanaUno[0].Domingo.Almuerzo.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card20[0].completed}">Listo</button>
+            <button class="${data[0].Card20[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
         
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div id="card" class="h-96 w-72 relative m-4 21">
 
         <div class="face front">
           <img src="https://okdiario.com/img/2018/05/19/nuggets-de-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2736,7 +3253,10 @@ if (divcontenedor.innerText === '') {
           <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaUno[0].Domingo.Cena.Titulo}</h3>
         </div>
 
-        <div class="face back">
+       <div class="face back">
+        <div class="flex justify-end">
+        <button class="" id="return-card">❌</button>
+        </div>
           <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaUno[0].Domingo.Cena.Titulo}</h3>
 
           <div id="Contenedor-ingredientes">
@@ -2773,3343 +3293,5196 @@ if (divcontenedor.innerText === '') {
               <li>Fibra: ${data[0].SemanaUno[0].Domingo.Cena.Fibra}g</li>
             </ul>
             </div>
+            <button id="btn-cheked-card"  class="${data[0].Card21[0].completed}">Listo</button>
+            <button class="${data[0].Card21[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
         </div>
       </div>
-    </div>`
-    const cardFront = document.querySelectorAll('.front')
-    const cardBack = document.querySelectorAll('.back')
+    </div>
+ `
 
-    cardFront.forEach(element => {
-      element.addEventListener('click', e => {
-      console.log(element.parentElement.children[0]);
-      const cardFront = element.parentElement.children[0]
-      const cardBack = element.parentElement.children[1]
-        cardFront.style.transform = "rotateY(180deg)";
-        cardBack.style.transform = "rotateY(360deg)";
-      })
-      });
+FuncionesCarta();
+  }
 
-      cardBack.forEach(element => {
-        element.addEventListener('click', e => {
-        console.log(element.parentElement.children[0]);
-        const cardFront = element.parentElement.children[0]
-        const cardBack = element.parentElement.children[1]
-          cardFront.style.transform = "rotateY(360deg)";
-          cardBack.style.transform = "rotateY(180deg)";
-        })
-        });
-        }
-    
-        else if (e.target.value === 'SemanaDos') {
+  else if (e.target.value === 'SemanaDos') {
 
-          divcontenedor.innerHTML=`<h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°2</h3>
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Lunes</h3>
-      
-            <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://storage.googleapis.com/avena-recipes/2019/10/1571780272665.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Lunes.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Lunes.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Lunes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Lunes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Lunes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Lunes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Lunes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://images.aws.nestle.recipes/original/b20ee479682a5f0dfe7e11db0529d309_ARROZ_FRITO_CON_CAMARONES.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Lunes.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Lunes.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Lunes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Lunes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Lunes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Lunes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Lunes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.deliciosi.com/images/1100/1161/ensalada-de-pollo-con-manzana.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Lunes.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Lunes.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Lunes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Lunes.Cena.Preparacion.split('.')[2]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Lunes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Lunes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Lunes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Lunes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Lunes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Martes</h3>
-      
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Martes.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Martes.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[4]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Martes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Martes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Martes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Martes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Martes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://1.bp.blogspot.com/-te9Krjz7_8Q/WiJaxxJSUcI/AAAAAAAAB9Q/1f5f7CO1BPsyr4kPoEqpEdO4DhoubC84QCLcBGAs/s1600/Salm%25C3%25B3n%2Basi%25C3%25A1tico%2Bcon%2Bverduras%2By%2Barroz%2Bintegral%2B-%2Breceta.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Martes.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Martes.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[5]}. 
-                     
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Martes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Martes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Martes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas:${data[0].SemanaDos[0].Martes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Martes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://style.shockvisual.net/wp-content/uploads/2020/01/bowl-of-cesar-salad-VUPQEAL.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Martes.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Martes.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[4]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[5]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[6]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[7]}</li>
-                    <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[8]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias:  ${data[0].SemanaDos[0].Martes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Martes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaDos[0].Martes.Cena.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaDos[0].Martes.Cena.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaDos[0].Martes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Miercoles</h3>
-      
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://images.hola.com/imagenes/cocina/recetas/20210318186319/bowl-yogur-natural-fruta-muesli/0-932-147/bowl-yogur-fruta-m.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Miercoles.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Miercoles.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Desayuno.Preparacion.split('.')[2]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Miercoles.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Miercoles.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Miercoles.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Miercoles.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Miercoles.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://mui.kitchen/__export/1661875313666/sites/muikitchen/img/2022/08/30/istockphoto-661236878-170667a_x1x.jpg_1301049368.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Miercoles.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Miercoles.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[6]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[7]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[8]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[0]}.
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[4]}.  
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[6]}.
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[7]}.
-                      <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[8]}.
-                   </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://thumbs.dreamstime.com/b/huevos-revueltos-con-verduras-y-pan-en-un-plato-tomates-de-pepino-rebanados-tostados-vaso-zumo-naranja-natural-blanco-sobre-una-211573201.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Miercoles.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Miercoles.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Miercoles.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Miercoles.Cena.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[0]}.
-                      <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Miercoles.Cena.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaDos[0].Miercoles.Cena.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaDos[0].Miercoles.Cena.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaDos[0].Miercoles.Cena.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaDos[0].Miercoles.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jueves</h3>
-      
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/30/f850x638-32729_110218_5050.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Jueves.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Jueves.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Jueves.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[2]}.  
-                      <br>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[3]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Jueves.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Jueves.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Jueves.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Jueves.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Jueves.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.demoslavueltaaldia.com/sites/default/files/tortilla-de-verduras-gratinada-con-queso.jpg.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Jueves.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Jueves.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Jueves.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Almuerzo.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[6]}.    
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Jueves.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Jueves.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Jueves.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Jueves.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Jueves.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://goodhealthyrecipe.com/wp-content/uploads/2020/03/camarones-mango-verde-aguacate-360x360.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Jueves.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Jueves.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Jueves.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Jueves.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Jueves.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Jueves.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Jueves.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Viernes</h3>
-      
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://img.freepik.com/fotos-premium/tostada-integral-huevos-revueltos-champinones-requeson-desayuno-o-brunch-saludable-menu-restaurante-dieta-receta-libro-cocina_114941-453.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Viernes.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Viernes.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[6]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Viernes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Viernes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Viernes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Viernes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Viernes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://myfreshfood.es/wp-content/uploads/2021/07/hamburguesa-de-lentejas-y-arroz-integral.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Viernes.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Viernes.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[6]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[7]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[5]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Viernes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Viernes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Viernes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Viernes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Viernes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://recetaland.com/wp-content/uploads/2020/10/Sandwich-de-Pavo-y-Queso-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Viernes.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Viernes.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Viernes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Viernes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Viernes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Viernes.Cena.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaDos[0].Viernes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Sabado</h3>
-      
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://mui.kitchen/__export/1661129451077/sites/muikitchen/img/2022/08/21/consiente_a_tus_nixos_con_esta_deliciosa_y_nutritiva_ensalada_de_frutas_con_yogurt_1.jpg_1194119626.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Sabado.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Sabado.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Sabado.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Sabado.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Sabado.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[2]}.  
-                      <br>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[3]}.    
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Sabado.Desayuno.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaDos[0].Sabado.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaDos[0].Sabado.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaDos[0].Sabado.Desayuno.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaDos[0].Sabado.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://bachoco.com.mx/descubre/wp-content/uploads/2022/09/slider_1000x565-4.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Sabado.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Sabado.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                  <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[0]}</li>
-                  <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[1]}</li>
-                  <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[2]}</li>
-                  <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[3]}</li>
-                  <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[4]}</li>
-                  <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[5]}</li>  
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[0]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[1]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[2]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[3]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[4]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[5]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[6]}. 
-                    <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[7]}. 
-                    </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Sabado.Almuerzo.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.cardamomo.news/__export/1608237046685/sites/debate/img/2020/12/17/ensalada_fresca_de_fresasx_espinacas_y_queso_de_cabra_crop1608236925366.jpeg_242310155.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Sabado.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Sabado.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[0]}.
-                      <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[4]}.
-                      <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[5]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Sabado.Cena.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaDos[0].Sabado.Cena.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaDos[0].Sabado.Cena.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaDos[0].Sabado.Cena.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaDos[0].Sabado.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div> 
-            </div>
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Domingo</h3>
-      
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://previews.123rf.com/images/whiteboxmedia/whiteboxmedia1706/whiteboxmedia170600018/79394454-mantequilla-de-pl%C3%A1tano-y-man%C3%AD-en-rodajas-en-pan-integral-sobre-un-fondo-verde.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Domingo.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Domingo.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Domingo.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[3]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Domingo.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Domingo.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Domingo.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Domingo.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Domingo.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://benfumat.com/wp-content/uploads/2017/04/ensalada-de-patata-y-salmon-b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Domingo.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Domingo.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[4]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Domingo.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Domingo.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Domingo.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Domingo.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Domingo.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.demoslavueltaaldia.com/sites/default/files/tortilla-de-verduras-gratinada-con-queso.jpg.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Domingo.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Domingo.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[4]}.
-                      <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[6]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaDos[0].Domingo.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaDos[0].Domingo.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaDos[0].Domingo.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaDos[0].Domingo.Cena.Carbohidratos}g</li>
-                    <li>Fibra: ${data[0].SemanaDos[0].Domingo.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-          </div>
-      `
-      const cardFront = document.querySelectorAll('.front')
-      const cardBack = document.querySelectorAll('.back')
+    divcontenedor.innerHTML=`<h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°2</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
 
-      cardFront.forEach(element => {
-        element.addEventListener('click', e => {
-        console.log(element.parentElement.children[0]);
-        const cardFront = element.parentElement.children[0]
-        const cardBack = element.parentElement.children[1]
-          cardFront.style.transform = "rotateY(180deg)";
-          cardBack.style.transform = "rotateY(360deg)";
-        })
-        });
+      <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-        cardBack.forEach(element => {
-          element.addEventListener('click', e => {
-          console.log(element.parentElement.children[0]);
-          const cardFront = element.parentElement.children[0]
-          const cardBack = element.parentElement.children[1]
-            cardFront.style.transform = "rotateY(360deg)";
-            cardBack.style.transform = "rotateY(180deg)";
-          })
-          });
-        }
+      <div id="card" class="h-96 w-72 relative m-4 22">
 
+        <div class="face front">
+          <img src="https://storage.googleapis.com/avena-recipes/2019/10/1571780272665.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Lunes.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Lunes.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Desayuno.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Desayuno.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
         
-    
-        else if (e.target.value === 'SemanaTres') {
-          divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°3</h3>
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Lunes</h3>
-      
-            <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.recetasjudias.com/wp-content/uploads/2016/06/Perico.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Lunes.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Lunes.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[2]}.
-                      <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[3]}.
-                      <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[4]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Lunes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Lunes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Lunes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Lunes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Lunes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Lunes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Lunes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Lunes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Lunes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Lunes.Desayuno.Fibra}g</li>
+            </ul>
             </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-lechuga.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Lunes.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Lunes.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Lunes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Lunes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Lunes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Lunes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Lunes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://cdn1.cocina-familiar.com/recetas/salmon-a-la-plancha-con-arroz-y-verduras-al-vapor.JPG" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Lunes.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Lunes.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[6]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Lunes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Lunes.Cena.Proteinas}</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Lunes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Lunes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Lunes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Martes</h3>
-      
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://images.hola.com/imagenes/cocina/recetas/20210318186319/bowl-yogur-natural-fruta-muesli/0-932-147/bowl-yogur-fruta-m.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Martes.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Martes.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Martes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Martes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Desayuno.Preparacion.split('.')[2]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Martes.Desayuno.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaTres[0].Martes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaTres[0].Martes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaTres[0].Martes.Desayuno.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaTres[0].Martes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.cardamomo.news/__export/1608400772614/sites/debate/img/2020/12/19/ensalada_griega_con_pollo_a_la_parrilla_y_vinagreta_a_la_hierba_crop1608400698420.jpeg_1187729725.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Martes.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Martes.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Martes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Martes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Martes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Martes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Martes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://chefeel.com/chefgeneralfiles/2022/12/mixed-and-assorted-fruits-scaled.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Martes.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Martes.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[3]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Martes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Martes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Martes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Martes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Martes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Miercoles</h3>
-      
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://img.freepik.com/fotos-premium/tostada-aguacate-sobre-pan-integral-sandwich_386185-5962.jpg?w=2000" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Miercoles.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Miercoles.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[3]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[4]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[6]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Miercoles.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Miercoles.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Miercoles.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Miercoles.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Miercoles.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://img-global.cpcdn.com/recipes/fa5a1f4cff92fe28/680x482cq70/huevos-revueltos-con-champinones-y-tocino-foto-principal.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Miercoles.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Miercoles.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[6]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.18169-9/17309140_1210551712398400_1890769323716943521_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=1tMDWXMIxYwAX_Dbas6&_nc_ht=scontent-mia3-1.xx&oh=00_AfCRWESOlv-ZzkcRZ47mF02uvN60MDAFNG7epxl7gqBORA&oe=640AD23D" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Miercoles.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Miercoles.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[6]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[4]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[6]}.
-                      <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[7]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Miercoles.Cena.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaTres[0].Miercoles.Cena.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaTres[0].Miercoles.Cena.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaTres[0].Miercoles.Cena.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaTres[0].Miercoles.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jueves</h3>
-      
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.vidactual.com/rcpmaker/wp-content/uploads/2018/10/Omelet-espinaca.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Jueves.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Jueves.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[6]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[7]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Jueves.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Jueves.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Jueves.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Jueves.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Jueves.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://thumbs.dreamstime.com/b/hamburguesas-de-pollo-la-parrilla-aguacate-y-ensalada-verduras-frescas-con-tomate-r%C3%BAcula-vista-superior-217533690.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Jueves.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Jueves.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[5]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[6]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[7]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[5]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Jueves.Almuerzo.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="http://4.bp.blogspot.com/-gkNhEPegHwQ/VLF0aD_ocOI/AAAAAAAAGss/kcf9ga3A0wQ/s1600/lasa%C3%B1a%2Bde%2Bberenjenas%2Bcon%2Bespinacas%2By%2Breques%C3%B3n-3.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Jueves.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Jueves.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[6]}. 
-                      <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[7]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Jueves.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Jueves.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Jueves.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Jueves.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Jueves.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Viernes</h3>
-      
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://media.istockphoto.com/id/516929970/es/foto/tostado-jam%C3%B3n-y-queso-s%C3%A1ndwiches-de-pan-blanco-y-integral.jpg?s=612x612&w=0&k=20&c=7fKr89gNbVRVhZFdIFvjjz4loWQZ6ryCNQxujkVHgqU=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Viernes.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Viernes.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Viernes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Viernes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Viernes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Viernes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Viernes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Viernes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://previews.123rf.com/images/lenyvavsha/lenyvavsha1706/lenyvavsha170600103/79676054-comida-saludable-filetes-de-salm%C3%B3n-a-la-parrilla-con-ensalada-de-verduras-y-r%C3%BAcula-en-la-mesa-horizo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Viernes.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Viernes.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Viernes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[5]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Viernes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Viernes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Viernes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Viernes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Viernes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.gourmet.cl/wp-content/uploads/2012/07/curry-de-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Viernes.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Viernes.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[5]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[6]}</li>
-                    <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[7]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[6]}.
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[7]}. 
-                      <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[8]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Viernes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Viernes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Viernes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Viernes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Viernes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Sabado</h3>
-      
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://www.mexirecetas.com/recetas-de-navidad/img600/tosta-de-salmon.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Sabado.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Sabado.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[4]}</li>
-                    
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>1-Cocer la pasta de lasaña según las instrucciones del paquete. 
-                      <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[0]}.
-                      <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[4]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Sabado.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Sabado.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Sabado.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Sabado.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Sabado.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-lechuga.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Sabado.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Sabado.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[5]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[6]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[7]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[3]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Sabado.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Sabado.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Sabado.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Sabado.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Sabado.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Sabado.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Sabado.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Sabado.Cena.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Sabado.Cena.Ingredientes.split(',')[1]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Sabado.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Sabado.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Sabado.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Sabado.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Sabado.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-      
-          </div>
-      
-      
-      
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Domingo</h3>
-      
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://storage.googleapis.com/avena-recipes/2019/10/1571780272665.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Domingo.Desayuno.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Domingo.Desayuno.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Domingo.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Domingo.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Domingo.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Domingo.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Domingo.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://d320djwtwnl5uo.cloudfront.net/recetas/cover/s-ndw_AfsS859PRoHcJpKwd6r4Me0FUBDtCg.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Domingo.Almuerzo.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Domingo.Almuerzo.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[5]}.       
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Domingo.Almuerzo.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-      
-      
-            <div id="card" class="h-96 w-72 relative m-4">
-      
-              <div class="face front">
-                <img src="https://bachoco.com.mx/descubre/wp-content/uploads/2022/09/slider_1000x565-4.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Domingo.Cena.Titulo}</h3>
-              </div>
-      
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Domingo.Cena.Titulo}</h3>
-      
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[4]}</li>
-                    <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[5]}</li>  
-                </ul>
-                </div>
-      
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[6]}. 
-                      <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[7]}. 
-                    
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaTres[0].Domingo.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaTres[0].Domingo.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaTres[0].Domingo.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaTres[0].Domingo.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaTres[0].Domingo.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-            </div>
-          </div>
-      `
-      
-      const cardFront = document.querySelectorAll('.front')
-      const cardBack = document.querySelectorAll('.back')
+            <button id="btn-cheked-card"  class="${data[0].Card22[0].completed}">Listo</button>
+            <button class="${data[0].Card22[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
 
-      cardFront.forEach(element => {
-        element.addEventListener('click', e => {
-        console.log(element.parentElement.children[0]);
-        const cardFront = element.parentElement.children[0]
-        const cardBack = element.parentElement.children[1]
-          cardFront.style.transform = "rotateY(180deg)";
-          cardBack.style.transform = "rotateY(360deg)";
-        })
-        });
+      <div id="card" class="h-96 w-72 relative m-4 23">
 
-        cardBack.forEach(element => {
-          element.addEventListener('click', e => {
-          console.log(element.parentElement.children[0]);
-          const cardFront = element.parentElement.children[0]
-          const cardBack = element.parentElement.children[1]
-            cardFront.style.transform = "rotateY(360deg)";
-            cardBack.style.transform = "rotateY(180deg)";
-          })
-          });
-        }
+        <div class="face front">
+          <img src="https://images.aws.nestle.recipes/original/b20ee479682a5f0dfe7e11db0529d309_ARROZ_FRITO_CON_CAMARONES.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Lunes.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Lunes.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Almuerzo.Ingredientes.split('.')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Almuerzo.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Lunes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Lunes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Lunes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Lunes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Lunes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card23[0].completed}">Listo</button>
+            <button class="${data[0].Card23[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 24">
+
+        <div class="face front">
+          <img src="https://www.deliciosi.com/images/1100/1161/ensalada-de-pollo-con-manzana.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Lunes.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Lunes.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaDos[0].Lunes.Cena.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Lunes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Lunes.Cena.Preparacion.split('.')[2]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Lunes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Lunes.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Lunes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Lunes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Lunes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card24[0].completed}">Listo</button>
+            <button class="${data[0].Card24[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Martes</h3>
+
     
-        else if (e.target.value === 'SemanaCuatro') {
-          divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°4</h3>
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Lunes</h3>
-          
-            <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.cuerpomente.com/medio/2016/04/27/sandwich-de-tofu_d77116d1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Lunes.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Lunes.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[6]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[4]}.
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[6]}.
-                      <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[7]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://i.pinimg.com/736x/ca/43/46/ca43468e562cc84ee23797d945ba12c5--pollo-picante-tans.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Lunes.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Lunes.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[6]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://style.shockvisual.net/wp-content/uploads/2020/01/bowl-of-cesar-salad-VUPQEAL.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Lunes.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Lunes.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[6]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[7]}</li>
-                    <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[8]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Lunes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Lunes.Cena.Proteinas}</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Lunes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Lunes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Lunes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-          
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 25">
+
+        <div class="face front">
+          <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Martes.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Martes.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Desayuno.Ingredientes.split(',')[4]}</li>
+            </ul>
           </div>
-          
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Martes</h3>
-          
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.lasrecetasdelaura.com/wp-content/uploads/2022/03/IMG_0769-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Martes.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Martes.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[3]}</li>
-                
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[3]}. 
-                     
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Martes.Desayuno.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaDos[0].Martes.Desayuno.Preparacion.split('.')[4]}.
+                </p>
             </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/01/ensalada-de-garbanzo-con-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Martes.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Martes.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[6]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[7]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[3]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Martes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Martes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Martes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Martes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Martes.Desayuno.Fibra}g</li>
+            </ul>
             </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.deliciosi.com/images/2600/2621/pasta-con-verduras-y-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Martes.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Martes.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[6]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[7]}</li>
-                    <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[8]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[3]}.  
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[6]}.  
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[7]}. 
-                      <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[8]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Martes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Martes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Martes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Martes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Martes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-          
+            <button id="btn-cheked-card"  class="${data[0].Card25[0].completed}">Listo</button>
+            <button class="${data[0].Card25[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 26">
+
+        <div class="face front">
+          <img src="https://1.bp.blogspot.com/-te9Krjz7_8Q/WiJaxxJSUcI/AAAAAAAAB9Q/1f5f7CO1BPsyr4kPoEqpEdO4DhoubC84QCLcBGAs/s1600/Salm%25C3%25B3n%2Basi%25C3%25A1tico%2Bcon%2Bverduras%2By%2Barroz%2Bintegral%2B-%2Breceta.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Martes.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Martes.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Almuerzo.Ingredientes.split('.')[3]}</li>
+            </ul>
           </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Martes.Almuerzo.Preparacion.split('.')[5]}. 
+               
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Martes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Martes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Martes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas:${data[0].SemanaDos[0].Martes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Martes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card26[0].completed}">Listo</button>
+            <button class="${data[0].Card26[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 27">
+
+        <div class="face front">
+          <img src="https://style.shockvisual.net/wp-content/uploads/2020/01/bowl-of-cesar-salad-VUPQEAL.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Martes.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Martes.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[4]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[5]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[6]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[7]}</li>
+              <li>${data[0].SemanaDos[0].Martes.Cena.Ingredientes.split(',')[8]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Martes.Cena.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias:  ${data[0].SemanaDos[0].Martes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Martes.Cena.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaDos[0].Martes.Cena.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaDos[0].Martes.Cena.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaDos[0].Martes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card27[0].completed}">Listo</button>
+            <button class="${data[0].Card27[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Miercoles</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 28">
+
+        <div class="face front">
+          <img src="https://images.hola.com/imagenes/cocina/recetas/20210318186319/bowl-yogur-natural-fruta-muesli/0-932-147/bowl-yogur-fruta-m.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Miercoles.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Miercoles.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Desayuno.Ingredientes.split('.')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Desayuno.Preparacion.split('.')[2]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Miercoles.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Miercoles.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Miercoles.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Miercoles.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Miercoles.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card28[0].completed}">Listo</button>
+            <button class="${data[0].Card28[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 29">
+
+        <div class="face front">
+          <img src="https://mui.kitchen/__export/1661875313666/sites/muikitchen/img/2022/08/30/istockphoto-661236878-170667a_x1x.jpg_1301049368.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Miercoles.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Miercoles.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[6]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[7]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Almuerzo.Ingredientes.split('.')[8]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[0]}.
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[4]}.  
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[6]}.
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[7]}.
+                <br>${data[0].SemanaDos[0].Miercoles.Almuerzo.Preparacion.split('.')[8]}.
+             </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Miercoles.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card29[0].completed}">Listo</button>
+            <button class="${data[0].Card29[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 30">
+
+        <div class="face front">
+          <img src="https://thumbs.dreamstime.com/b/huevos-revueltos-con-verduras-y-pan-en-un-plato-tomates-de-pepino-rebanados-tostados-vaso-zumo-naranja-natural-blanco-sobre-una-211573201.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Miercoles.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Miercoles.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Miercoles.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Miercoles.Cena.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[0]}.
+                <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Miercoles.Cena.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Miercoles.Cena.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaDos[0].Miercoles.Cena.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaDos[0].Miercoles.Cena.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaDos[0].Miercoles.Cena.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaDos[0].Miercoles.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card30[0].completed}">Listo</button>
+            <button class="${data[0].Card30[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Jueves</h3>
+
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 31">
+
+        <div class="face front">
+          <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/30/f850x638-32729_110218_5050.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Jueves.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Jueves.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Jueves.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[2]}.  
+                <br>${data[0].SemanaDos[0].Jueves.Desayuno.Preparacion.split('.')[3]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Jueves.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Jueves.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Jueves.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Jueves.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Jueves.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card31[0].completed}">Listo</button>
+            <button class="${data[0].Card31[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 32">
+
+        <div class="face front">
+          <img src="https://www.demoslavueltaaldia.com/sites/default/files/tortilla-de-verduras-gratinada-con-queso.jpg.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Jueves.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Jueves.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Jueves.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Almuerzo.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaDos[0].Jueves.Almuerzo.Preparacion.split('.')[6]}.    
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Jueves.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Jueves.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Jueves.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Jueves.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Jueves.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card32[0].completed}">Listo</button>
+            <button class="${data[0].Card32[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 33">
+
+        <div class="face front">
+          <img src="https://goodhealthyrecipe.com/wp-content/uploads/2020/03/camarones-mango-verde-aguacate-360x360.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Jueves.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Jueves.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Jueves.Cena.Ingredientes.split('.')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Jueves.Cena.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Jueves.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Jueves.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Jueves.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Jueves.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Jueves.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card33[0].completed}">Listo</button>
+            <button class="${data[0].Card33[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Viernes</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 34">
+
+        <div class="face front">
+          <img src="https://img.freepik.com/fotos-premium/tostada-integral-huevos-revueltos-champinones-requeson-desayuno-o-brunch-saludable-menu-restaurante-dieta-receta-libro-cocina_114941-453.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Viernes.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Viernes.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Desayuno.Ingredientes.split(',')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Desayuno.Preparacion.split('.')[6]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Viernes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Viernes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Viernes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Viernes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Viernes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card34[0].completed}">Listo</button>
+            <button class="${data[0].Card34[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 35">
+
+        <div class="face front">
+          <img src="https://myfreshfood.es/wp-content/uploads/2021/07/hamburguesa-de-lentejas-y-arroz-integral.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Viernes.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Viernes.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[6]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Almuerzo.Ingredientes.split('.')[7]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Almuerzo.Preparacion.split('.')[5]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Viernes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Viernes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Viernes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Viernes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Viernes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card35[0].completed}">Listo</button>
+            <button class="${data[0].Card35[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 36">
+
+        <div class="face front">
+          <img src="https://recetaland.com/wp-content/uploads/2020/10/Sandwich-de-Pavo-y-Queso-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Viernes.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Viernes.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaDos[0].Viernes.Cena.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Viernes.Cena.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Viernes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Viernes.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Viernes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Viernes.Cena.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaDos[0].Viernes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card36[0].completed}">Listo</button>
+            <button class="${data[0].Card36[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Sabado</h3>
+
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 37">
+
+        <div class="face front">
+          <img src="https://mui.kitchen/__export/1661129451077/sites/muikitchen/img/2022/08/21/consiente_a_tus_nixos_con_esta_deliciosa_y_nutritiva_ensalada_de_frutas_con_yogurt_1.jpg_1194119626.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Sabado.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Sabado.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Sabado.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Sabado.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Sabado.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[2]}.  
+                <br>${data[0].SemanaDos[0].Sabado.Desayuno.Preparacion.split('.')[3]}.    
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Sabado.Desayuno.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaDos[0].Sabado.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaDos[0].Sabado.Desayuno.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaDos[0].Sabado.Desayuno.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaDos[0].Sabado.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card37[0].completed}">Listo</button>
+            <button class="${data[0].Card37[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 38">
+
+        <div class="face front">
+          <img src="https://bachoco.com.mx/descubre/wp-content/uploads/2022/09/slider_1000x565-4.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Sabado.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Sabado.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+            <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[0]}</li>
+            <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[1]}</li>
+            <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[2]}</li>
+            <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[3]}</li>
+            <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[4]}</li>
+            <li>${data[0].SemanaDos[0].Sabado.Almuerzo.Ingredientes.split(',')[5]}</li>  
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[0]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[1]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[2]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[3]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[4]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[5]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[6]}. 
+              <br>${data[0].SemanaDos[0].Sabado.Almuerzo.Preparacion.split('.')[7]}. 
+              </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Sabado.Almuerzo.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaDos[0].Sabado.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card38[0].completed}">Listo</button>
+            <button class="${data[0].Card38[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 39">
+
+        <div class="face front">
+          <img src="https://www.cardamomo.news/__export/1608237046685/sites/debate/img/2020/12/17/ensalada_fresca_de_fresasx_espinacas_y_queso_de_cabra_crop1608236925366.jpeg_242310155.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Sabado.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Sabado.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Sabado.Cena.Ingredientes.split('.')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[0]}.
+                <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[4]}.
+                <br>${data[0].SemanaDos[0].Sabado.Cena.Preparacion.split('.')[5]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Sabado.Cena.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaDos[0].Sabado.Cena.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaDos[0].Sabado.Cena.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaDos[0].Sabado.Cena.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaDos[0].Sabado.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card39[0].completed}">Listo</button>
+            <button class="${data[0].Card39[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div> 
+      </div>
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Domingo</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 40">
+
+        <div class="face front">
+          <img src="https://previews.123rf.com/images/whiteboxmedia/whiteboxmedia1706/whiteboxmedia170600018/79394454-mantequilla-de-pl%C3%A1tano-y-man%C3%AD-en-rodajas-en-pan-integral-sobre-un-fondo-verde.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Domingo.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Domingo.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Domingo.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Desayuno.Preparacion.split('.')[3]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Domingo.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Domingo.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Domingo.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Domingo.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Domingo.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card40[0].completed}">Listo</button>
+            <button class="${data[0].Card40[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 41">
+
+        <div class="face front">
+          <img src="https://benfumat.com/wp-content/uploads/2017/04/ensalada-de-patata-y-salmon-b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Domingo.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Domingo.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Almuerzo.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Almuerzo.Preparacion.split('.')[4]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Domingo.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Domingo.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Domingo.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Domingo.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Domingo.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card41[0].completed}">Listo</button>
+            <button class="${data[0].Card41[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 42">
+
+        <div class="face front">
+          <img src="https://www.demoslavueltaaldia.com/sites/default/files/tortilla-de-verduras-gratinada-con-queso.jpg.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaDos[0].Domingo.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaDos[0].Domingo.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaDos[0].Domingo.Cena.Ingredientes.split('.')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[4]}.
+                <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaDos[0].Domingo.Cena.Preparacion.split('.')[6]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaDos[0].Domingo.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaDos[0].Domingo.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaDos[0].Domingo.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaDos[0].Domingo.Cena.Carbohidratos}g</li>
+              <li>Fibra: ${data[0].SemanaDos[0].Domingo.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card42[0].completed}">Listo</button>
+            <button class="${data[0].Card42[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+    </div>
+`
+FuncionesCarta();
+  }
+
+  else if (e.target.value === 'SemanaTres') {
+    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°3</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
+
+      <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 43">
+
+        <div class="face front">
+          <img src="https://www.recetasjudias.com/wp-content/uploads/2016/06/Perico.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Lunes.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Lunes.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[2]}.
+                <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[3]}.
+                <br>${data[0].SemanaTres[0].Lunes.Desayuno.Ingredientes.split('.')[4]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Lunes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Lunes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Lunes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Lunes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Lunes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card43[0].completed}">Listo</button>
+            <button class="${data[0].Card43[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 44">
+
+        <div class="face front">
+          <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-lechuga.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Lunes.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Lunes.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Almuerzo.Ingredientes.split(',')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Almuerzo.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Lunes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Lunes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Lunes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Lunes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Lunes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card44[0].completed}">Listo</button>
+            <button class="${data[0].Card44[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 45">
+
+        <div class="face front">
+          <img src="https://cdn1.cocina-familiar.com/recetas/salmon-a-la-plancha-con-arroz-y-verduras-al-vapor.JPG" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Lunes.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Lunes.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Lunes.Cena.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaTres[0].Lunes.Cena.Preparacion.split('.')[6]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Lunes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Lunes.Cena.Proteinas}</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Lunes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Lunes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Lunes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card45[0].completed}">Listo</button>
+            <button class="${data[0].Card45[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Martes</h3>
+
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 46">
+
+        <div class="face front">
+          <img src="https://images.hola.com/imagenes/cocina/recetas/20210318186319/bowl-yogur-natural-fruta-muesli/0-932-147/bowl-yogur-fruta-m.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Martes.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Martes.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Martes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Martes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Martes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Martes.Desayuno.Preparacion.split('.')[2]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Martes.Desayuno.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaTres[0].Martes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaTres[0].Martes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaTres[0].Martes.Desayuno.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaTres[0].Martes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card46[0].completed}">Listo</button>
+            <button class="${data[0].Card46[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 47">
+
+        <div class="face front">
+          <img src="https://www.cardamomo.news/__export/1608400772614/sites/debate/img/2020/12/19/ensalada_griega_con_pollo_a_la_parrilla_y_vinagreta_a_la_hierba_crop1608400698420.jpeg_1187729725.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Martes.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Martes.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Almuerzo.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Martes.Almuerzo.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Martes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Martes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Martes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Martes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Martes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card47[0].completed}">Listo</button>
+            <button class="${data[0].Card47[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 48">
+
+        <div class="face front">
+          <img src="https://chefeel.com/chefgeneralfiles/2022/12/mixed-and-assorted-fruits-scaled.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Martes.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Martes.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Martes.Cena.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaTres[0].Martes.Cena.Preparacion.split('.')[3]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Martes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Martes.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Martes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Martes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Martes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card48[0].completed}">Listo</button>
+            <button class="${data[0].Card48[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Miercoles</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 49">
+
+        <div class="face front">
+          <img src="https://img.freepik.com/fotos-premium/tostada-aguacate-sobre-pan-integral-sandwich_386185-5962.jpg?w=2000" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Miercoles.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Miercoles.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Desayuno.Ingredientes.split('.')[3]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[4]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Desayuno.Preparacion.split('.')[6]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Miercoles.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Miercoles.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Miercoles.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Miercoles.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Miercoles.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card49[0].completed}">Listo</button>
+            <button class="${data[0].Card49[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 50">
+
+        <div class="face front">
+          <img src="https://img-global.cpcdn.com/recipes/fa5a1f4cff92fe28/680x482cq70/huevos-revueltos-con-champinones-y-tocino-foto-principal.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Miercoles.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Miercoles.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Almuerzo.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Almuerzo.Preparacion.split('.')[6]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Miercoles.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card50[0].completed}">Listo</button>
+            <button class="${data[0].Card50[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 51">
+
+        <div class="face front">
+          <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.18169-9/17309140_1210551712398400_1890769323716943521_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=1tMDWXMIxYwAX_Dbas6&_nc_ht=scontent-mia3-1.xx&oh=00_AfCRWESOlv-ZzkcRZ47mF02uvN60MDAFNG7epxl7gqBORA&oe=640AD23D" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Miercoles.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Miercoles.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaTres[0].Miercoles.Cena.Ingredientes.split('.')[6]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[4]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[6]}.
+                <br>${data[0].SemanaTres[0].Miercoles.Cena.Preparacion.split('.')[7]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Miercoles.Cena.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaTres[0].Miercoles.Cena.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaTres[0].Miercoles.Cena.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaTres[0].Miercoles.Cena.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaTres[0].Miercoles.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card51[0].completed}">Listo</button>
+            <button class="${data[0].Card51[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Jueves</h3>
+
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 52">
+
+        <div class="face front">
+          <img src="https://www.vidactual.com/rcpmaker/wp-content/uploads/2018/10/Omelet-espinaca.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Jueves.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Jueves.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Desayuno.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[6]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Desayuno.Preparacion.split('.')[7]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Jueves.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Jueves.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Jueves.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Jueves.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Jueves.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card52[0].completed}">Listo</button>
+            <button class="${data[0].Card52[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 53">
+
+        <div class="face front">
+          <img src="https://thumbs.dreamstime.com/b/hamburguesas-de-pollo-la-parrilla-aguacate-y-ensalada-verduras-frescas-con-tomate-r%C3%BAcula-vista-superior-217533690.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Jueves.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Jueves.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[4]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[5]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[6]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Almuerzo.Ingredientes.split(',')[7]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Almuerzo.Preparacion.split('.')[5]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Jueves.Almuerzo.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaTres[0].Jueves.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card53[0].completed}">Listo</button>
+            <button class="${data[0].Card53[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 54">
+
+        <div class="face front">
+          <img src="http://4.bp.blogspot.com/-gkNhEPegHwQ/VLF0aD_ocOI/AAAAAAAAGss/kcf9ga3A0wQ/s1600/lasa%C3%B1a%2Bde%2Bberenjenas%2Bcon%2Bespinacas%2By%2Breques%C3%B3n-3.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Jueves.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Jueves.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaTres[0].Jueves.Cena.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[6]}. 
+                <br>${data[0].SemanaTres[0].Jueves.Cena.Preparacion.split('.')[7]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Jueves.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Jueves.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Jueves.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Jueves.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Jueves.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card54[0].completed}">Listo</button>
+            <button class="${data[0].Card54[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Viernes</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 55">
+
+        <div class="face front">
+          <img src="https://media.istockphoto.com/id/516929970/es/foto/tostado-jam%C3%B3n-y-queso-s%C3%A1ndwiches-de-pan-blanco-y-integral.jpg?s=612x612&w=0&k=20&c=7fKr89gNbVRVhZFdIFvjjz4loWQZ6ryCNQxujkVHgqU=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Viernes.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Viernes.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Viernes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Desayuno.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Viernes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Viernes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Viernes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Viernes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Viernes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card55[0].completed}">Listo</button>
+            <button class="${data[0].Card55[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 56">
+
+        <div class="face front">
+          <img src="https://previews.123rf.com/images/lenyvavsha/lenyvavsha1706/lenyvavsha170600103/79676054-comida-saludable-filetes-de-salm%C3%B3n-a-la-parrilla-con-ensalada-de-verduras-y-r%C3%BAcula-en-la-mesa-horizo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Viernes.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Viernes.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Viernes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Almuerzo.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Almuerzo.Preparacion.split('.')[5]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Viernes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Viernes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Viernes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Viernes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Viernes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card56[0].completed}">Listo</button>
+            <button class="${data[0].Card56[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 57">
+
+        <div class="face front">
+          <img src="https://www.gourmet.cl/wp-content/uploads/2012/07/curry-de-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Viernes.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Viernes.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[4]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[5]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[6]}</li>
+              <li>${data[0].SemanaTres[0].Viernes.Cena.Ingredientes.split(',')[7]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[6]}.
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[7]}. 
+                <br>${data[0].SemanaTres[0].Viernes.Cena.Preparacion.split('.')[8]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Viernes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Viernes.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Viernes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Viernes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Viernes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card57[0].completed}">Listo</button>
+            <button class="${data[0].Card57[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Sabado</h3>
+
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 58">
+
+        <div class="face front">
+          <img src="https://www.mexirecetas.com/recetas-de-navidad/img600/tosta-de-salmon.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Sabado.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Sabado.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Desayuno.Ingredientes.split(',')[4]}</li>
+              
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-Cocer la pasta de lasaña según las instrucciones del paquete. 
+                <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[0]}.
+                <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Desayuno.Preparacion.split('.')[4]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Sabado.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Sabado.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Sabado.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Sabado.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Sabado.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card58[0].completed}">Listo</button>
+            <button class="${data[0].Card58[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 59">
+
+        <div class="face front">
+          <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-lechuga.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Sabado.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Sabado.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[4]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[5]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[6]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Almuerzo.Ingredientes.split(',')[7]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Almuerzo.Preparacion.split('.')[3]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Sabado.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Sabado.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Sabado.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Sabado.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Sabado.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card59[0].completed}">Listo</button>
+            <button class="${data[0].Card59[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 60">
+
+        <div class="face front">
+          <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Sabado.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Sabado.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Sabado.Cena.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Sabado.Cena.Ingredientes.split(',')[1]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Sabado.Cena.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Sabado.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Sabado.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Sabado.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Sabado.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Sabado.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card60[0].completed}">Listo</button>
+            <button class="${data[0].Card60[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+
+    </div>
+
+
+
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Domingo</h3>
+
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+
+      <div id="card" class="h-96 w-72 relative m-4 61">
+
+        <div class="face front">
+          <img src="https://storage.googleapis.com/avena-recipes/2019/10/1571780272665.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Domingo.Desayuno.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Domingo.Desayuno.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Desayuno.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Desayuno.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Domingo.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Domingo.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Domingo.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Domingo.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Domingo.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card61[0].completed}">Listo</button>
+            <button class="${data[0].Card61[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+      <div id="card" class="h-96 w-72 relative m-4 62">
+
+        <div class="face front">
+          <img src="https://d320djwtwnl5uo.cloudfront.net/recetas/cover/s-ndw_AfsS859PRoHcJpKwd6r4Me0FUBDtCg.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Domingo.Almuerzo.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Domingo.Almuerzo.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Almuerzo.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Almuerzo.Preparacion.split('.')[5]}.       
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Domingo.Almuerzo.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaTres[0].Domingo.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card62[0].completed}">Listo</button>
+            <button class="${data[0].Card62[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+
+
+      <div id="card" class="h-96 w-72 relative m-4 63">
+
+        <div class="face front">
+          <img src="https://bachoco.com.mx/descubre/wp-content/uploads/2022/09/slider_1000x565-4.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaTres[0].Domingo.Cena.Titulo}</h3>
+        </div>
+
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaTres[0].Domingo.Cena.Titulo}</h3>
+
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[4]}</li>
+              <li>${data[0].SemanaTres[0].Domingo.Cena.Ingredientes.split(',')[5]}</li>  
+          </ul>
+          </div>
+
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[6]}. 
+                <br>${data[0].SemanaTres[0].Domingo.Cena.Preparacion.split('.')[7]}. 
+              
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaTres[0].Domingo.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaTres[0].Domingo.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaTres[0].Domingo.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaTres[0].Domingo.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaTres[0].Domingo.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card63[0].completed}">Listo</button>
+            <button class="${data[0].Card63[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+      </div>
+    </div>
+`
+FuncionesCarta();
+  }
+
+  else if (e.target.value === 'SemanaCuatro') {
+    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°4</h3>
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
+    
+      <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 64">
+    
+        <div class="face front">
+          <img src="https://www.cuerpomente.com/medio/2016/04/27/sandwich-de-tofu_d77116d1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Lunes.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Lunes.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Desayuno.Ingredientes.split('.')[6]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[4]}.
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[6]}.
+                <br>${data[0].SemanaCuatro[0].Lunes.Desayuno.Preparacion.split('.')[7]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Lunes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card64[0].completed}">Listo</button>
+            <button class="${data[0].Card64[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 65">
+    
+        <div class="face front">
+          <img src="https://i.pinimg.com/736x/ca/43/46/ca43468e562cc84ee23797d945ba12c5--pollo-picante-tans.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Lunes.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Lunes.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Ingredientes.split('.')[6]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Almuerzo.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Lunes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card65[0].completed}">Listo</button>
+            <button class="${data[0].Card65[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 66">
+    
+        <div class="face front">
+          <img src="https://style.shockvisual.net/wp-content/uploads/2020/01/bowl-of-cesar-salad-VUPQEAL.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Lunes.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Lunes.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[6]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[7]}</li>
+              <li>${data[0].SemanaCuatro[0].Lunes.Cena.Ingredientes.split(',')[8]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Lunes.Cena.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Lunes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Lunes.Cena.Proteinas}</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Lunes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Lunes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Lunes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card66[0].completed}">Listo</button>
+            <button class="${data[0].Card66[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+    
+    </div>
+    
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Martes</h3>
+    
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 67">
+    
+        <div class="face front">
+          <img src="https://www.lasrecetasdelaura.com/wp-content/uploads/2022/03/IMG_0769-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Martes.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Martes.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Desayuno.Ingredientes.split('.')[3]}</li>
           
-          
-          
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Miercoles</h3>
-          
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Desayuno.Preparacion.split('.')[3]}. 
+               
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Martes.Desayuno.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaCuatro[0].Martes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card67[0].completed}">Listo</button>
+            <button class="${data[0].Card67[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 68">
+    
+        <div class="face front">
+          <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/01/ensalada-de-garbanzo-con-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Martes.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Martes.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[6]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Almuerzo.Ingredientes.split('.')[7]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Almuerzo.Preparacion.split('.')[3]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Martes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card68[0].completed}">Listo</button>
+            <button class="${data[0].Card68[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 69">
+    
+        <div class="face front">
+          <img src="https://www.deliciosi.com/images/2600/2621/pasta-con-verduras-y-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Martes.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Martes.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[6]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[7]}</li>
+              <li>${data[0].SemanaCuatro[0].Martes.Cena.Ingredientes.split('.')[8]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[3]}.  
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[6]}.  
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[7]}. 
+                <br>${data[0].SemanaCuatro[0].Martes.Cena.Preparacion.split('.')[8]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Martes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Martes.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Martes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Martes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Martes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card69[0].completed}">Listo</button>
+            <button class="${data[0].Card69[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+    
+    </div>
+    
+    
+    
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Miercoles</h3>
+    
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 70">
+    
+        <div class="face front">
+          <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Miercoles.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Miercoles.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[4]}.
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card70[0].completed}">Listo</button>
+            <button class="${data[0].Card70[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 71">
+    
+        <div class="face front">
+          <img src="https://www.cocinacaserayfacil.net/wp-content/uploads/2019/04/lubina-a-la-plancha-con-verduras-632x356.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[6]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card71[0].completed}">Listo</button>
+            <button class="${data[0].Card71[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 72">
+    
+        <div class="face front">
+          <img src="https://www.recetasderechupete.com/wp-content/uploads/2019/06/Pollo-asado-al-lim%C3%B3n.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Miercoles.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Miercoles.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[2]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[3]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[4]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[5]}.
+                <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[6]}.
             
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Miercoles.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Miercoles.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Desayuno.Preparacion.split('.')[4]}.
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Miercoles.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
+                </p>
             </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.cocinacaserayfacil.net/wp-content/uploads/2019/04/lubina-a-la-plancha-con-verduras-632x356.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Preparacion.split('.')[6]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Miercoles.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Miercoles.Cena.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Fibra}g</li>
+            </ul>
             </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.recetasderechupete.com/wp-content/uploads/2019/06/Pollo-asado-al-lim%C3%B3n.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Miercoles.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Miercoles.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Miercoles.Cena.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[2]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[3]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[4]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[5]}.
-                      <br>${data[0].SemanaCuatro[0].Miercoles.Cena.Preparacion.split('.')[6]}.
-                  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Miercoles.Cena.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaCuatro[0].Miercoles.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-          
-          </div>
-          
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jueves</h3>
-          
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://previews.123rf.com/images/whiteboxmedia/whiteboxmedia1706/whiteboxmedia170600018/79394454-mantequilla-de-pl%C3%A1tano-y-man%C3%AD-en-rodajas-en-pan-integral-sobre-un-fondo-verde.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Jueves.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Jueves.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Desayuno.Ingredientes.split('.')[2]}</li>
-                    
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[3]}. 
-          
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.clara.es/medio/2018/03/27/tiras-de-pollo-con-melon-y-sandia__600x900.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Jueves.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Jueves.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[5]}.  
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Calorias}</li>
-                    <li>Proteinas:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Grasas}g</li>
-                    <li>Fibra:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.cucute.com/blog/wp-content/uploads/2019/11/cuscus-con-pollo-y-verduras-3.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Jueves.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Jueves.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[6]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[7]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[8]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[9]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[10]}</li>
-                    <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[11]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[6]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[7]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[8]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[9]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[10]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[11]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[12]}. 
-                      <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[13]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Jueves.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Jueves.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Jueves.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Jueves.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Jueves.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-          
-          </div>
-          
-          
-          
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Viernes</h3>
-          
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/sandwich-de-pavo-queso-y-manzana/900/sandwich-de-pavo-queso-y-manzana_version_1653031846.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Viernes.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Viernes.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[6]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[6]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://1.bp.blogspot.com/-EJ48tXL5u-M/WiJax9_qZGI/AAAAAAAAB9I/7lD7FI6oGHQYUXG0tQWKON_FpXxxtj7HgCLcBGAs/s1600/Salm%25C3%25B3n%2Basi%25C3%25A1tico%2Bcon%2Bverduras%2By%2Barroz%2Bintegral%2B-%2Bblog%2Bde%2Brecetas.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Viernes.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Viernes.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[1]}.
-                      <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[5]}.  
-                      <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[6]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://archeinthekitchen.com/wp-content/uploads/2017/09/IMG_0503-1080x720.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Viernes.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Viernes.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[5]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[6]}</li>
-                    <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[7]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[6]}.
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[7]}. 
-                      <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[8]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Viernes.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Viernes.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Viernes.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Viernes.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Viernes.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-          
-          </div>
-          
-          
-          
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Sabado</h3>
-          
-          
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/30/f850x638-32729_110218_5050.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Sabado.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Sabado.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Desayuno.Ingredientes.split('.')[2]}</li>
-                    
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>1-Cocer la pasta de lasaña según las instrucciones del paquete. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[0]}.
-                      <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[3]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2020/01/receta-salsa-para-pescado-la-talla.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Sabado.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Sabado.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[4]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[5]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[6]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[7]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://recetaland.com/wp-content/uploads/2020/10/Sandwich-de-Pavo-y-Queso-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Sabado.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Sabado.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[4]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[4]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Sabado.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Sabado.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Sabado.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Sabado.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Sabado.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-          
-          </div>
-          
-          
-          
-          <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Domingo</h3>
-          
-            
-          <div class="flex flex-wrap justify-center" id="contenedor-recetas">
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://media.istockphoto.com/id/516929970/es/foto/tostado-jam%C3%B3n-y-queso-s%C3%A1ndwiches-de-pan-blanco-y-integral.jpg?s=612x612&w=0&k=20&c=7fKr89gNbVRVhZFdIFvjjz4loWQZ6ryCNQxujkVHgqU=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Domingo.Desayuno.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Domingo.Desayuno.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Desayuno.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Desayuno.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Desayuno.Ingredientes.split('.')[2]}</li>
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[5]}. 
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Domingo.Almuerzo.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Domingo.Almuerzo.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[3]}</li>
-          
-                  </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[4]}. 
-          
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-              
-            </div>
-          
-          
-            <div id="card" class="h-96 w-72 relative m-4">
-          
-              <div class="face front">
-                <img src="https://static2.abc.es/media/bienestar/2020/05/22/tortilla-patatas-k9tF--1200x630@abc.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
-                <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
-                <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Domingo.Cena.Titulo}</h3>
-              </div>
-          
-              <div class="face back">
-                <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Domingo.Cena.Titulo}</h3>
-          
-                <div id="Contenedor-ingredientes">
-                  <p class="text-center mt-4 font-bold">Ingredientes</p>
-                  <ul>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[0]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[1]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[2]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[3]}</li>
-                    <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[4]}</li>
-                </ul>
-                </div>
-          
-                  <div id="Contenedor-preparacion">
-                    <h3 class="text-center mt-4 font-bold">Preparacion</h3>
-                    <p>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[0]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[1]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[2]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[3]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[4]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[5]}. 
-                      <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[6]}. 
-                    
-                      </p>
-                  </div>
-              
-                  <div id="Valores-nutricionales">
-                  <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
-                  <ul>
-                    <li>Calorias: ${data[0].SemanaCuatro[0].Domingo.Cena.Calorias}</li>
-                    <li>Proteinas: ${data[0].SemanaCuatro[0].Domingo.Cena.Proteinas}g</li>
-                    <li>Carbohidratos: ${data[0].SemanaCuatro[0].Domingo.Cena.Carbohidratos}g</li>
-                    <li>Grasas: ${data[0].SemanaCuatro[0].Domingo.Cena.Grasas}g</li>
-                    <li>Fibra: ${data[0].SemanaCuatro[0].Domingo.Cena.Fibra}g</li>
-                  </ul>
-                  </div>
-              </div>
-            </div>
-          </div>
-          `
-          const cardFront = document.querySelectorAll('.front')
-          const cardBack = document.querySelectorAll('.back')
+            <button id="btn-cheked-card"  class="${data[0].Card72[0].completed}">Listo</button>
+            <button class="${data[0].Card72[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
     
-          cardFront.forEach(element => {
-            element.addEventListener('click', e => {
-            console.log(element.parentElement.children[0]);
-            const cardFront = element.parentElement.children[0]
-            const cardBack = element.parentElement.children[1]
-              cardFront.style.transform = "rotateY(180deg)";
-              cardBack.style.transform = "rotateY(360deg)";
-            })
-            });
     
-            cardBack.forEach(element => {
-              element.addEventListener('click', e => {
-              console.log(element.parentElement.children[0]);
-              const cardFront = element.parentElement.children[0]
-              const cardBack = element.parentElement.children[1]
-                cardFront.style.transform = "rotateY(360deg)";
-                cardBack.style.transform = "rotateY(180deg)";
-              })
-              });
-           
-        }
     
+    </div>
+    
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Jueves</h3>
+    
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 73">
+    
+        <div class="face front">
+          <img src="https://previews.123rf.com/images/whiteboxmedia/whiteboxmedia1706/whiteboxmedia170600018/79394454-mantequilla-de-pl%C3%A1tano-y-man%C3%AD-en-rodajas-en-pan-integral-sobre-un-fondo-verde.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Jueves.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Jueves.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Jueves.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Desayuno.Ingredientes.split('.')[2]}</li>
+              
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Desayuno.Preparacion.split('.')[3]}. 
+    
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Jueves.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card73[0].completed}">Listo</button>
+            <button class="${data[0].Card73[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 74">
+    
+        <div class="face front">
+          <img src="https://www.clara.es/medio/2018/03/27/tiras-de-pollo-con-melon-y-sandia__600x900.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Jueves.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Jueves.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Almuerzo.Preparacion.split('.')[5]}.  
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Calorias}</li>
+              <li>Proteinas:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Grasas}g</li>
+              <li>Fibra:  ${data[0].SemanaCuatro[0].Jueves.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card74[0].completed}">Listo</button>
+            <button class="${data[0].Card74[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 75">
+    
+        <div class="face front">
+          <img src="https://www.cucute.com/blog/wp-content/uploads/2019/11/cuscus-con-pollo-y-verduras-3.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Jueves.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Jueves.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[6]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[7]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[8]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[9]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[10]}</li>
+              <li>${data[0].SemanaCuatro[0].Jueves.Cena.Ingredientes.split('.')[11]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[6]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[7]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[8]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[9]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[10]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[11]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[12]}. 
+                <br>${data[0].SemanaCuatro[0].Jueves.Cena.Preparacion.split('.')[13]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Jueves.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Jueves.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Jueves.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Jueves.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Jueves.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card75[0].completed}">Listo</button>
+            <button class="${data[0].Card75[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+    
+    </div>
+    
+    
+    
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Viernes</h3>
+    
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 76">
+    
+        <div class="face front">
+          <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/sandwich-de-pavo-queso-y-manzana/900/sandwich-de-pavo-queso-y-manzana_version_1653031846.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Viernes.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Viernes.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Desayuno.Ingredientes.split('.')[6]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Desayuno.Preparacion.split('.')[6]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Viernes.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card76[0].completed}">Listo</button>
+            <button class="${data[0].Card76[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 77">
+    
+        <div class="face front">
+          <img src="https://1.bp.blogspot.com/-EJ48tXL5u-M/WiJax9_qZGI/AAAAAAAAB9I/7lD7FI6oGHQYUXG0tQWKON_FpXxxtj7HgCLcBGAs/s1600/Salm%25C3%25B3n%2Basi%25C3%25A1tico%2Bcon%2Bverduras%2By%2Barroz%2Bintegral%2B-%2Bblog%2Bde%2Brecetas.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Viernes.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Viernes.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[1]}.
+                <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[5]}.  
+                <br>${data[0].SemanaCuatro[0].Viernes.Almuerzo.Preparacion.split('.')[6]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Viernes.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card77[0].completed}">Listo</button>
+            <button class="${data[0].Card77[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 78">
+    
+        <div class="face front">
+          <img src="https://archeinthekitchen.com/wp-content/uploads/2017/09/IMG_0503-1080x720.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Viernes.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Viernes.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[5]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[6]}</li>
+              <li>${data[0].SemanaCuatro[0].Viernes.Cena.Ingredientes.split('.')[7]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[6]}.
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[7]}. 
+                <br>${data[0].SemanaCuatro[0].Viernes.Cena.Preparacion.split('.')[8]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Viernes.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Viernes.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Viernes.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Viernes.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Viernes.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card78[0].completed}">Listo</button>
+            <button class="${data[0].Card78[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+    
+    </div>
+    
+    
+    
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Sabado</h3>
+    
+    
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 79">
+    
+        <div class="face front">
+          <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/30/f850x638-32729_110218_5050.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Sabado.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Sabado.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Sabado.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Desayuno.Ingredientes.split('.')[2]}</li>
+              
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>1-Cocer la pasta de lasaña según las instrucciones del paquete. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[0]}.
+                <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Desayuno.Preparacion.split('.')[3]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Sabado.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card79[0].completed}">Listo</button>
+            <button class="${data[0].Card79[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 80">
+    
+        <div class="face front">
+          <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2020/01/receta-salsa-para-pescado-la-talla.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Sabado.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Sabado.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[4]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Ingredientes.split('.')[5]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[6]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Almuerzo.Preparacion.split('.')[7]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Sabado.Almuerzo.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card80[0].completed}">Listo</button>
+            <button class="${data[0].Card80[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 81">
+    
+        <div class="face front">
+          <img src="https://recetaland.com/wp-content/uploads/2020/10/Sandwich-de-Pavo-y-Queso-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Sabado.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Sabado.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Sabado.Cena.Ingredientes.split('.')[4]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Sabado.Cena.Preparacion.split('.')[4]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Sabado.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Sabado.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Sabado.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Sabado.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Sabado.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card81[0].completed}">Listo</button>
+            <button class="${data[0].Card81[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+    
+    </div>
+    
+    
+    
+    <h3 class="mt-4 font-bold " style="font-size: 24px;">Domingo</h3>
+    
+      
+    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    
+      <div id="card" class="h-96 w-72 relative m-4 82">
+    
+        <div class="face front">
+          <img src="https://media.istockphoto.com/id/516929970/es/foto/tostado-jam%C3%B3n-y-queso-s%C3%A1ndwiches-de-pan-blanco-y-integral.jpg?s=612x612&w=0&k=20&c=7fKr89gNbVRVhZFdIFvjjz4loWQZ6ryCNQxujkVHgqU=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Desayuno</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px;  color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Domingo.Desayuno.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Domingo.Desayuno.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Domingo.Desayuno.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Desayuno.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Desayuno.Ingredientes.split('.')[2]}</li>
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Desayuno.Preparacion.split('.')[5]}. 
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card82[0].completed}">Listo</button>
+            <button class="${data[0].Card82[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+      <div id="card" class="h-96 w-72 relative m-4 83">
+    
+        <div class="face front">
+          <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Domingo.Almuerzo.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Domingo.Almuerzo.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Ingredientes.split('.')[3]}</li>
+    
+            </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Almuerzo.Preparacion.split('.')[4]}. 
+    
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Domingo.Desayuno.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card83[0].completed}">Listo</button>
+            <button class="${data[0].Card83[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+        
+      </div>
+    
+    
+      <div id="card" class="h-96 w-72 relative m-4 84">
+    
+        <div class="face front">
+          <img src="https://static2.abc.es/media/bienestar/2020/05/22/tortilla-patatas-k9tF--1200x630@abc.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
+          <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
+          <h3 class="font-bold" style="position: absolute; bottom: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">${data[0].SemanaCuatro[0].Domingo.Cena.Titulo}</h3>
+        </div>
+    
+       <div class="face back">
+  <div class="flex justify-end">
+  <button class="" id="return-card">❌</button>
+  </div>
+          <h3 class="font-bold text-center" style="font-size: 20px;">${data[0].SemanaCuatro[0].Domingo.Cena.Titulo}</h3>
+    
+          <div id="Contenedor-ingredientes">
+            <p class="text-center mt-4 font-bold">Ingredientes</p>
+            <ul>
+              <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[0]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[1]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[2]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[3]}</li>
+              <li>${data[0].SemanaCuatro[0].Domingo.Cena.Ingredientes.split('.')[4]}</li>
+          </ul>
+          </div>
+    
+            <div id="Contenedor-preparacion">
+              <h3 class="text-center mt-4 font-bold">Preparacion</h3>
+              <p>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[0]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[1]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[2]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[3]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[4]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[5]}. 
+                <br>${data[0].SemanaCuatro[0].Domingo.Cena.Preparacion.split('.')[6]}. 
+              
+                </p>
+            </div>
+        
+            <div id="Valores-nutricionales">
+            <h3 class="mt-4 text-center font-bold">Valores nutricionales</h3>
+            <ul>
+              <li>Calorias: ${data[0].SemanaCuatro[0].Domingo.Cena.Calorias}</li>
+              <li>Proteinas: ${data[0].SemanaCuatro[0].Domingo.Cena.Proteinas}g</li>
+              <li>Carbohidratos: ${data[0].SemanaCuatro[0].Domingo.Cena.Carbohidratos}g</li>
+              <li>Grasas: ${data[0].SemanaCuatro[0].Domingo.Cena.Grasas}g</li>
+              <li>Fibra: ${data[0].SemanaCuatro[0].Domingo.Cena.Fibra}g</li>
+            </ul>
+            </div>
+            <button id="btn-cheked-card"  class="${data[0].Card84[0].completed}">Listo</button>
+            <button class="${data[0].Card84[0].incompleted}" id="btn-edit-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="svg-check" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    `
+    FuncionesCarta();
+     
+  }
+
+})
+
+let resultado = data[0].calorias
+console.log(resultado);
+let comidasCompletadas  = data[0].comidasCompletadas
+
+
+const FuncionesCarta = async () => {
+  divSelect.classList.remove('hidden')
+ const returnCard = document.querySelectorAll('#return-card')
+ const cardFront = document.querySelectorAll('.front')
+ const btnChekedCard = document.querySelectorAll('#btn-cheked-card')
+ const btnEditCard = document.querySelectorAll('#svg-check')
+
+ btnChekedCard.forEach(element => {
+  element.addEventListener('click', async e =>{
+    let calorias = e.target.parentElement.children[4].children[1].children[0].innerText.split(':')[1];
+    const btnCard = e.target.parentElement.children[6];
+    e.target.classList.toggle("incompleted");
+    btnCard.classList.toggle("incompleted");
+    btnCard.classList.toggle("completed");
+    const idcard = (e.target.parentElement.parentElement.classList[4]);
+    const id = data[0].id;
+    comidasCompletadas = comidasCompletadas + 1
+    console.log(comidasCompletadas);
+    resultado = resultado + parseInt(calorias)
+    console.log(resultado);
+
+    await axios.patch(`/api/recetas/${id}`,{
+      comidasCompletadas: comidasCompletadas,
     })
 
+    if (idcard === '1') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     CardUno:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '2') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    CardDos:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '3') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    CardTres:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '4') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card4:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '5') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card5:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '6') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card6:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '7') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card7:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '8') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card8:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '9') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card9:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '10') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card10:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '11') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card11:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '12') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card12:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '13') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card13:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '14') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card14:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '15') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card15:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '16') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card16:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '17') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card17:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '18') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card18:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '19') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card19:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '20') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card20:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '21') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card21:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '22') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card22:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '23') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card23:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '24') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card24:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+
+    if (idcard === '25') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card25:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '26') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card26:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '27') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card27:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '28') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card28:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '29') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card29:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '30') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card30:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '31') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card31:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '32') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card32:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '33') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card33:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '34') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card34:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '35') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card35:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '36') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card36:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+     if (idcard === '37') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card37:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '38') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card38:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '39') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card39:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '40') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card40:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '41') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card41:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '42') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card42:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '43') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card43:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '44') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card44:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '45') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card45:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '46') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card46:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '47') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card47:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '48') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card48:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '49') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card49:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '50') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card50:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '51') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card51:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '52') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card52:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '53') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card53:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '54') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card54:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '55') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card55:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '56') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card56:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '57') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card57:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '58') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card58:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '59') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card59:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '60') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card60:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+
+    if (idcard === '61') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card61:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '62') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card62:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '63') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card63:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '64') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card64:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '65') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card65:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '66') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card66:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '67') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card67:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '68') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card68:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '69') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card69:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '70') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card70:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '71') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card71:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '72') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card72:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+     if (idcard === '73') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card73:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '74') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card74:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '75') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card75:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '76') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card76:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '77') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card77:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '78') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card78:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '79') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card79:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+
+    if (idcard === '80') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card80:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '81') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card81:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '82') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+     Card82:[{
+      completed: 'incompleted',
+      incompleted: 'completed',
+     }]
+  });       
+    };
+    
+    if (idcard === '83') {
+  await axios.patch(`/api/recetas/${id}`,{
+    calorias: resultado,
+    Card83:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+    if (idcard === '84') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+    Card84:[{
+      completed: 'incompleted',
+      incompleted: 'completed'
+     }]
+});       
+    };
+
+  })
+ })  
+
+ btnEditCard.forEach(element => {
+  element.addEventListener('click', async e => {
+
+    let calorias = e.target.parentElement.parentElement.children[4].children[1].children[0].innerText.split(':')[1];
+    const btnCard = e.target.parentElement.parentElement.children[5];
+    e.target.parentElement.classList.toggle("incompleted");
+    btnCard.classList.toggle("incompleted");
+    btnCard.classList.toggle("completed");
+    const idcard = e.target.parentElement.parentElement.parentElement.classList[4];
+    const id = data[0].id
+    console.log(id);
+    console.log(idcard);
+    resultado = resultado - parseInt(calorias)
+    comidasCompletadas = comidasCompletadas - 1
+    console.log(comidasCompletadas);
+    console.log(resultado);
+
+    await axios.patch(`/api/recetas/${id}`,{
+      comidasCompletadas: comidasCompletadas,
+    })
+
+    if (idcard === '1') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      CardUno:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '2') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      CardDos:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
   
- 
+    if (idcard === '3') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      CardTres:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '4') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card4:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '5') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card5:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '6') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card6:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '7') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card7:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '8') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card8:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '9') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card9:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '10') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card10:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+          
+    if (idcard === '11') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card11:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '12') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card12:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '13') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card13:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '14') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card14:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '15') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card15:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '16') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card16:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '17') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card17:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '18') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card18:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '19') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card19:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '20') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card20:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }                       
+            if (idcard === '21') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card21:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '22') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card22:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '23') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card23:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '24') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card24:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '25') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card25:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '26') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card26:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '27') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card27:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '28') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card28:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '29') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card29:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '30') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card30:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }                       
+            if (idcard === '31') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card31:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '32') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card32:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '33') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card33:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '34') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card34:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '35') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card35:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '36') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card36:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '37') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card37:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '38') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card38:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '39') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card9:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '40') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card40:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }                       
+            if (idcard === '41') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card41:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '42') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card42:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '43') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card43:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '44') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card44:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '45') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card45:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '46') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card46:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '47') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card47:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '48') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card48:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '49') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card49:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '50') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card50:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }                       
+            if (idcard === '61') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card61:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '62') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card62:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '63') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card63:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '64') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card64:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '65') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card65:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '66') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card66:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '67') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card67:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '68') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card8:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '69') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card69:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '70') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card70:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }                       
+            if (idcard === '71') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card71:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '72') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card72:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '73') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card73:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+
+    if (idcard === '74') {
+        await axios.patch(`/api/recetas/${id}`,{
+        calorias: resultado,
+        Card74:[{
+          completed: 'completed',
+          incompleted: 'incompleted'
+         }]
+    });  
+        }
+
+    if (idcard === '75') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card75:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }
+    if (idcard === '76') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card76:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          } 
+    if (idcard === '77') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card77:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }          
+    if (idcard === '78') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card78:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }     
+    if (idcard === '79') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card79:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }    
+    if (idcard === '80') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card80:[{
+      completed: 'completed',
+      incompleted: 'incompleted'
+      }]
+      });  
+          }                       
+            if (idcard === '81') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card81:[{
+        completed: 'completed',
+        incompleted: 'incompleted',
+       }]
+    });       
+      }
+
+    if (idcard === '82') {
+    await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card82:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+  
+    if (idcard === '83') {
+      await axios.patch(`/api/recetas/${id}`,{
+      calorias: resultado,
+      Card83:[{
+        completed: 'completed',
+        incompleted: 'incompleted'
+       }]
+  });       
+      }
+        console.log('se');
+          
+  })
+  
+ });
+
+returnCard.forEach(element => {
+  element.addEventListener('click', e => {
+  const faceFront = element.parentElement.parentElement.parentElement.children[0];
+  const faceBack = element.parentElement.parentElement.parentElement.children[1];
+  faceFront.style.transform = "rotateY(360deg)";
+  faceBack.style.transform = "rotateY(180deg)";
+  faceBack.classList.remove('back-overflow')
+    })
+});
+
+ cardFront.forEach(element => {
+  element.addEventListener('click', async e => {
+  const cardFront = element.parentElement.children[0]
+  const cardBack = element.parentElement.children[1]
+    cardFront.style.transform = "rotateY(180deg)";
+    cardBack.style.transform = "rotateY(360deg)";  
+    cardBack.classList.add('back-overflow')
+  })
+  });
+}
+FuncionesCarta();
+  // // cardBack.forEach(element => {
+  //   element.addEventListener('click', e => {
+  //   const cardFront = element.parentElement.children[0]
+  //   const cardBack = element.parentElement.children[1]
+  //     cardFront.style.transform = "rotateY(360deg)";
+  //     cardBack.style.transform = "rotateY(180deg)";
+  //   })
+  //   });
+
+
 
 }
+
+
 getTodos();
