@@ -11,6 +11,7 @@ recetasRouter.post('/', async (request, response) => {
     // const {telefono}=request.body;
     // console.log(telefono);
     // Lunes
+    const {btnRecetas} = request.body
    const {comidasCompletadas} = request.body
     const { SemanaUno } = request.body;
     const { SemanaDos } = request.body;
@@ -104,6 +105,7 @@ recetasRouter.post('/', async (request, response) => {
   
 
     const newRecetas = new Recetas({
+        btnRecetas,
         comidasCompletadas,
         calorias,
         SemanaUno,

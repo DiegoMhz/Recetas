@@ -60,6 +60,32 @@
 }
 
 
+@media (max-width: 640px) {
+  #card {
+   height: 17rem;
+  }
+}
+
+
+@media (max-width: 640px) {
+  h3 {
+   text-align: center;
+  }
+}
+
+@media (max-width: 959px) {
+  h3 {
+   text-align: center;
+  }
+}
+
+@media (min-width: 960px) {
+  h3 {
+   padding-left: 1rem;
+  }
+}
+
+
 
 /* 
 #card:hover .front{

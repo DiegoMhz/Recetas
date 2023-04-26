@@ -13,7 +13,19 @@ const menuMobile = document.querySelector('.menu-mobil')
 const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
 const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
 const btnProgresoMobile = document.querySelector('#btn-progreso-mobil')
+const divBtnRecetas = document.querySelector('#div-btn-recetas')
+divBtnRecetas.classList.add('hidden')
 
+const getRecetas = async () => {
+  const { data } = await axios.get('/api/recetas', {
+    withCredentials: true
+})
+console.log(data);
+if (data[0] === undefined) {
+  divBtnRecetas.classList.remove('hidden')
+}
+}
+getRecetas()
 
  const addRecetas = async ()=>{
     const { data } = await axios.post('/api/recetas', {
@@ -915,7 +927,7 @@ const btnProgresoMobile = document.querySelector('#btn-progreso-mobil')
   }],
   calorias :0,
   comidasCompletadas : 0,
-  
+  btnRecetas : 'listo'
   
     }, {
         withCredentials: true

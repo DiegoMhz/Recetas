@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const todosSchema = new mongoose.Schema({ 
+    btnRecetas: String,
     calorias: Number,
     comidasCompletadas: Number,
     SemanaUno: Array,
