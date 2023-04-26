@@ -959,7 +959,7 @@ btnInicio.addEventListener('click', e => {
   }],
   calorias :0,
   comidasCompletadas : 0,
-  
+  btnRecetas : 'listo',
   
     }, {
         withCredentials: true
