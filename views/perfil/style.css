@@ -22,7 +22,7 @@ span{
   transition: 1s
 }
 
-#perfil{
+.perfil{
   display: flex;
   flex-direction: column;
   gap: 1rem;

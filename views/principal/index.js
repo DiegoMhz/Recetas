@@ -996,6 +996,7 @@ btnPerfil.addEventListener('click', e =>{
   window.location.pathname = `perfil/${id}`
 })
 
+
 // Telefono
 btnPerfilMobile.addEventListener('click', e =>{
   const id = window.location.pathname.split('/')[2];

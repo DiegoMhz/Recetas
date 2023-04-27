@@ -1,4 +1,3 @@
-
 const form = document.querySelector('#form');
 const divCalorias = document.querySelector('#div-calorias');
 const inputDieta = document.querySelector('#tipo-dieta');
@@ -12,30 +11,29 @@ const svgRecetas = document.querySelector('#svg-recetas');
 const btnProgresoMobile = document.querySelector('#btn-progreso-mobil');
 const btnInicioMobile = document.querySelector('#btn-inicio-mobil');
 const svgRecetasMobile = document.querySelector('#svg-recetas-mobil');
-
 const divComidasCompletadas = document.querySelector('#comidas-completadas')
-
+const ctx = document.getElementById('my');
+const btnCalorias = document.querySelector('#btn-calorias')
+const btnCarbohidratos = document.querySelector('#btn-carbohidratos')
+const btnProteinas = document.querySelector('#btn-proteinas')
+const btnFibra = document.querySelector('#btn-fibra')
+const btnGrasas = document.querySelector('#btn-grasas')
 // BOTONES PESO
 const divInputContainer = document.querySelector('#div-input-container')
 const btnAceptar = document.querySelector('#btn-aceptar')
 const inputPeso = document.querySelector('#input-peso')
-const btnPeso = document.querySelector('#btn-cambiarpeso');
+const btnCambiarPeso = document.querySelector('#btn-cambiarpeso');
 const divPeso = document.querySelector('#div-peso');
-
+const btnPeso = document.querySelector('#btn-peso')
 // Botones edad
 const btnEdad = document.querySelector('#btn-cambiaredad');
 const divEdad = document.querySelector('#div-edad');
 const divInputContainerEdad = document.querySelector('#div-input-container-edad')
 const btnAceptarEdad = document.querySelector('#btn-aceptar-edad')
 const inputEdad = document.querySelector('#input-edad')
-
+const divSelectorMes = document.querySelector('#selector-mes')
 // Botones Meta
 
-const btnMeta = document.querySelector('#btn-cambiarmeta');
-const divMeta = document.querySelector('#div-meta');
-const divInputContainerMeta = document.querySelector('#div-input-container-meta')
-const btnAceptarMeta = document.querySelector('#btn-aceptar-meta')
-const inputMeta = document.querySelector('#input-meta')
 
 // Telefono
 const btnMenuMobile = document.querySelector('.btn-mobil')
@@ -50,6 +48,7 @@ btnInicio.addEventListener('click', e => {
   const id = window.location.pathname.split('/')[2]
   window.location.pathname = `/principal/${id}`;
   })
+
 
 
 
@@ -72,9 +71,9 @@ btnCerrarMobile.addEventListener('click', e => {
 
 
 btnProgreso.addEventListener('click', async e => {
-    id = window.location.pathname.split('/') [2]
-    window.location.pathname = `/progreso/${id}`;
-  })
+  id = window.location.pathname.split('/') [2]
+  window.location.pathname = `/progreso/${id}`;
+})
 
 btnProgresoMobile.addEventListener('click', async e => {
     id = window.location.pathname.split('/') [2]
@@ -175,13 +174,13 @@ let month = MONTHS[newDate.getMonth()];
 console.log(month);
 
 
-  btnPeso.addEventListener('click', e =>{
+  btnCambiarPeso.addEventListener('click', e =>{
     if (e.target) {
       btnEdad.disabled = true
     }
     divPeso.classList.add('hidden')
     document.querySelector('#btn-aceptar').classList.remove('hidden')
-    btnPeso.classList.add('hidden');
+    btnCambiarPeso.classList.add('hidden');
     const inputPeso = document.querySelector('#input-editar-peso')
     inputPeso.classList.remove('hidden')
     inputPeso.placeholder= `${data[0].pesoEdit}`
@@ -5252,7 +5251,7 @@ if (data[0].newDate === "Diciembre") {
      <h1 class="h1">${inputPeso.value}</h1>
 `
 
-btnPeso.classList.remove('hidden');
+btnCambiarPeso.classList.remove('hidden');
 btnAceptar.classList.add('hidden');
 inputPeso.classList.add('hidden');
 divPeso.classList.remove('hidden');
@@ -5260,6 +5259,7 @@ divPeso.classList.remove('hidden');
 // location.reload();
 }     
 axiosPatchPeso();
+location.reload();
 })
   })
 
@@ -5268,7 +5268,7 @@ axiosPatchPeso();
 // EDIT EDAD
   btnEdad.addEventListener('click', e =>{
     if (e.target) {
-      btnPeso.disabled = true
+      btnCambiarPeso.disabled = true
     }
     divEdad.classList.add('hidden')
     const inputEdad = document.querySelector('#input-editar-edad')
@@ -5301,7 +5301,7 @@ divEdad.classList.remove('hidden')
 //   btnMeta.addEventListener('click', e =>{
 //     if (e.target) {
 //       btnEdad.disabled = true
-//       btnPeso.disabled = true
+//       btnCambiarPeso.disabled = true
 //     }
 //     document.querySelector('#btn-aceptar-meta').classList.remove('hidden')
 //     btnMeta.classList.add('hidden');
@@ -5334,17 +5334,6 @@ divEdad.classList.remove('hidden')
 
   }
 axiosPatch()
-
-
-
-
-
-
-
-
-
-
-
 
 
 

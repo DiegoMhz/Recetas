@@ -41,12 +41,16 @@ btnInicio.addEventListener('click', e => {
   btnCerrarSesionMobile.addEventListener('click', e =>{
     window.location.pathname =  '/signup/'
   })
-  
+
+  btnPerfil.addEventListener('click', e =>{
+    const id = window.location.pathname.split('/')[2];
+    window.location.pathname = `perfil/${id}`
+  })
   
   
   btnProgreso.addEventListener('click', e =>{
     const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `perfil/${id}`
+    window.location.pathname = `progreso/${id}`
   })
   
   labelProgreso.addEventListener('click', e =>{

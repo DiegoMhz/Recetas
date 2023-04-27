@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
@@ -35,7 +36,7 @@
         <a href="/signup/" class="text-black text-sm">Salir</a>
     </div>
     </div>
-    <img src="image2/20230112_192454_0000-removebg-preview (1).png" class="h-48 w-60">
+    <img src="image2/foto para receta.png" class="h-20 w-40">
     <div class="flex gap-4 text-white items-center" id="svg-container">
 
 
@@ -68,10 +69,9 @@
     </nav>
 
 <!-- MAIN CONTENEDOR-->
-  <div id="contenedor" class="flex-col flex justify-center items-center bg-slate-300 m-auto h-full">
+  <div id="contenedor" class="flex justify-center items-center bg-slate-300 h-full">
     
-    <div id="perfil">
-
+    <div id="perfil" class="perfil">
       <div id="div-nombre">
         <div id="nombre" class="flex items-center w-full h-full  h-6/12 p-4 rounded-lg flex flex-col gap-4">
           <svg xmlns="http://www.w3.org/2000/svg" id="svg-perfil" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"/></svg>
@@ -88,8 +88,8 @@
     </div>
      <div id="editar-edad" class="flex items-center"> 
      <span>Edad</span>
-     <svg id="btn-cambiaredad" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.75c0-.414.336-.75.75-.75s.75.336.75.75v9.25c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm-2.011 6.526c-1.045 3.003-1.238 3.45-1.238 3.84 0 .441.385.626.627.626.272 0 1.108-.301 3.829-1.249zm.888-.889 3.22 3.22 8.408-8.4c.163-.163.245-.377.245-.592 0-.213-.082-.427-.245-.591-.58-.578-1.458-1.457-2.039-2.036-.163-.163-.377-.245-.591-.245-.213 0-.428.082-.592.245z" fill-rule="nonzero"/></svg>
-     <button id="btn-aceptar-edad" class="hidden">✔</button>
+     <svg id="btn-cambiaredad" class="cursor-pointer" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.75c0-.414.336-.75.75-.75s.75.336.75.75v9.25c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm-2.011 6.526c-1.045 3.003-1.238 3.45-1.238 3.84 0 .441.385.626.627.626.272 0 1.108-.301 3.829-1.249zm.888-.889 3.22 3.22 8.408-8.4c.163-.163.245-.377.245-.592 0-.213-.082-.427-.245-.591-.58-.578-1.458-1.457-2.039-2.036-.163-.163-.377-.245-.591-.245-.213 0-.428.082-.592.245z" fill-rule="nonzero"/></svg>
+     <button id="btn-aceptar-edad"  class="cursor-pointer hidden">✔</button>
     </div>
     </div>
 
@@ -100,8 +100,8 @@
     </div>
      <div id="editar-peso" class="flex items-center"> 
      <span>Peso</span>
-     <svg id="btn-cambiarpeso" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.75c0-.414.336-.75.75-.75s.75.336.75.75v9.25c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm-2.011 6.526c-1.045 3.003-1.238 3.45-1.238 3.84 0 .441.385.626.627.626.272 0 1.108-.301 3.829-1.249zm.888-.889 3.22 3.22 8.408-8.4c.163-.163.245-.377.245-.592 0-.213-.082-.427-.245-.591-.58-.578-1.458-1.457-2.039-2.036-.163-.163-.377-.245-.591-.245-.213 0-.428.082-.592.245z" fill-rule="nonzero"/></svg>
-     <button id="btn-aceptar" class="hidden">✔</button>
+     <svg id="btn-cambiarpeso" class="cursor-pointer" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.75c0-.414.336-.75.75-.75s.75.336.75.75v9.25c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm-2.011 6.526c-1.045 3.003-1.238 3.45-1.238 3.84 0 .441.385.626.627.626.272 0 1.108-.301 3.829-1.249zm.888-.889 3.22 3.22 8.408-8.4c.163-.163.245-.377.245-.592 0-.213-.082-.427-.245-.591-.58-.578-1.458-1.457-2.039-2.036-.163-.163-.377-.245-.591-.245-.213 0-.428.082-.592.245z" fill-rule="nonzero"/></svg>
+     <button id="btn-aceptar" class="hidden cursor-pointer">✔</button>
     </div>
     </div>
 
@@ -112,32 +112,8 @@
 
 
 
-<!-- <div id="div-peso-contenedor">
-  <div class="w-full h-full  h-6/12 p-4 rounded-lg flex flex-col gap-4 ">
-    <div id="input-container-peso" class="flex justify-center gap-4">
-      <div class="flex flex-col gap-2  text-black w-full">
-        <div class="flex justify-between">
-          <h2 class="font-medium ">Tu peso</h2>
-          <button class="p-2 text-black border border-green-500 hover:bg-green-500 rounded-lg" id="btn-cambiarpeso">cambiar peso</button>
-          <button class="p-2 text-black border border-green-500 hover:bg-green-500 hidden" id="btn-aceptar">Aceptar</button>
-        </div>
-          <div id="div-peso" class="flex gap-2.5 ">
-            <div id="div-input-container" class="flex gap-4 hidden">
-            <input type="text"  id="input-peso" placeholder="60" class="p-4 bg-slate-200 rounded-lg w-full outline-none placeholder:text-slate-400">
-            <span id="spam-peso" class="text-4xl">kg</span>
-          </div>
-            <div  id="x" class="flex gap-2.5">
-            <label for="spam-peso" class="text-3xl">70</label>
-            <span id="spam-peso" class="text-3xl">kg</span>
-          </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 </div>
-
+</div>
 </div>
   <script src="index.js"></script>
 </body>
