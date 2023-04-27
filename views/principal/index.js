@@ -927,6 +927,11 @@ getRecetas()
   }],
   calorias :0,
   comidasCompletadas : 0,
+  carbohidratos: 0,
+  grasas: 0,
+  comidasCompletadas : 0,
+  fibra: 0,
+  proteinas: 0,
   btnRecetas : 'listo'
   
     }, {

@@ -5528,10 +5528,10 @@ btnValoresNutricionales.addEventListener('click', e =>{
   <option value="proteinas">Proteinas</option>
 
 </select>`
-  if (data[0].calorias === 0) {
+  if (data[0] === undefined || data[0].calorias === 0) {
+    console.log(data[0]);
     console.log('aqio');
     myChart.destroy();
-  const p = [data[0].calorias]
    myChart =  new Chart(ctx, {
      type: 'bar',
      options: {
@@ -5583,8 +5583,30 @@ btnValoresNutricionales.addEventListener('click', e =>{
   }
   const selectValoresNutricionales = document.querySelector('#select')
   selectValoresNutricionales.addEventListener('input', e => {
+    console.log(e.target.value);
+
     if (e.target.value === 'carbohidratos') {
       myChart.destroy();
+      if (data[0] === undefined  || data[0].grasa === 0) {
+        console.log('asut');
+        myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Aun no has comido ningun plato'
+          }
+           }
+         },
+       });
+      }
+      else{
       myChart =  new Chart(ctx, {
         type: 'bar',
         data: {
@@ -5614,9 +5636,30 @@ btnValoresNutricionales.addEventListener('click', e =>{
         },
       });
     }
+    }
 
     if (e.target.value === 'grasas') {
       myChart.destroy();
+      if (data[0] === undefined  || data[0].grasa === 0) {
+        console.log('asut');
+        myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Aun no has comido ningun plato'
+          }
+           }
+         },
+       });
+      }
+      else{
       myChart =  new Chart(ctx, {
         type: 'bar',
         data: {
@@ -5646,9 +5689,31 @@ btnValoresNutricionales.addEventListener('click', e =>{
         },
       });
     }
+    }
 
     if (e.target.value === 'fibra') {
       myChart.destroy();
+
+      if (data[0] === undefined  || data[0].fibra === 0) {
+        console.log('asut');
+        myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Aun no has comido ningun plato'
+          }
+           }
+         },
+       });
+      }
+      else{
       myChart =  new Chart(ctx, {
         type: 'bar',
         data: {
@@ -5678,44 +5743,68 @@ btnValoresNutricionales.addEventListener('click', e =>{
         },
       });
     }
+    }
 
     if (e.target.value === 'proteinas') {
       myChart.destroy();
-      myChart =  new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['Proteinas'],
-          datasets: [{
-            label: 'Proteinas consumidas',
-            data: [data[0].proteinas],
-            borderColor: '#36A2EB',
-            backgroundColor: '#9BD0F5',
-            borderWidth: 2,
-            borderRadius: 5,
-            borderSkipped: false,
-          },
-         ]
-        },
-        options: {
-         responsive: true,
-         plugins: {
-             legend: {
-                 position: 'top',
-            },
-            title: {
-             display: true,
-             text: 'Tu progreso'
-         }
+      if (data[0] === undefined  || data[0].proteinas === 0) {
+        console.log('asut');
+        myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Aun no has comido ningun plato'
           }
-        },
-      });
+           }
+         },
+       });
+      }
+      else{
+        console.log('ooooo');
+      myChart.destroy();
+      const p = [data[0].proteinas]
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+           labels: ['Proteinas',],
+           datasets: [{
+             label: 'Proteinas consumidas',
+             data: p,
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+       });
+      }
     }
     if (e.target.value === 'calorias') {
       myChart.destroy();
-      if (data[0].calorias === 0) {
+      if (data[0] === undefined  || data[0].calorias === 0) {
         console.log('aqio');
         myChart.destroy();
-      const p = [data[0].calorias]
        myChart =  new Chart(ctx, {
          type: 'bar',
          options: {
