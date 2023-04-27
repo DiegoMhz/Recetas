@@ -46,7 +46,7 @@ btnInicio.addEventListener('click', e => {
   
   btnProgreso.addEventListener('click', e =>{
     const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `progreso/${id}`
+    window.location.pathname = `perfil/${id}`
   })
   
   labelProgreso.addEventListener('click', e =>{
@@ -54,11 +54,6 @@ btnInicio.addEventListener('click', e => {
     window.location.pathname = `progreso/${id}`
   })
   
-  btnPerfil.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `perfil/${id}`
-  })
-
   const addRecetas = async ()=>{
     const { data } = await axios.post('/api/recetas', {
       SemanaUno: [
@@ -958,7 +953,11 @@ btnInicio.addEventListener('click', e => {
     incompleted: 'incompleted'
   }],
   calorias :0,
+  carbohidratos: 0,
+  grasas: 0,
   comidasCompletadas : 0,
+  fibra: 0,
+  proteinas: 0,
   btnRecetas : 'listo',
   
     }, {
@@ -6861,6 +6860,10 @@ FuncionesCarta();
 })
 
 let resultado = data[0].calorias
+let proteinas = data[0].proteinas
+let carbohidratos = data[0].carbohidratos
+let grasas = data[0].grasas
+let fibra = data[0].fibra
 console.log(resultado);
 let comidasCompletadas  = data[0].comidasCompletadas
 
@@ -6875,6 +6878,15 @@ const FuncionesCarta = async () => {
  btnChekedCard.forEach(element => {
   element.addEventListener('click', async e =>{
     let calorias = e.target.parentElement.children[4].children[1].children[0].innerText.split(':')[1];
+    let proteinasCard = e.target.parentElement.children[4].children[1].children[1].innerText.split(':')[1];
+    let carbohidratosCard = e.target.parentElement.children[4].children[1].children[2].innerText.split(':')[1];
+    let grasasCard = e.target.parentElement.children[4].children[1].children[3].innerText.split(':')[1];
+    let fibraCard = e.target.parentElement.children[4].children[1].children[4].innerText.split(':')[1];
+    resultado = resultado + parseInt(calorias)
+    proteinas = proteinas + parseInt(proteinasCard)
+    carbohidratos = carbohidratos + parseInt(carbohidratosCard)
+    grasas = grasas + parseInt(grasasCard)
+    fibra = fibra + parseInt(fibraCard)
     const btnCard = e.target.parentElement.children[6];
     e.target.classList.toggle("incompleted");
     btnCard.classList.toggle("incompleted");
@@ -6883,11 +6895,16 @@ const FuncionesCarta = async () => {
     const id = data[0].id;
     comidasCompletadas = comidasCompletadas + 1
     console.log(comidasCompletadas);
-    resultado = resultado + parseInt(calorias)
-    console.log(resultado);
-
+  
+    console.log(grasas, fibra);
+    console.log(proteinas);
+    console.log(carbohidratos,grasas,fibra);
     await axios.patch(`/api/recetas/${id}`,{
       comidasCompletadas: comidasCompletadas,
+      proteinas: proteinas,
+      grasas: grasas,
+      fibra: fibra,
+      carbohidratos: carbohidratos
     })
 
     if (idcard === '1') {
@@ -7737,8 +7754,16 @@ const FuncionesCarta = async () => {
 
  btnEditCard.forEach(element => {
   element.addEventListener('click', async e => {
-
     let calorias = e.target.parentElement.parentElement.children[4].children[1].children[0].innerText.split(':')[1];
+    let proteinasCard =  e.target.parentElement.parentElement.children[4].children[1].children[1].innerText.split(':')[1];
+    let carbohidratosCard = e.target.parentElement.parentElement.children[4].children[1].children[2].innerText.split(':')[1];
+    let grasasCard = e.target.parentElement.parentElement.children[4].children[1].children[3].innerText.split(':')[1];
+    let fibraCard = e.target.parentElement.parentElement.children[4].children[1].children[4].innerText.split(':')[1];
+    resultado = resultado - parseInt(calorias)
+    proteinas = proteinas - parseInt(proteinasCard)
+    carbohidratos = carbohidratos - parseInt(carbohidratosCard)
+    grasas = grasas - parseInt(grasasCard)
+    fibra = fibra - parseInt(fibraCard)
     const btnCard = e.target.parentElement.parentElement.children[5];
     e.target.parentElement.classList.toggle("incompleted");
     btnCard.classList.toggle("incompleted");
@@ -7747,13 +7772,16 @@ const FuncionesCarta = async () => {
     const id = data[0].id
     console.log(id);
     console.log(idcard);
-    resultado = resultado - parseInt(calorias)
     comidasCompletadas = comidasCompletadas - 1
     console.log(comidasCompletadas);
-    console.log(resultado);
+    console.log(resultado, proteinas,fibra,grasas,carbohidratos);
 
     await axios.patch(`/api/recetas/${id}`,{
       comidasCompletadas: comidasCompletadas,
+      proteinas: proteinas,
+      grasas: grasas,
+      fibra: fibra,
+      carbohidratos: carbohidratos
     })
 
     if (idcard === '1') {
@@ -8471,14 +8499,6 @@ returnCard.forEach(element => {
   });
 }
 FuncionesCarta();
-  // // cardBack.forEach(element => {
-  //   element.addEventListener('click', e => {
-  //   const cardFront = element.parentElement.children[0]
-  //   const cardBack = element.parentElement.children[1]
-  //     cardFront.style.transform = "rotateY(360deg)";
-  //     cardBack.style.transform = "rotateY(180deg)";
-  //   })
-  //   });
 
 
 

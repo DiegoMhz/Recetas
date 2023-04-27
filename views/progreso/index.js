@@ -10,7 +10,7 @@ const btnEntrar = document.querySelector('#btn-entrar')
 const divSelectorMes = document.querySelector('#selector-mes')
 const btnMenuMobile = document.querySelector('.btn-mobil')
 const menuMobile = document.querySelector('.menu-mobil')
-const btnCalorias = document.querySelector('#btn-calorias')
+const btnValoresNutricionales = document.querySelector('#btn-valores-nutricionales')
 const btnPeso = document.querySelector('#btn-peso')
 const ctx = document.getElementById('my');
 
@@ -5519,8 +5519,15 @@ const getCalorias = async () => {
   const { data } = await axios.get('/api/recetas', {
     withCredentials: true
 })
-btnCalorias.addEventListener('click', e =>{
-  divSelectorMes.classList.add('hidden') 
+btnValoresNutricionales.addEventListener('click', e =>{
+  divSelectorMes.innerHTML = ` <select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
+  <option value="calorias"selected>Calorias</option>
+  <option value="carbohidratos">Carbohidratos</option>
+  <option value="grasas">Grasas</option>
+  <option value="fibra">Fibra</option>
+  <option value="proteinas">Proteinas</option>
+
+</select>`
   if (data[0].calorias === 0) {
     console.log('aqio');
     myChart.destroy();
@@ -5548,8 +5555,7 @@ btnCalorias.addEventListener('click', e =>{
    myChart =  new Chart(ctx, {
      type: 'bar',
      data: {
-      // Peso inicial
-       labels: ['Calorias'],
+       labels: ['Calorias',],
        datasets: [{
          label: 'Calorias consumidas',
          data: p,
@@ -5575,7 +5581,194 @@ btnCalorias.addEventListener('click', e =>{
      },
    });
   }
+  const selectValoresNutricionales = document.querySelector('#select')
+  selectValoresNutricionales.addEventListener('input', e => {
+    if (e.target.value === 'carbohidratos') {
+      myChart.destroy();
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Carbohidratos'],
+          datasets: [{
+            label: 'Carbohidratos consumidos',
+            data: [data[0].carbohidratos],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
+    }
+
+    if (e.target.value === 'grasas') {
+      myChart.destroy();
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Grasas'],
+          datasets: [{
+            label: 'Grasas consumidas',
+            data: [data[0].grasas],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
+    }
+
+    if (e.target.value === 'fibra') {
+      myChart.destroy();
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Fibra'],
+          datasets: [{
+            label: 'Fibras consumidas',
+            data: [data[0].fibra],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
+    }
+
+    if (e.target.value === 'proteinas') {
+      myChart.destroy();
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Proteinas'],
+          datasets: [{
+            label: 'Proteinas consumidas',
+            data: [data[0].proteinas],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
+    }
+    if (e.target.value === 'calorias') {
+      myChart.destroy();
+      if (data[0].calorias === 0) {
+        console.log('aqio');
+        myChart.destroy();
+      const p = [data[0].calorias]
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Aun no has comido ningun plato'
+          }
+           }
+         },
+       });
+      }
+      else{
+        console.log('ooooo');
+      myChart.destroy();
+      const p = [data[0].calorias]
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+           labels: ['Calorias',],
+           datasets: [{
+             label: 'Calorias consumidas',
+             data: p,
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+       });
+      }
+    }
+  })
 })
+
 }
 getCalorias()
 

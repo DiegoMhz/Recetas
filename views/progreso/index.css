@@ -18,33 +18,71 @@
 /* Id */
 
   #container{
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     padding-top: 5rem;
+    gap: 1rem;
+    height: 100%;
   }
 
   #div-btn{
     display: flex;
-    background-color: white;
-    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 1rem;
   }
 
-  #btn-calorias{
-    border-left-width: 1px;
-    border-color: black;
-    width: 50%;
-    border-right: 1px;
-    padding: 1rem;
-  }
-
-  
   #btn-peso{
-    border-left-width: 1px;
-    width: 50%;
-    padding: 1rem;
+    width: 100%;
+    background-color: white;
+    padding: 2px;
+    border-radius: 0.5rem;
+
   }
+  
+  #btn-valores-nutricionales{
+    width: 100%;
+    background-color: white;
+    padding: 2px;
+    background-color: rgb(22 163 74 / 1);
+    border-radius: 0.5rem;
+   
+  }
+  
+   
+  #btn-carbohidratos{
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+  }
+   
+  #btn-proteinas{
+    width: 100%;
+    background-color: rgb(22 163 74 / 1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+   
+  #btn-fibra{
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+   
+  #btn-grasas{
+    font-size: 0.8rem;
+    width: 100%;
+    background-color: rgb(22 163 74 / 1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
 
   @media (min-width: 900px) {
     #div-canvas {

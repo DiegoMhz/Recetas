@@ -7,10 +7,10 @@ recetasRouter.post('/', async (request, response) => {
     if (!user) {
         return response.sendStatus(401);
     }
-    // const { text } = request.body;
-    // const {telefono}=request.body;
-    // console.log(telefono);
-    // Lunes
+   const {carbohidratos} = request.body
+   const {grasas} = request.body
+   const  {proteinas} = request.body
+    const {fibra} = request.body
     const {btnRecetas} = request.body
    const {comidasCompletadas} = request.body
     const { SemanaUno } = request.body;
@@ -105,6 +105,10 @@ recetasRouter.post('/', async (request, response) => {
   
 
     const newRecetas = new Recetas({
+        carbohidratos,
+        fibra,
+        grasas,
+        proteinas,
         btnRecetas,
         comidasCompletadas,
         calorias,
@@ -227,6 +231,10 @@ recetasRouter.patch('/:id', async (request, response) => {
         return response.sendStatus(401);
     }
     console.log(request.body);
+    const {carbohidratos} = request.body
+    const {grasas} = request.body
+    const  {proteinas} = request.body
+    const {fibra} = request.body
     const {comidasCompletadas} = request.body
     const { CardUno } = request.body;
     const  { CardDos } = request.body;
@@ -400,6 +408,10 @@ recetasRouter.patch('/:id', async (request, response) => {
        Card84,
       calorias:calorias,
       comidasCompletadas: comidasCompletadas,
+      carbohidratos: carbohidratos,
+      fibra: fibra,
+      grasas: grasas,
+      proteinas: proteinas
     });
     response.sendStatus(200);
 });
