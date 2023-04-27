@@ -47,7 +47,7 @@
     padding: 2px;
     background-color: rgb(22 163 74 / 1);
     border-radius: 0.5rem;
-   
+   padding: 1rem;
   }
   
    
@@ -86,8 +86,8 @@
 
   @media (min-width: 900px) {
     #div-canvas {
-      padding-left: 7rem;
-      padding-right: 7rem;
+      padding-left: 9rem;
+      padding-right: 9rem;
     }
   }
 
@@ -95,5 +95,19 @@
     #div-canvas {
       padding-left: 15rem;
       padding-right: 15rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    #div-canvas {
+      padding-left: 22rem;
+      padding-right: 22rem;
+    }
+  }
+  
+  @media (min-width: 767px) {
+    #container {
+      gap: 0;
+      justify-content: center;
     }
   }
