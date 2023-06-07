@@ -34,7 +34,10 @@
                 <Label for="password-input">Contraseña</Label>
                 <input class="outline-none p-2 rounded-lg bg-white border" type="password" placeholder="Su contraseña debe tener minimo 8 digitos" name="password-input" id="password-input">
             </div>
-            <button id="form-btn" style="background-color: #27884d; color: white; border-radius: 22px;" class="disabled:opacity-75 p-2 text-black font-bold bg-amber-500 hover:bg-amber-600 text-white pointer" type="submit">Inicia sesión</button>
+            <div id="boton-inicio" style="background-color: #27884d; color: white; border-radius: 22px;" class="flex justify-center disabled:opacity-75 p-2 text-black font-bold bg-amber-500 hover:bg-amber-600 text-white pointer">
+            <button id="form-btn" class="w-full" type="submit">Inicia sesión</button>
+            <div class="loader hidden"></div>
+        </div>
         </form>
         <div id="error" class="text-center">
             <p style="color: #fc706a;">Contraseña o correo invalido</p>

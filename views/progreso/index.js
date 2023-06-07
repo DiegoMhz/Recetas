@@ -402,6 +402,45 @@ if (data[0].newDate === "Febrero") {
     <option value="Mayo">Mayo</option>
     <option value="Junio">Junio</option>
   </select>`
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Febrero','Marzo','Abril','Mayo','Junio'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,data[0].Febrero[0].pesoActual,data[0].Marzo[0].pesoActual,data[0].Abril[0].pesoActual,data[0].Mayo[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [data[0].Febrero[0].pesoActual,data[0].Marzo[0].pesoActual,data[0].Abril[0].pesoActual,data[0].Mayo[0].pesoActual,data[0].Junio[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
   }
   
   if (month === 'Julio') {
@@ -665,6 +704,45 @@ console.log(month);
     <option value="Mayo">Mayo</option>
     <option value="Junio">Junio</option>
   </select>`
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Marzo','Abril','Mayo','Junio'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,data[0].Marzo[0].pesoActual,data[0].Abril[0].pesoActual,data[0].Mayo[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [data[0].Marzo[0].pesoActual,data[0].Abril[0].pesoActual,data[0].Mayo[0].pesoActual,data[0].Junio[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
   }
   
   if (month === 'Julio') {
@@ -896,6 +974,45 @@ if (data[0].newDate === "Abril") {
       <option value="Mayo">Mayo</option>
       <option value="Junio">Junio</option>
     </select>`
+    myChart =  new Chart(ctx, {
+      type: 'bar',
+      data: {
+       // Peso inicial
+        labels: ['Abril','Mayo','Junio'],
+        datasets: [{
+          label: 'Peso inicial',
+          data: [data[0].peso,data[0].Abril[0].pesoActual,data[0].Mayo[0].pesoActual],
+          borderColor: '#36A2EB',
+          backgroundColor: '#9BD0F5',
+          borderWidth: 2,
+          borderRadius: 5,
+          borderSkipped: false,
+        },
+        {
+           // Peso actual
+           label: 'Peso Actual',
+           data: [data[0].Abril[0].pesoActual,data[0].Mayo[0].pesoActual,data[0].Junio[0].pesoActual],
+           borderColor: '#922B21',
+           backgroundColor: '#E74C3C',
+           borderWidth: 2,
+           borderRadius: 5,
+           borderSkipped: false,
+         }
+       ]
+      },
+      options: {
+       responsive: true,
+       plugins: {
+           legend: {
+               position: 'top',
+          },
+          title: {
+           display: true,
+           text: 'Tu progreso'
+       }
+        }
+      },
+    });
     }
     
     if (month === 'Julio') {
@@ -1080,6 +1197,45 @@ if (data[0].newDate === "Mayo") {
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Mayo','Junio'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,data[0].Mayo[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [data[0].Mayo[0].pesoActual,data[0].Junio[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
       
       if (month === 'Julio') {
@@ -1227,6 +1383,45 @@ if (data[0].newDate === "Junio") {
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Junio">Junio</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Junio'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [data[0].Junio[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
       
       if (month === 'Julio') {
@@ -2330,6 +2525,7 @@ btnPeso.addEventListener('click', e =>{
   Peso()
   FuncionSelect()
 })
+
 const FuncionSelect = () =>{
 const select = divSelectorMes.children[0];
 select.addEventListener('input', async e =>{
@@ -2516,7 +2712,7 @@ select.addEventListener('input', async e =>{
    }
 
    if (e.target.value === 'Junio') {
-     
+     myChart.destroy();
       myChart =  new Chart(ctx, {
         type: 'bar',
         data: {
@@ -3014,7 +3210,7 @@ select.addEventListener('input', async e =>{
     }
  
     if (e.target.value === 'Junio') {
-   
+      myChart.destroy();
        myChart =  new Chart(ctx, {
          type: 'bar',
          data: {
@@ -3517,7 +3713,7 @@ select.addEventListener('input', async e =>{
     }
  
     if (e.target.value === 'Junio') {
-   
+      myChart.destroy();
        myChart =  new Chart(ctx, {
          type: 'bar',
          data: {
@@ -4026,7 +4222,7 @@ select.addEventListener('input', async e =>{
     }
  
     if (e.target.value === 'Junio') {
-   
+      myChart.destroy();
        myChart =  new Chart(ctx, {
          type: 'bar',
          data: {
@@ -4539,7 +4735,7 @@ if (e.target.value === 'Abril') {
    if (data[0].newDate === 'Junio') {
  
     if (e.target.value === 'Junio') {
-   
+      myChart.destroy();
        myChart =  new Chart(ctx, {
          type: 'bar',
          data: {

@@ -2,11 +2,15 @@ const emailInput = document.querySelector('#email-input');
 const passwordInput = document.querySelector('#password-input');
 const form = document.querySelector('#form');
 const invalido = document.querySelector('#error')
+const btnForm = document.querySelector('#form-btn')
+const loader = document.querySelector('.loader')
 const falso = false
 invalido.classList.add('hidden')
 form.addEventListener('submit', async e => {
     e.preventDefault();
-
+    btnForm.classList.add('hidden')
+    loader.classList.remove('hidden')
+    invalido.classList.add('hidden')
     try {
         const credentials = {
             email: emailInput.value,
@@ -24,6 +28,8 @@ form.addEventListener('submit', async e => {
     } catch (error) {
         const errorText = (error.response.data.error);
         invalido.classList.remove('hidden')
+        loader.classList.add('hidden')
+        btnForm.classList.remove('hidden')
     }
 
 })
