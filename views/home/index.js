@@ -1,26 +1,14 @@
-const menuMobile = document.querySelector('#menu-mobile');
-const menuBar = document.querySelector('#menu-bar');
-const menuIcon = document.querySelector('#menu-icon');
-const registroIcon = document.querySelector('#regitro-icono');
-const loginIcon = document.querySelector('#login-icono');
-console.log(registroIcon);
+
+const menuIcon = document.querySelector('#menu-icon')
+const menuMobile = document.querySelector('.menu-telefono')
+const btn = document.querySelector('#btn')
 
 menuIcon.addEventListener('click', e => {
-    console.log(menuBar);
-    console.log(menuIcon);
-    console.log('yes');
-    menuBar.classList.toggle('hidden')
-    menuMobile.classList.toggle('show');
+    menuMobile.classList.toggle('menu-visible')
 });
 
-
-registroIcon.addEventListener('click', e => {
-    window.location.pathname = '/signup';
-});
-
-loginIcon.addEventListener('click', e => {
-    window.location.pathname = '/login';
-});
-
+btn.addEventListener('click', e =>{
+    window.location.pathname = '/signup'
+})
 
 

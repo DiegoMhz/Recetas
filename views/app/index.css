@@ -1,27 +1,210 @@
 
-label{
-  padding: 1rem;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
+body{
+  height: 100vh;
+  background-image: url("imagen/imagenRecetas.png");
+  background-size: cover;
+}
 /* ~~~~~~~~~~~~~ID~~~~~~~~~~~~~~~~ */
+
+#nav-bar{
+  position: fixed;
+  right: 0;
+  left: 0;
+  background-color: #106410;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  z-index: 1;
+}
+
+#nav-bar p{
+  color: white;
+  font-weight: 600;
+}
+
+#section{
+  padding-top: 5rem;
+}
+
+#contenedor-titulo{
+  padding-top: 0.5rem;
+}
+
+#titulo{
+  text-align: center;
+}
+
+#titulo h1{
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 2.5rem;
+  color: #282828;
+}
+
+#titulo h2{
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+  color: #3e3d3d;
+}
+
+#contenedor-form{
+  display: flex;
+  justify-content: center;
+}
+
+#form{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+#form-genero{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+#form-genero p{
+ padding: 0.5rem;
+}
+
+.form-input-name{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+
+.form-inputs{
+  gap: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-genero{
+  display: flex;
+  position: relative;
+  width: 50%;
+  background-color: white;
+  border-radius: 0.5rem;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+  border-width: 2px;
+  border-color: #106410;
+  border-style: solid;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-genero label{
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+
+.input-genero input{
+  opacity: 0;
+}
+
+.input-genero:hover{
+  background-color: #0b440b;
+  color: white;
+  font-weight: 600;
+}
+
+
+.contenedor-input{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.input{
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+}
+
+.contenedor-select{
+  width: 100%;
+  text-align: center;
+}
+
+.contenedor-select p{
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3e3d3d;
+}
+
+
+.correct{
+  border-width: 2px;
+  border-style: solid;
+  border-color: #0b440b;
+}
+
+.incorrect{
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(251, 73, 73);
+}
+
+.bg-green{
+  background-color: #0b440b;
+  color: white;
+  font-weight: 600;
+}
 
 #btn-aceptar{
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color:#84cc16;
+    background-color: #106410;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
     transition: 0.5s;
+    margin-top: 0.5rem;
+    border: none;
+    cursor: pointer;
 }
 #btn-aceptar:hover{
-    background-color:#65a30d
+    background-color:#0b440b;
+}
+
+#btn-aceptar:disabled{
+  opacity: 0.5;
 }
 
 #kg{
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: #475569;
-}
-#titulo{
-  text-align: center;
 }
   /* ~~~~~~~~~~~~~CLASES~~~~~~~~~~~~~~~~ */
 
@@ -33,6 +216,7 @@ label{
   .input-div {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
   }
 
   .div-peso{
@@ -41,13 +225,6 @@ label{
     width: 100%;
   }
 
-  .correct{
-    border-color: green;
-  }
-
-  .incorrect{
-    border-color: red;
-  }
 
 
 

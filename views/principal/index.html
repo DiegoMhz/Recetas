@@ -9,77 +9,55 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body class="bg-slate-300 flex min-h-screen justify-center items-center bg-white flex-wrap">
-    <!-- NAV BAR -->
-    <nav class="absolute top-0 flex flex-row justify-between items-center w-full bg-green-600 h-20 px-4">
-      <div class="menu-mobil">
-        <div class=" flex items-center justify-center flex-col " style="padding-top: 6px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" style="height: 25px;" id="btn-progreso-mobil" class="cursor-pointer" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm8 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-19 0c0-6.065 4.935-11 11-11v2c-4.962 0-9 4.038-9 9 0 2.481 1.009 4.731 2.639 6.361l-1.414 1.414.015.014c-2-1.994-3.24-4.749-3.24-7.789z"/></svg>
-        <label id="label-progreso" class="text-black text-sm">Progreso</label>
-      </div>
+<body>
+ 
+      <nav id="nav-bar">
+        <p>Recetario Fitnes</p>
+        <div id="nav-links">
+          <div id="container-progreso">
+            <button id="btn-progreso">Progreso</button>
+          </div>
+          <div id="container-recetas">
+            <button id="btn-recetas">Recetas</button>
+          </div>
+          <div id="container-perfil">
+            <button id="btn-perfil">Perfil</button>
+          </div>
+          <div id="container-salir">
+            <button id="btn-cerrar">Cerrar Sesion</button>
+          </div>
+        </div>
 
-  <div class="flex flex-col items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" class="cursor-pointer" id="btn-perfil-mobil" style="height: 25px;" height="24" viewBox="0 0 24 24"><path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z"/></svg>
-          <label class="text-black text-sm">Perfil</label>
-  </div>
+        <div id="nav-telefono">
+          <svg clip-rule="evenodd" id="menu-icon" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
+          <div class="menu-telefono">
+              <button id="btn-progreso">Progreso</button>
+              <button id="btn-recetas">Recetas</button>
+              <button id="btn-perfil">Perfil</button>
+              <button id="btn-cerrar">Cerrar Sesion</button>
 
-  <div class="flex flex-col items-center " id="svg">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" id="svg-recetas-mobil" class="cursor-pointer" style="height: 25px;" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M18.496 24h-.001c-.715 0-1.5-.569-1.5-1.5v-8.5s-1.172-.003-2.467 0c.802-6.996 3.103-14 4.66-14 .447 0 .804.357.807.851.01 1.395.003 16.612.001 21.649 0 .828-.672 1.5-1.5 1.5zm-11.505-12.449c0-.691-.433-.917-1.377-1.673-.697-.56-1.177-1.433-1.088-2.322.252-2.537.862-7.575.862-7.575h.6v6h1.003l.223-6h.607l.173 6h1.003l.242-6h.562l.199 6h1.003v-6h.549s.674 5.005.951 7.55c.098.902-.409 1.792-1.122 2.356-.949.751-1.381.967-1.381 1.669v10.925c0 .828-.673 1.5-1.505 1.5-.831 0-1.504-.672-1.504-1.5v-10.93z"/></svg>
-          <label class="text-black text-sm">Receta</label>
-  </div>
-
-        <div class="flex flex-col">
-        <svg xmlns="http://www.w3.org/2000/svg" style="height: 25px;" class="cursor-pointer text-black" width="24" id="btn-cerrar-mobil" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-          <a href="/signup/" class="text-black text-sm">Salir</a>
-      </div>
-      </div>
-      <img src="imagenp/20230112_192454_0000-removebg-preview (1).png" class="h-48 w-60">
-
-      <div class="flex gap-4 text-white items-center relative" id="svg-container">
-
-
-        <div class="hidden md:flex flex items-center justify-center flex-col ">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" style="height: 25px;" id="btn-progreso" class="cursor-pointer" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm8 12c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-19 0c0-6.065 4.935-11 11-11v2c-4.962 0-9 4.038-9 9 0 2.481 1.009 4.731 2.639 6.361l-1.414 1.414.015.014c-2-1.994-3.24-4.749-3.24-7.789z"/></svg>
-        <label id="label-progreso" class="text-black text-sm">Progreso</label>
-      </div>
-
-      <div class="flex flex-col items-center hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" class="cursor-pointer" id="btn-perfil" style="height: 25px;" height="24" viewBox="0 0 24 24"><path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z"/></svg>
-              <label class="text-black text-sm">Perfil</label>
-      </div>
-    
-    
-  <div class="flex flex-col items-center hidden md:flex" id="svg">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" id="svg-recetas" class="cursor-pointer" style="height: 25px;" height="24" fill-rule="evenodd" clip-rule="evenodd"><path d="M18.496 24h-.001c-.715 0-1.5-.569-1.5-1.5v-8.5s-1.172-.003-2.467 0c.802-6.996 3.103-14 4.66-14 .447 0 .804.357.807.851.01 1.395.003 16.612.001 21.649 0 .828-.672 1.5-1.5 1.5zm-11.505-12.449c0-.691-.433-.917-1.377-1.673-.697-.56-1.177-1.433-1.088-2.322.252-2.537.862-7.575.862-7.575h.6v6h1.003l.223-6h.607l.173 6h1.003l.242-6h.562l.199 6h1.003v-6h.549s.674 5.005.951 7.55c.098.902-.409 1.792-1.122 2.356-.949.751-1.381.967-1.381 1.669v10.925c0 .828-.673 1.5-1.505 1.5-.831 0-1.504-.672-1.504-1.5v-10.93z"/></svg>
-          <label class="text-black text-sm">Receta</label>
-  </div>
-
-        <div class="flex flex-col hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" style="height: 25px;" class="cursor-pointer text-black" width="24" id="btn-cerrar" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-          <a href="/signup/" class="text-black text-sm">Salir</a>
-      </div>
-
-      <div class="hidden max-md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" class="btn-mobil" style="height: 33px;" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
-      </div>
-    
-    </div>
-
+          </div>
+        </div>
       </nav>
 
+
 <div id="contenedor">
-  <h1 class="text-center mt-4 font-bold" style="font-size: 28px;">Bienvenido</h1>
-  <div id="div-btn-recetas" class="flex-col flex items-center">
+  <div id="contenedor-image">
+    <div id="contenedor-titulo">
+  <h1 id="titulo">Bienvenido</h1>
+  <div class="div-btn-recetas">
       <p>Para generar su dieta mensual</p>
-      <button id="btn-recetas" type="button" class="bg-green-500 hover:bg-green-600" style="border-radius: 0.5rem; padding: 0.5rem;">Presione aqui</button>
+      <button id="btn-buscar-recetas" type="button">Presione aqui</button>
     </div>
 
-  <p class="text-center font-medium" style="font-size: 18px;">A continuacion te presentamos diferentes sugerencias de platos  que te ayudaran a bajar de peso</p>
+  <p style="font-size: 1.25rem; text-align: center;">A continuacion te presentamos diferentes sugerencias de platos  que te ayudaran a bajar de peso</p>
+</div>
+</div>
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Meriendas</h3>
-      <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    <h3 class="titulo-sugerencias">Meriendas</h3>
+      <div id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2020/07/08/brochetas-de-frutas_eed350b6_1200x1600.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -118,7 +96,7 @@
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2020/07/08/yogur-con-avena_fda56a54_600x800.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -156,7 +134,7 @@
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2020/07/08/helados-de-sandia-00437110_dc752d27_600x800.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -196,7 +174,7 @@
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2022/06/28/yogures-con-kiwi-y-muesli_7ed7243f_600x405.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -245,15 +223,15 @@
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Almuerzos</h3>
+    <h3 class="titulo-sugerencias" >Almuerzos</h3>
 
   
 
-    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    <div id="contenedor-recetas">
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://cdn0.recetasgratis.net/es/posts/1/9/3/atun_con_salsa_teriyaki_y_sesamo_63391_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -297,7 +275,7 @@
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://i.blogs.es/b88b27/ensalada-asiatica-tofu-arroz-brocoli-300118-0001/1366_2000.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -348,7 +326,7 @@
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://i.blogs.es/5552eb/pastaesparragos/450_1000.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -383,7 +361,7 @@
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://cdn.elcocinerocasero.com/imagen/receta/1000/2017-08-24-19-35-41/salmon-al-horno.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -430,12 +408,12 @@
 
 
 
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Jugos</h3>
+    <h3 class="titulo-sugerencias" >Jugos</h3>
 
       
-    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    <div id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://enrilemoine.com/wp-content/uploads/2014/09/Batido-de-fresas-y-avena-SAVOIR-FAIRE-by-enrilemoine-scaled.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -460,7 +438,7 @@
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20191017151907/batido-mango-papaya-coco/0-734-593/batido-mango-t.jpg?tx=w_680" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -484,7 +462,7 @@
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.laurafuentes.soy/wp-content/uploads/2022/01/pineapple-banana-smoothie_post_1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -508,7 +486,7 @@
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.hnosperez.com/blog/wp-content/uploads/2021/03/batido-platano.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -536,12 +514,12 @@
 
 
     </div>
-    <h3 class="mt-4 font-bold pl-4" style="font-size: 24px;">Cenas</h3>
+    <h3 class="titulo-sugerencias" >Cenas</h3>
 
     
-    <div class="flex flex-wrap justify-center" id="contenedor-recetas">
+    <div id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://content-cocina.lecturas.com/medio/2018/07/19/tortilla-de-champinones-y-jamon_f233bf55_800x800.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -582,7 +560,7 @@
 
 
 
-<div id="card" class="h-96 w-72 relative m-4">
+<div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2022/12/14/pollo-a-la-plancha-con-lima_00000000_221214135618_943x1200.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -625,7 +603,7 @@
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2022/12/14/canelones-de-ensalada-de-judias-blancas-con-atun_00000000_221214135926_600x600.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -665,7 +643,7 @@
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4">
+      <div class="card">
 
         <div class="face front">
           <img src="https://www.elmueble.com/medio/2021/02/15/medallones-de-pavo-al-limon_00000000_221214141724_360x480.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">

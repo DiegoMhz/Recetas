@@ -4,9 +4,10 @@ const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 
+
 usersRouter.post('/', async (request, response) => {
-    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[0-9]).{8,24}$/;
-    const { email, password } = request.body;
+    const PASSWORD_REGEX =  /^(?=.*\d)(?=.*[a-z]).{5,}$/;
+    const { name, email, password } = request.body;
     const userExist = await User.findOne({ email });
 
     if (userExist) {
@@ -19,9 +20,12 @@ usersRouter.post('/', async (request, response) => {
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
     const user = new User({
+        name,
         email,
         passwordHash
     });
+
+    console.log(user, passwordHash);
 
    const savedUser = await user.save();
     let transporter = nodemailer.createTransport({

@@ -416,4 +416,17 @@ recetasRouter.patch('/:id', async (request, response) => {
     response.sendStatus(200);
 });
 
+recetasRouter.put('/:id', async (request, response) => {
+    const { user } = request;
+    if (!user) {
+        return response.sendStatus(401);
+    }
+    console.log(request.body);
+    const { comidasCompletadas} = request.body;
+    await Recetas.findByIdAndUpdate(request.params.id, {
+      comidasCompletadas: comidasCompletadas,
+    });
+    response.sendStatus(200);
+});
+
 module.exports = recetasRouter;

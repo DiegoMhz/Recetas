@@ -1,20 +1,22 @@
 const divcontenedor = document.querySelector('#contenedor')
-const btnRecetas = document.querySelector('#btn-recetas')
-const btnCerrarSesion = document.querySelector('#btn-cerrar')
-const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
-const btnProgreso = document.querySelector('#btn-progreso')
-const labelProgreso = document.querySelector('#label-progreso')
-const btnPerfil = document.querySelector('#btn-perfil')
-const svgRecetas = document.querySelector('#svg-recetas')
+const btnBuscarRecetas = document.querySelector('#btn-buscar-recetas')
+const btnCerrarSesion = document.querySelectorAll('#btn-cerrar')
+const btnProgreso = document.querySelectorAll('#btn-progreso')
+const btnPerfil = document.querySelectorAll('#btn-perfil')
+const btnRecetas = document.querySelectorAll('#btn-recetas')
 const cardFront = document.querySelectorAll('.front')
 const cardBack = document.querySelectorAll('.back')
-const btnMenuMobile = document.querySelector('.btn-mobil')
-const menuMobile = document.querySelector('.menu-mobil')
-const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
-const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
-const btnProgresoMobile = document.querySelector('#btn-progreso-mobil')
-const divBtnRecetas = document.querySelector('#div-btn-recetas')
+const card = document.querySelectorAll('.card')
+const divBtnRecetas = document.querySelector('.div-btn-recetas')
+const menuIcon = document.querySelector('#menu-icon')
+const menuTelefono = document.querySelector('.menu-telefono')
 divBtnRecetas.classList.add('hidden')
+
+menuIcon.addEventListener('click',e => {
+  menuTelefono.classList.toggle('menu-visible')
+})
+
+const id = window.location.pathname.split('/')[2]
 
 const getRecetas = async () => {
   const { data } = await axios.get('/api/recetas', {
@@ -937,90 +939,51 @@ getRecetas()
     }, {
         withCredentials: true
     })
+    console.log(data);
   }
 
-btnMenuMobile.addEventListener('click', e =>{
-  menuMobile.classList.toggle('top-20')
-  divcontenedor.classList.toggle('displaynone')
-})
 
-cardFront.forEach(element => {
-element.addEventListener('click', e => {
-const cardFront = element.parentElement.children[0]
-const cardBack = element.parentElement.children[1]
-  cardFront.style.transform = "rotateY(180deg)";
-  cardBack.style.transform = "rotateY(360deg)";
-  cardBack.classList.add('back-overflow')
-})
+card.forEach(card => {
+  card.addEventListener('click', e => {
+    card.classList.toggle('card-select')
+    const cardFrontCard = card.children[0];
+    const cardBackCard = card.children[1];
+    cardFrontCard.classList.toggle('rotar-front');
+    cardBackCard.classList.toggle('rotar-back');
+  })  
 });
 
-cardBack.forEach(element => {
-  element.addEventListener('click', e => {
-  const cardFront = element.parentElement.children[0]
-  const cardBack = element.parentElement.children[1]
-    cardFront.style.transform = "rotateY(360deg)";
-    cardBack.style.transform = "rotateY(180deg)";
-    cardBack.classList.remove('back-overflow')
+
+btnRecetas.forEach(element => {
+  element.addEventListener('click', e =>{
+    window.location.pathname = `/recetas/${id}`;
   })
-  });
+});
 
-svgRecetas.addEventListener('click', e => {
-const id = window.location.pathname.split('/')[2]
-window.location.pathname = `/recetas/${id}`;
-})
-
-
-
-btnRecetas.addEventListener('click', e => {
- 
-  addRecetas()
-const id = window.location.pathname.split('/')[2]
-window.location.pathname = `/recetas/${id}`;
-})
-
-
-btnCerrarSesion.addEventListener('click', e =>{
-  window.location.pathname =  '/signup/'
-})
-
-
-btnProgreso.addEventListener('click', e =>{
-  const id = window.location.pathname.split('/')[2];
+btnProgreso.forEach(element => {
+  element.addEventListener('click', e =>{
   window.location.pathname = `progreso/${id}`
-})
-
-
-
-labelProgreso.addEventListener('click', e =>{
-  const id = window.location.pathname.split('/')[2];
-  window.location.pathname = `progreso/:${id}`
-})
-
-btnPerfil.addEventListener('click', e =>{
-  const id = window.location.pathname.split('/')[2];
-  window.location.pathname = `perfil/${id}`
-})
-
-
-// Telefono
-btnPerfilMobile.addEventListener('click', e =>{
-  const id = window.location.pathname.split('/')[2];
-  window.location.pathname = `perfil/${id}`
-})
-btnProgresoMobile.addEventListener('click', e =>{
-  const id = window.location.pathname.split('/')[2];
-  window.location.pathname = `progreso/${id}`
-})
-
-
-svgRecetasMobile.addEventListener('click', e => {
-  const id = window.location.pathname.split('/')[2]
-  window.location.pathname = `/recetas/${id}`;
   })
+});
 
-  btnCerrarSesionMobile.addEventListener('click', e =>{
+btnPerfil.forEach(element => {
+  element.addEventListener('click', e =>{
+    window.location.pathname = `perfil/${id}`
+  })
+});
+
+btnCerrarSesion.forEach(element => {
+  element.addEventListener('click', e =>{
     window.location.pathname =  '/signup/'
   })
+});
+
+
+
+btnBuscarRecetas.addEventListener('click', e => {
+  addRecetas()
+window.location.pathname = `/recetas/${id}`;
+})
 
 
 

@@ -1,58 +1,104 @@
+
+const REGEX_NAME = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+const REGEX_PASSWORD =  /^(?=.*\d)(?=.*[a-z]).{5,}$/;
+const REGEX_EMAIL = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+
+const inputName = document.querySelector('#input-name');
+const inputPassword = document.querySelector('#input-password');
+const inputEmail = document.querySelector('#input-email');
+const inputConfirm = document.querySelector('#input-confirm');
+const formError = document.querySelector('.form-error');
 const form = document.querySelector('#form');
-const emailInput = document.querySelector('#email-input');
-const passwordInput = document.querySelector('#password-input');
-const matchInput = document.querySelector('#match-input');
-const formBtn = document.querySelector('#form-btn');
+const btn = document.querySelector('#btn');
+const menuIcon = document.querySelector('#menu-icon');
+const menuTelefono = document.querySelector('.menu-telefono');
+const svgInputPassword = document.querySelectorAll('.svg-input-password');
+const svgPasswordVisible = document.querySelectorAll('.svg-password-visible');
 
-let emailValidation = false;
-let passwordValidation = false;
-let passwordMatchValidation = false;
 
-const validation = (input, regexValidation) => {
-    formBtn.disabled = !emailValidation || !passwordValidation || !passwordMatchValidation ? true : false;
-    if (!regexValidation && input.value !== '') {
-        input.classList.remove('border-2', 'border-green-500');
-        input.classList.add('border-2', 'border-rose-500');
-    } else if (regexValidation) {
-        input.classList.remove('border-2', 'border-rose-500');
-        input.classList.add('border-2', 'border-green-500');
-    } else if (input.value === '') {
-        input.classList.remove('border-2', 'border-rose-500');
-        input.classList.remove('border-2', 'border-green-500');
+svgInputPassword.forEach(element => {
+    element.addEventListener('click', e => {
+        const input = element.parentElement.parentElement.children[1];
+        input.setAttribute('type','text');
+        element.parentElement.children[1].classList.toggle('d');
+    })
+});
+
+
+svgPasswordVisible.forEach(element => {
+    element.addEventListener('click', e => {
+        const input = element.parentElement.parentElement.children[1];
+        input.setAttribute('type','password');
+        element.parentElement.children[1].classList.toggle('d');
+    })
+});
+
+
+menuIcon.addEventListener('click', e => {
+    form.classList.toggle("form-opacity");
+    menuTelefono.classList.toggle("menu-visible");
+})
+
+
+let validacionEmail = false
+let validacionPassword = false
+let validacionConfirm = false
+
+const validacion = (input, element) =>{
+   const formatos = input.parentElement.children[2]
+    if (!validacionPassword || !validacionEmail || !validacionConfirm) {
+        console.log('se');
+        btn.disabled = true
+    }
+    else{
+        btn.disabled = false
+      
+    }
+    if (!element && input.value != '') {
+        formatos.classList.add('info-visible')
+    }
+    else{
+        console.log('Si se cumple');
+        formatos.classList.remove('info-visible')
     }
 }
 
-emailInput.addEventListener('input', e => {
-    const EMAIL_REGEX = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-    emailValidation = EMAIL_REGEX.test(e.target.value);
-    validation(emailInput, emailValidation);
-});
 
-passwordInput.addEventListener('input', e => {
-    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[0-9]).{8,24}$/;
-    passwordValidation = PASSWORD_REGEX.test(e.target.value);
-    passwordMatchValidation = e.target.value === matchInput.value && e.target.value !== '';
-    validation(passwordInput, passwordValidation);
-    validation(matchInput, passwordMatchValidation);
-});
+inputEmail.addEventListener('input', e =>{
+    validacionEmail = REGEX_EMAIL.test(e.target.value);
+    validacion(inputEmail, validacionEmail)
+})
 
-matchInput.addEventListener('input', e => {
-    passwordMatchValidation = passwordInput.value === e.target.value && e.target.value !== '';
-    validation(matchInput, passwordMatchValidation);
-});
+inputPassword.addEventListener('input', e =>{
+    validacionPassword = REGEX_PASSWORD.test(e.target.value);
+    validacionConfirm = e.target.value === inputConfirm.value;
+    validacion(inputPassword, validacionPassword)
+    validacion(inputConfirm, validacionConfirm)
+})
 
-form.addEventListener('submit', async e => {
+inputConfirm.addEventListener('input', e =>{
+    validacionConfirm = inputPassword.value === e.target.value;
+    validacion(inputConfirm, validacionConfirm)
+}) 
+
+form.addEventListener('submit', async e =>{
     e.preventDefault();
-
-    try {
-        const newUser = {
-            email: emailInput.value,
-            password: passwordInput.value
+    const loader = document.querySelector('.contenedor-loader')
+    loader.classList.add('loader-visible')
+    btn.innerText = ''
+    formError.classList.remove('error-visible') 
+        try {
+            const newUser = {
+                email: inputEmail.value,
+                password: inputPassword.value
+            }
+            await axios.post('/api/users/', newUser);
+            window.location.pathname = '/login';
+        } catch (error) {
+            console.log(error.response.data.error);
+            loader.classList.remove('loader-visible')
+            btn.innerText = 'Registrar'
+            formError.classList.add('error-visible') 
+            console.log(formError);
         }
-        await axios.post('/api/users/', newUser);
-        window.location.pathname = '/login';
-    } catch (error) {
-        console.log(error.response.data.error);
-    }
-
-});
+})

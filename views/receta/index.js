@@ -1,64 +1,54 @@
 
-const divcontenedor = document.querySelector('#contenedor')
-const select = document.querySelector('#select-semanas')
-const btnProgreso = document.querySelector('#btn-progreso')
-const btnPerfil = document.querySelector('#btn-perfil')
-const btnInicio = document.querySelector('#btn-inicio')
-const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
-const btnInicioMobile = document.querySelector('#btn-inicio-mobil')
-const btnCerrarSesion = document.querySelector('#btn-cerrar')
-const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
-const labelProgreso = document.querySelector('#label-progreso')
-const divSelect = document.querySelector('#select')
-const btnMenuMobile = document.querySelector('.btn-mobil')
-const menuMobile = document.querySelector('.menu-mobil')
-
+const divcontenedor = document.querySelector('#contenedor');
+const select = document.querySelector('#select-semanas');
+const divSelect = document.querySelector('#select');
+const btnMenuMobile = document.querySelector('.btn-mobil');
+const menuMobile = document.querySelector('.menu-mobil');
+const btnCerrarSesion = document.querySelectorAll('#btn-cerrar');
+const btnProgreso = document.querySelectorAll('#btn-progreso');
+const btnPerfil = document.querySelectorAll('#btn-perfil');
+const btnInicio = document.querySelectorAll('#btn-inicio');
+const menuIcon = document.querySelector('#menu-icon')
+const menuTelefono = document.querySelector('.menu-telefono')
+const contenedorImage = document.querySelector('#contenedor-image')
+const btnBuscarReceta = document.querySelector('#btn-buscar-recetas');
+const body = document.querySelector('body')
 // Telefono
-btnInicioMobile.addEventListener('click', e => {
-  const id = window.location.pathname.split('/')[2]
-  window.location.pathname = `/principal/${id}`;
-  })
 
-  btnMenuMobile.addEventListener('click', e =>{
-    menuMobile.classList.toggle('top-20')
-    divcontenedor.classList.toggle('hidden')
+const id = window.location.pathname.split('/')[2]
+
+
+menuIcon.addEventListener('click',e => {
+  menuTelefono.classList.toggle('menu-visible')
+})
+
+btnInicio.forEach(element => {
+  element.addEventListener('click', e =>{
+    window.location.pathname = `/principal/${id}`;
   })
-  btnPerfilMobile.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
+});
+
+btnProgreso.forEach(element => {
+  element.addEventListener('click', e =>{
+  window.location.pathname = `progreso/${id}`
+  })
+});
+
+btnPerfil.forEach(element => {
+  element.addEventListener('click', e =>{
     window.location.pathname = `perfil/${id}`
   })
+});
 
-btnInicio.addEventListener('click', e => {
-  const id = window.location.pathname.split('/')[2]
-  window.location.pathname = `/principal/${id}`;
-  })
-  
-  
-  btnCerrarSesion.addEventListener('click', e =>{
+btnCerrarSesion.forEach(element => {
+  element.addEventListener('click', e =>{
     window.location.pathname =  '/signup/'
   })
-  
-  btnCerrarSesionMobile.addEventListener('click', e =>{
-    window.location.pathname =  '/signup/'
-  })
+});
 
-  btnPerfil.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `perfil/${id}`
-  })
-  
-  
-  btnProgreso.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `progreso/${id}`
-  })
-  
-  labelProgreso.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `progreso/${id}`
-  })
-  
-  const addRecetas = async ()=>{
+
+
+const addRecetas = async ()=>{
     const { data } = await axios.post('/api/recetas', {
       SemanaUno: [
         {Lunes:{Desayuno:{Titulo:'Tostadas de pan integral con queso fresco y frutas',
@@ -967,40 +957,39 @@ btnInicio.addEventListener('click', e => {
     }, {
         withCredentials: true
     })
-  }
+ }
 
-
-
-const getTodos = async () => {
+const getRecetas = async () => {
+  console.log('se');
     const { data } = await axios.get('/api/recetas', {
         withCredentials: true
     })
-    console.log(data);
-if (divcontenedor.innerText === '') {
-  divcontenedor.innerHTML = `<div id="div-btn-recetas" class= "text-center">
-  <p>Aun no tienes tu receta mensual,para obtenerla</p>
-  <div class="flex justify-center">
-  <button  type="button" id="btn-recetas" class="bg-green-500 hover:bg-green-600 p-2 rounded-lg">Presiona aqui</button>
-  </div>
-</div>
-  </div> `
-  console.log('EL IF');
-  console.log(divcontenedor.children[0].children[1].children[0]);
-  const botonRecetas = divcontenedor.children[0].children[1].children[0]
 
-
-  botonRecetas.addEventListener('click', async e => {
-   addRecetas();
-    location.reload();
+if (data[0] === undefined) {
+  console.log('siisiisisisisisisissi');
+  contenedorImage.children[0].children[1].classList.add('displaynone')
+  divcontenedor.style.height= '100%';
+  contenedorImage.style.height= '100%';
+  select.classList.add('displaynone')
+  btnBuscarReceta.addEventListener('click', async e => {
+  addRecetas();
+   var say_hello = function () { location.reload() };  
+  setTimeout(say_hello, 3000);  
   })
 }
+else{
+  btnBuscarReceta.classList.add('displaynone')
+  contenedorImage.children[0].children[2].classList.add('displaynone')
 
-   divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
-    <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
+
+const divCard = document.createElement('div')
+divCard.className = 'contenedor-card'
+   divCard.innerHTML=`<h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
+    <h3 class="mt-4 font-bold " id="lunes" style="font-size: 24px;">Lunes</h3>
 
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card"  class="h-96 w-72 relative m-4 1">
+      <div class="card"  id="1">
 
         <div class="face front">
           <img src="//assets.kraftfoods.com/recipe_images/opendeploy/197047_640x428.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1054,7 +1043,7 @@ if (divcontenedor.innerText === '') {
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4 2">
+      <div class="card" id="2">
         <div class="face front">
           <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
@@ -1101,7 +1090,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 3">
+      <div class="card" id="3">
 
         <div class="face front">
           <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2018/03/ensalada-de-aguacate-con-pollo-y-nuez-de-la-india.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1162,7 +1151,7 @@ if (divcontenedor.innerText === '') {
 
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 4">
+      <div class="card" id="4">
 
         <div class="face front">
           <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1213,7 +1202,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 5">
+      <div class="card" id="5">
 
         <div class="face front">
           <img src="https://www.recetasmundo.com/wp-content/uploads/2022/11/Wraps-de-tortilla-con-salmon-lechuga-y-pimientos.jpg.webp" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1263,7 +1252,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 6">
+      <div class="card" id="6">
         <div class="face front">
           <img src="https://assets.unileversolutions.com/recipes-v2/117229.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
@@ -1323,7 +1312,7 @@ if (divcontenedor.innerText === '') {
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 7">
+      <div class="card" id="7">
 
         <div class="face front">
           <img src="https://deliciaskitchen.com/wp-content/uploads/2021/11/gachas-de-avena-porridge.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1374,7 +1363,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 8">
+      <div class="card" id="8">
 
         <div class="face front">
           <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1425,7 +1414,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 9">
+      <div class="card" id="9">
 
         <div class="face front">
           <img src="https://thumbs.dreamstime.com/b/salmón-al-horno-o-frito-y-ensalada-paleo-keto-fodmap-dieta-comida-mediterránea-con-pescado-vapor-plato-asiático-de-teriyaki-209299279.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1484,7 +1473,7 @@ if (divcontenedor.innerText === '') {
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 10">
+      <div class="card" id="10">
 
         <div class="face front">
           <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/tostada-de-aguacate-y-huevo-frito/900/tostada-de-aguacate-y-huevo-frito.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1534,7 +1523,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 11">
+      <div class="card" id="11">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20200312162929/receta-arroz-pollo-menestra-verduras/1-39-435/arroz-adobe-t.jpg?tx=w_680" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1585,7 +1574,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 12">
+      <div class="card" id="12">
 
         <div class="face front">
           <img src="https://elikaeskola.com/wp-content/uploads/me-siento-culpable-por-comer.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1649,7 +1638,7 @@ if (divcontenedor.innerText === '') {
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 13">
+      <div class="card" id="13">
 
         <div class="face front">
           <img src="https://www.recetasnestlecam.com/sites/default/files/srh_recipes/84cd4a5713e4036ca0b3b796400fda1b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1705,7 +1694,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 14">
+      <div class="card" id="14">
 
         <div class="face front">
           <img src="https://cdn.optipic.io/site-102199/wp-content/uploads/2022/08/Lasana-Espinaca-Ricotta--500x450.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1762,7 +1751,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 15">
+      <div class="card" id="15">
 
         <div class="face front">
           <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1823,7 +1812,7 @@ if (divcontenedor.innerText === '') {
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 16">
+      <div class="card" id="16">
 
         <div class="face front">
           <img src="https://www.cucute.com/blog/wp-content/uploads/2020/08/huevos-con-espinacas-champinones-jamon-menta-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1875,7 +1864,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 17">
+      <div class="card" id="17">
 
         <div class="face front">
           <img src="https://cdn0.recetasgratis.net/es/posts/7/6/4/ensalada_de_garbanzos_y_pollo_61467_600.jpg"" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1929,7 +1918,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 18">
+      <div class="card" id="18">
 
         <div class="face front">
           <img src="https://mejorconsalud.as.com/wp-content/uploads/2022/02/ensalada-quinoa-pollo-768x512.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -1993,7 +1982,7 @@ if (divcontenedor.innerText === '') {
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 19">
+      <div class="card" id="19">
 
         <div class="face front">
           <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2042,7 +2031,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 20">
+      <div class="card" id="20">
 
         <div class="face front">
           <img src="https://img.freepik.com/fotos-premium/brocheta-pollo-calabaza-setas-brochetas_75924-22681.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2093,7 +2082,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 21">
+      <div class="card" id="21">
 
         <div class="face front">
           <img src="https://okdiario.com/img/2018/05/19/nuggets-de-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2147,15 +2136,17 @@ if (divcontenedor.innerText === '') {
       </div>
     </div>
  `
+ divcontenedor.appendChild(divCard)
+
  select.addEventListener('input', e => {
     
   if (e.target.value === 'SemanaUno') {
-    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
+    divCard.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
     <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
 
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card"  class="h-96 w-72 relative m-4 1">
+      <div class="card" id="1">
 
         <div class="face front">
           <img src="//assets.kraftfoods.com/recipe_images/opendeploy/197047_640x428.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2209,7 +2200,7 @@ if (divcontenedor.innerText === '') {
 
 
 
-      <div id="card" class="h-96 w-72 relative m-4 2">
+      <div class="card" id="2">
         <div class="face front">
           <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Almuerzo</h3>
@@ -2256,7 +2247,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 3">
+      <div class="card" id="3">
 
         <div class="face front">
           <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2018/03/ensalada-de-aguacate-con-pollo-y-nuez-de-la-india.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2317,7 +2308,7 @@ if (divcontenedor.innerText === '') {
 
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 4">
+      <div class="card" id="4">
 
         <div class="face front">
           <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2368,7 +2359,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 5">
+      <div class="card" id="5">
 
         <div class="face front">
           <img src="https://www.recetasmundo.com/wp-content/uploads/2022/11/Wraps-de-tortilla-con-salmon-lechuga-y-pimientos.jpg.webp" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2418,7 +2409,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 6">
+      <div class="card" id="6">
         <div class="face front">
           <img src="https://assets.unileversolutions.com/recipes-v2/117229.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
           <h3 class="font-bold" style="position: absolute; top: 0; width: 100%; height: 45px; line-height: 45px; color: #fff; background: rgba(0,0,0,.4); text-align: center;">Cena</h3>
@@ -2478,7 +2469,7 @@ if (divcontenedor.innerText === '') {
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 7">
+      <div class="card" id="7">
 
         <div class="face front">
           <img src="https://deliciaskitchen.com/wp-content/uploads/2021/11/gachas-de-avena-porridge.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2529,7 +2520,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 8">
+      <div class="card" id="8">
 
         <div class="face front">
           <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2580,7 +2571,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 9">
+      <div class="card" id="9">
 
         <div class="face front">
           <img src="https://thumbs.dreamstime.com/b/salmón-al-horno-o-frito-y-ensalada-paleo-keto-fodmap-dieta-comida-mediterránea-con-pescado-vapor-plato-asiático-de-teriyaki-209299279.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2639,7 +2630,7 @@ if (divcontenedor.innerText === '') {
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 10">
+      <div class="card" id="10">
 
         <div class="face front">
           <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/tostada-de-aguacate-y-huevo-frito/900/tostada-de-aguacate-y-huevo-frito.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2689,7 +2680,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 11">
+      <div class="card" id="11">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20200312162929/receta-arroz-pollo-menestra-verduras/1-39-435/arroz-adobe-t.jpg?tx=w_680" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2740,7 +2731,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 12">
+      <div class="card" id="12">
 
         <div class="face front">
           <img src="https://elikaeskola.com/wp-content/uploads/me-siento-culpable-por-comer.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2804,7 +2795,7 @@ if (divcontenedor.innerText === '') {
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 13">
+      <div class="card" id="13">
 
         <div class="face front">
           <img src="https://www.recetasnestlecam.com/sites/default/files/srh_recipes/84cd4a5713e4036ca0b3b796400fda1b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2860,7 +2851,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 14">
+      <div class="card" id="14">
 
         <div class="face front">
           <img src="https://cdn.optipic.io/site-102199/wp-content/uploads/2022/08/Lasana-Espinaca-Ricotta--500x450.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2917,7 +2908,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 15">
+      <div class="card" id="15">
 
         <div class="face front">
           <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -2978,7 +2969,7 @@ if (divcontenedor.innerText === '') {
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 16">
+      <div class="card" id="16">
 
         <div class="face front">
           <img src="https://www.cucute.com/blog/wp-content/uploads/2020/08/huevos-con-espinacas-champinones-jamon-menta-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3030,7 +3021,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 17">
+      <div class="card" id="17">
 
         <div class="face front">
           <img src="https://cdn0.recetasgratis.net/es/posts/7/6/4/ensalada_de_garbanzos_y_pollo_61467_600.jpg"" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3084,7 +3075,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 18">
+      <div class="card" id="18">
 
         <div class="face front">
           <img src="https://mejorconsalud.as.com/wp-content/uploads/2022/02/ensalada-quinoa-pollo-768x512.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3148,7 +3139,7 @@ if (divcontenedor.innerText === '') {
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 19">
+      <div class="card" id="19">
 
         <div class="face front">
           <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3197,7 +3188,7 @@ if (divcontenedor.innerText === '') {
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 20">
+      <div class="card" id="20">
 
         <div class="face front">
           <img src="https://img.freepik.com/fotos-premium/brocheta-pollo-calabaza-setas-brochetas_75924-22681.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3248,7 +3239,7 @@ if (divcontenedor.innerText === '') {
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 21">
+      <div class="card" id="21">
 
         <div class="face front">
           <img src="https://okdiario.com/img/2018/05/19/nuggets-de-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3308,12 +3299,12 @@ FuncionesCarta();
 
   else if (e.target.value === 'SemanaDos') {
 
-    divcontenedor.innerHTML=`<h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°2</h3>
+    divCard.innerHTML=`<h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°2</h3>
     <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
 
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 22">
+      <div class="card" id="22">
 
         <div class="face front">
           <img src="https://storage.googleapis.com/avena-recipes/2019/10/1571780272665.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3364,7 +3355,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 23">
+      <div class="card" id="23">
 
         <div class="face front">
           <img src="https://images.aws.nestle.recipes/original/b20ee479682a5f0dfe7e11db0529d309_ARROZ_FRITO_CON_CAMARONES.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3416,7 +3407,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 24">
+      <div class="card" id="24">
 
         <div class="face front">
           <img src="https://www.deliciosi.com/images/1100/1161/ensalada-de-pollo-con-manzana.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3475,7 +3466,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 25">
+      <div class="card" id="25">
 
         <div class="face front">
           <img src="https://cdn.pixabay.com/photo/2016/11/18/19/00/bread-1836411_640.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3526,7 +3517,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 26">
+      <div class="card" id="26">
 
         <div class="face front">
           <img src="https://1.bp.blogspot.com/-te9Krjz7_8Q/WiJaxxJSUcI/AAAAAAAAB9Q/1f5f7CO1BPsyr4kPoEqpEdO4DhoubC84QCLcBGAs/s1600/Salm%25C3%25B3n%2Basi%25C3%25A1tico%2Bcon%2Bverduras%2By%2Barroz%2Bintegral%2B-%2Breceta.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3579,7 +3570,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 27">
+      <div class="card" id="27">
 
         <div class="face front">
           <img src="https://style.shockvisual.net/wp-content/uploads/2020/01/bowl-of-cesar-salad-VUPQEAL.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3646,7 +3637,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 28">
+      <div class="card" id="28">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20210318186319/bowl-yogur-natural-fruta-muesli/0-932-147/bowl-yogur-fruta-m.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3694,7 +3685,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 29">
+      <div class="card" id="29">
 
         <div class="face front">
           <img src="https://mui.kitchen/__export/1661875313666/sites/muikitchen/img/2022/08/30/istockphoto-661236878-170667a_x1x.jpg_1301049368.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3754,7 +3745,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 30">
+      <div class="card" id="30">
 
         <div class="face front">
           <img src="https://thumbs.dreamstime.com/b/huevos-revueltos-con-verduras-y-pan-en-un-plato-tomates-de-pepino-rebanados-tostados-vaso-zumo-naranja-natural-blanco-sobre-una-211573201.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3813,7 +3804,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 31">
+      <div class="card" id="31">
 
         <div class="face front">
           <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/30/f850x638-32729_110218_5050.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3861,7 +3852,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 32">
+      <div class="card" id="32">
 
         <div class="face front">
           <img src="https://www.demoslavueltaaldia.com/sites/default/files/tortilla-de-verduras-gratinada-con-queso.jpg.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3913,7 +3904,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 33">
+      <div class="card" id="33">
 
         <div class="face front">
           <img src="https://goodhealthyrecipe.com/wp-content/uploads/2020/03/camarones-mango-verde-aguacate-360x360.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -3974,7 +3965,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 34">
+      <div class="card" id="34">
 
         <div class="face front">
           <img src="https://img.freepik.com/fotos-premium/tostada-integral-huevos-revueltos-champinones-requeson-desayuno-o-brunch-saludable-menu-restaurante-dieta-receta-libro-cocina_114941-453.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4027,7 +4018,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 35">
+      <div class="card" id="35">
 
         <div class="face front">
           <img src="https://myfreshfood.es/wp-content/uploads/2021/07/hamburguesa-de-lentejas-y-arroz-integral.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4083,7 +4074,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 36">
+      <div class="card" id="36">
 
         <div class="face front">
           <img src="https://recetaland.com/wp-content/uploads/2020/10/Sandwich-de-Pavo-y-Queso-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4145,7 +4136,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 37">
+      <div class="card" id="37">
 
         <div class="face front">
           <img src="https://mui.kitchen/__export/1661129451077/sites/muikitchen/img/2022/08/21/consiente_a_tus_nixos_con_esta_deliciosa_y_nutritiva_ensalada_de_frutas_con_yogurt_1.jpg_1194119626.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4193,7 +4184,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 38">
+      <div class="card" id="38">
 
         <div class="face front">
           <img src="https://bachoco.com.mx/descubre/wp-content/uploads/2022/09/slider_1000x565-4.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4249,7 +4240,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 39">
+      <div class="card" id="39">
 
         <div class="face front">
           <img src="https://www.cardamomo.news/__export/1608237046685/sites/debate/img/2020/12/17/ensalada_fresca_de_fresasx_espinacas_y_queso_de_cabra_crop1608236925366.jpeg_242310155.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4308,7 +4299,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 40">
+      <div class="card" id="40">
 
         <div class="face front">
           <img src="https://previews.123rf.com/images/whiteboxmedia/whiteboxmedia1706/whiteboxmedia170600018/79394454-mantequilla-de-pl%C3%A1tano-y-man%C3%AD-en-rodajas-en-pan-integral-sobre-un-fondo-verde.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4356,7 +4347,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 41">
+      <div class="card" id="41">
 
         <div class="face front">
           <img src="https://benfumat.com/wp-content/uploads/2017/04/ensalada-de-patata-y-salmon-b.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4408,7 +4399,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 42">
+      <div class="card" id="42">
 
         <div class="face front">
           <img src="https://www.demoslavueltaaldia.com/sites/default/files/tortilla-de-verduras-gratinada-con-queso.jpg.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4466,12 +4457,12 @@ FuncionesCarta();
   }
 
   else if (e.target.value === 'SemanaTres') {
-    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°3</h3>
+    divCard.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°3</h3>
     <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
 
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 43">
+      <div class="card" id="43">
 
         <div class="face front">
           <img src="https://www.recetasjudias.com/wp-content/uploads/2016/06/Perico.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4522,7 +4513,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 44">
+      <div class="card" id="44">
 
         <div class="face front">
           <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-lechuga.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4574,7 +4565,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 45">
+      <div class="card" id="45">
 
         <div class="face front">
           <img src="https://cdn1.cocina-familiar.com/recetas/salmon-a-la-plancha-con-arroz-y-verduras-al-vapor.JPG" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4636,7 +4627,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 46">
+      <div class="card" id="46">
 
         <div class="face front">
           <img src="https://images.hola.com/imagenes/cocina/recetas/20210318186319/bowl-yogur-natural-fruta-muesli/0-932-147/bowl-yogur-fruta-m.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4683,7 +4674,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 47">
+      <div class="card" id="47">
 
         <div class="face front">
           <img src="https://www.cardamomo.news/__export/1608400772614/sites/debate/img/2020/12/19/ensalada_griega_con_pollo_a_la_parrilla_y_vinagreta_a_la_hierba_crop1608400698420.jpeg_1187729725.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4737,7 +4728,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 48">
+      <div class="card" id="48">
 
         <div class="face front">
           <img src="https://chefeel.com/chefgeneralfiles/2022/12/mixed-and-assorted-fruits-scaled.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4798,7 +4789,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 49">
+      <div class="card" id="49">
 
         <div class="face front">
           <img src="https://img.freepik.com/fotos-premium/tostada-aguacate-sobre-pan-integral-sandwich_386185-5962.jpg?w=2000" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4851,7 +4842,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 50">
+      <div class="card" id="50">
 
         <div class="face front">
           <img src="https://img-global.cpcdn.com/recipes/fa5a1f4cff92fe28/680x482cq70/huevos-revueltos-con-champinones-y-tocino-foto-principal.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4906,7 +4897,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 51">
+      <div class="card" id="51">
 
         <div class="face front">
           <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.18169-9/17309140_1210551712398400_1890769323716943521_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=1tMDWXMIxYwAX_Dbas6&_nc_ht=scontent-mia3-1.xx&oh=00_AfCRWESOlv-ZzkcRZ47mF02uvN60MDAFNG7epxl7gqBORA&oe=640AD23D" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -4971,7 +4962,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 52">
+      <div class="card" id="52">
 
         <div class="face front">
           <img src="https://www.vidactual.com/rcpmaker/wp-content/uploads/2018/10/Omelet-espinaca.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5026,7 +5017,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 53">
+      <div class="card" id="53">
 
         <div class="face front">
           <img src="https://thumbs.dreamstime.com/b/hamburguesas-de-pollo-la-parrilla-aguacate-y-ensalada-verduras-frescas-con-tomate-r%C3%BAcula-vista-superior-217533690.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5082,7 +5073,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 54">
+      <div class="card" id="54">
 
         <div class="face front">
           <img src="http://4.bp.blogspot.com/-gkNhEPegHwQ/VLF0aD_ocOI/AAAAAAAAGss/kcf9ga3A0wQ/s1600/lasa%C3%B1a%2Bde%2Bberenjenas%2Bcon%2Bespinacas%2By%2Breques%C3%B3n-3.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5149,7 +5140,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 55">
+      <div class="card" id="55">
 
         <div class="face front">
           <img src="https://media.istockphoto.com/id/516929970/es/foto/tostado-jam%C3%B3n-y-queso-s%C3%A1ndwiches-de-pan-blanco-y-integral.jpg?s=612x612&w=0&k=20&c=7fKr89gNbVRVhZFdIFvjjz4loWQZ6ryCNQxujkVHgqU=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5199,7 +5190,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 56">
+      <div class="card" id="56">
 
         <div class="face front">
           <img src="https://previews.123rf.com/images/lenyvavsha/lenyvavsha1706/lenyvavsha170600103/79676054-comida-saludable-filetes-de-salm%C3%B3n-a-la-parrilla-con-ensalada-de-verduras-y-r%C3%BAcula-en-la-mesa-horizo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5250,7 +5241,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 57">
+      <div class="card" id="57">
 
         <div class="face front">
           <img src="https://www.gourmet.cl/wp-content/uploads/2012/07/curry-de-verduras.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5318,7 +5309,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 58">
+      <div class="card" id="58">
 
         <div class="face front">
           <img src="https://www.mexirecetas.com/recetas-de-navidad/img600/tosta-de-salmon.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5371,7 +5362,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 59">
+      <div class="card" id="59">
 
         <div class="face front">
           <img src="https://unareceta.com/wp-content/uploads/2018/03/receta-de-ensalada-de-atun-con-lechuga.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5425,7 +5416,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 60">
+      <div class="card" id="60">
 
         <div class="face front">
           <img src="https://previews.123rf.com/images/plutagoraphotos/plutagoraphotos1503/plutagoraphotos150300029/38083521-pechuga-de-pollo-a-la-parrilla-brócoli-al-vapor-y-las-zanahorias-al-vapor-dispuestos-en-un-plato-com.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5484,7 +5475,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
 
-      <div id="card" class="h-96 w-72 relative m-4 61">
+      <div class="card" id="61">
 
         <div class="face front">
           <img src="https://storage.googleapis.com/avena-recipes/2019/10/1571780272665.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5535,7 +5526,7 @@ FuncionesCarta();
         
       </div>
 
-      <div id="card" class="h-96 w-72 relative m-4 62">
+      <div class="card" id="62">
 
         <div class="face front">
           <img src="https://d320djwtwnl5uo.cloudfront.net/recetas/cover/s-ndw_AfsS859PRoHcJpKwd6r4Me0FUBDtCg.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5589,7 +5580,7 @@ FuncionesCarta();
       </div>
 
 
-      <div id="card" class="h-96 w-72 relative m-4 63">
+      <div class="card" id="63">
 
         <div class="face front">
           <img src="https://bachoco.com.mx/descubre/wp-content/uploads/2022/09/slider_1000x565-4.png" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5649,12 +5640,12 @@ FuncionesCarta();
   }
 
   else if (e.target.value === 'SemanaCuatro') {
-    divcontenedor.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°4</h3>
+    divCard.innerHTML=`  <h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°4</h3>
     <h3 class="mt-4 font-bold " style="font-size: 24px;">Lunes</h3>
     
       <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 64">
+      <div class="card" id="64">
     
         <div class="face front">
           <img src="https://www.cuerpomente.com/medio/2016/04/27/sandwich-de-tofu_d77116d1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5710,7 +5701,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 65">
+      <div class="card" id="65">
     
         <div class="face front">
           <img src="https://i.pinimg.com/736x/ca/43/46/ca43468e562cc84ee23797d945ba12c5--pollo-picante-tans.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5764,7 +5755,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 66">
+      <div class="card" id="66">
     
         <div class="face front">
           <img src="https://style.shockvisual.net/wp-content/uploads/2020/01/bowl-of-cesar-salad-VUPQEAL.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5829,7 +5820,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 67">
+      <div class="card" id="67">
     
         <div class="face front">
           <img src="https://www.lasrecetasdelaura.com/wp-content/uploads/2022/03/IMG_0769-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5880,7 +5871,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 68">
+      <div class="card" id="68">
     
         <div class="face front">
           <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/01/ensalada-de-garbanzo-con-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -5934,7 +5925,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 69">
+      <div class="card" id="69">
     
         <div class="face front">
           <img src="https://www.deliciosi.com/images/2600/2621/pasta-con-verduras-y-pollo.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6004,7 +5995,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 70">
+      <div class="card" id="70">
     
         <div class="face front">
           <img src="https://media.istockphoto.com/id/1068756476/es/foto/casero-tostadas-de-centeno-con-queso-cottage-y-pi%C3%B1a-en-tablero-de-madera-blanco.jpg?s=170667a&w=0&k=20&c=SRY8HMiZmMq2ioCG7GyymGr1wyvkI8JzhFScu2lJ3tY=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6054,7 +6045,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 71">
+      <div class="card" id="71">
     
         <div class="face front">
           <img src="https://www.cocinacaserayfacil.net/wp-content/uploads/2019/04/lubina-a-la-plancha-con-verduras-632x356.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6109,7 +6100,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 72">
+      <div class="card" id="72">
     
         <div class="face front">
           <img src="https://www.recetasderechupete.com/wp-content/uploads/2019/06/Pollo-asado-al-lim%C3%B3n.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6172,7 +6163,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 73">
+      <div class="card" id="73">
     
         <div class="face front">
           <img src="https://previews.123rf.com/images/whiteboxmedia/whiteboxmedia1706/whiteboxmedia170600018/79394454-mantequilla-de-pl%C3%A1tano-y-man%C3%AD-en-rodajas-en-pan-integral-sobre-un-fondo-verde.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6222,7 +6213,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 74">
+      <div class="card" id="74">
     
         <div class="face front">
           <img src="https://www.clara.es/medio/2018/03/27/tiras-de-pollo-con-melon-y-sandia__600x900.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6276,7 +6267,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 75">
+      <div class="card" id="75">
     
         <div class="face front">
           <img src="https://www.cucute.com/blog/wp-content/uploads/2019/11/cuscus-con-pollo-y-verduras-3.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6354,7 +6345,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 76">
+      <div class="card" id="76">
     
         <div class="face front">
           <img src="https://d36fw6y2wq3bat.cloudfront.net/recipes/sandwich-de-pavo-queso-y-manzana/900/sandwich-de-pavo-queso-y-manzana_version_1653031846.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6409,7 +6400,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 77">
+      <div class="card" id="77">
     
         <div class="face front">
           <img src="https://1.bp.blogspot.com/-EJ48tXL5u-M/WiJax9_qZGI/AAAAAAAAB9I/7lD7FI6oGHQYUXG0tQWKON_FpXxxtj7HgCLcBGAs/s1600/Salm%25C3%25B3n%2Basi%25C3%25A1tico%2Bcon%2Bverduras%2By%2Barroz%2Bintegral%2B-%2Bblog%2Bde%2Brecetas.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6463,7 +6454,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 78">
+      <div class="card" id="78">
     
         <div class="face front">
           <img src="https://archeinthekitchen.com/wp-content/uploads/2017/09/IMG_0503-1080x720.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6532,7 +6523,7 @@ FuncionesCarta();
     
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 79">
+      <div class="card" id="79">
     
         <div class="face front">
           <img src="https://www.gastrolabweb.com/u/fotografias/m/2022/7/30/f850x638-32729_110218_5050.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6582,7 +6573,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 80">
+      <div class="card" id="80">
     
         <div class="face front">
           <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2020/01/receta-salsa-para-pescado-la-talla.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6638,7 +6629,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 81">
+      <div class="card" id="81">
     
         <div class="face front">
           <img src="https://recetaland.com/wp-content/uploads/2020/10/Sandwich-de-Pavo-y-Queso-1.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6700,7 +6691,7 @@ FuncionesCarta();
       
     <div class="flex flex-wrap justify-center" id="contenedor-recetas">
     
-      <div id="card" class="h-96 w-72 relative m-4 82">
+      <div class="card" id="82">
     
         <div class="face front">
           <img src="https://media.istockphoto.com/id/516929970/es/foto/tostado-jam%C3%B3n-y-queso-s%C3%A1ndwiches-de-pan-blanco-y-integral.jpg?s=612x612&w=0&k=20&c=7fKr89gNbVRVhZFdIFvjjz4loWQZ6ryCNQxujkVHgqU=" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6750,7 +6741,7 @@ FuncionesCarta();
         
       </div>
     
-      <div id="card" class="h-96 w-72 relative m-4 83">
+      <div class="card" id="83">
     
         <div class="face front">
           <img src="https://t1.uc.ltmcdn.com/es/posts/3/8/3/como_hacer_lentejas_con_verduras_34383_orig.jpg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6803,7 +6794,7 @@ FuncionesCarta();
       </div>
     
     
-      <div id="card" class="h-96 w-72 relative m-4 84">
+      <div class="card" id="84">
     
         <div class="face front">
           <img src="https://static2.abc.es/media/bienestar/2020/05/22/tortilla-patatas-k9tF--1200x630@abc.jpeg" style="position: absolute; width: 100%;height: 100%; object-fit: cover;">
@@ -6863,17 +6854,16 @@ FuncionesCarta();
 
 })
 
+
 let resultado = data[0].calorias
 let proteinas = data[0].proteinas
 let carbohidratos = data[0].carbohidratos
 let grasas = data[0].grasas
 let fibra = data[0].fibra
-console.log(resultado);
 let comidasCompletadas  = data[0].comidasCompletadas
 
 
 const FuncionesCarta = async () => {
-  divSelect.classList.remove('hidden')
  const returnCard = document.querySelectorAll('#return-card')
  const cardFront = document.querySelectorAll('.front')
  const btnChekedCard = document.querySelectorAll('#btn-cheked-card')
@@ -6886,6 +6876,8 @@ const FuncionesCarta = async () => {
     let carbohidratosCard = e.target.parentElement.children[4].children[1].children[2].innerText.split(':')[1];
     let grasasCard = e.target.parentElement.children[4].children[1].children[3].innerText.split(':')[1];
     let fibraCard = e.target.parentElement.children[4].children[1].children[4].innerText.split(':')[1];
+    console.log(e.target);
+    console.log(element);
     resultado = resultado + parseInt(calorias)
     proteinas = proteinas + parseInt(proteinasCard)
     carbohidratos = carbohidratos + parseInt(carbohidratosCard)
@@ -6895,14 +6887,10 @@ const FuncionesCarta = async () => {
     e.target.classList.toggle("incompleted");
     btnCard.classList.toggle("incompleted");
     btnCard.classList.toggle("completed");
-    const idcard = (e.target.parentElement.parentElement.classList[4]);
+    const idcard = (e.target.parentElement.parentElement.id);
     const id = data[0].id;
     comidasCompletadas = comidasCompletadas + 1
-    console.log(comidasCompletadas);
-  
-    console.log(grasas, fibra);
-    console.log(proteinas);
-    console.log(carbohidratos,grasas,fibra);
+    console.log(idcard);
     await axios.patch(`/api/recetas/${id}`,{
       comidasCompletadas: comidasCompletadas,
       proteinas: proteinas,
@@ -7772,7 +7760,7 @@ const FuncionesCarta = async () => {
     e.target.parentElement.classList.toggle("incompleted");
     btnCard.classList.toggle("incompleted");
     btnCard.classList.toggle("completed");
-    const idcard = e.target.parentElement.parentElement.parentElement.classList[4];
+    const idcard = e.target.parentElement.parentElement.parentElement.id;
     const id = data[0].id
     console.log(id);
     console.log(idcard);
@@ -8486,27 +8474,41 @@ returnCard.forEach(element => {
   element.addEventListener('click', e => {
   const faceFront = element.parentElement.parentElement.parentElement.children[0];
   const faceBack = element.parentElement.parentElement.parentElement.children[1];
+
+  const card = element.parentElement.parentElement.parentElement
+  card.classList.remove('card-select')
   faceFront.style.transform = "rotateY(360deg)";
   faceBack.style.transform = "rotateY(180deg)";
   faceBack.classList.remove('back-overflow')
     })
 });
 
- cardFront.forEach(element => {
+cardFront.forEach(element => {
   element.addEventListener('click', async e => {
   const cardFront = element.parentElement.children[0]
   const cardBack = element.parentElement.children[1]
+  const card = element.parentElement
+    card.classList.add('card-select')
     cardFront.style.transform = "rotateY(180deg)";
     cardBack.style.transform = "rotateY(360deg)";  
     cardBack.classList.add('back-overflow')
   })
   });
 }
+
 FuncionesCarta();
+}
+}
 
-
-
+const getTitulo = async () => {
+  const { data } = await axios.get('/api/todos', {
+    withCredentials: true
+})
+ const titulo = document.querySelector('#titulo');
+ titulo.innerHTML = `Hola ${data[0].nombre}!!`;
 }
 
 
-getTodos();
+getTitulo(); 
+getRecetas();
+

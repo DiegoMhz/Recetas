@@ -1,16 +1,38 @@
-const emailInput = document.querySelector('#email-input');
-const passwordInput = document.querySelector('#password-input');
+const emailInput = document.querySelector('#input-email');
+const passwordInput = document.querySelector('#input-password');
 const form = document.querySelector('#form');
-const invalido = document.querySelector('#error')
-const btnForm = document.querySelector('#form-btn')
-const loader = document.querySelector('.loader')
-const falso = false
-invalido.classList.add('hidden')
+const formError = document.querySelector('.formato-error')
+const menuIcon = document.querySelector('#menu-icon')
+const menuTelefono = document.querySelector('.menu-telefono')
+const svgInputPassword = document.querySelector('.svg-input-password');
+const svgPasswordVisible = document.querySelector('.svg-password-visible');
+
+
+svgInputPassword.addEventListener('click', e => {
+        passwordInput.setAttribute('type','text');
+        e.target.parentElement.children[1].classList.toggle('d');
+    })
+
+
+svgPasswordVisible.addEventListener('click', e => {
+        passwordInput.setAttribute('type','password');
+        e.target.parentElement.children[1].classList.toggle('d');
+    })
+
+
+menuIcon.addEventListener('click', e => {
+    const contenedor = document.querySelector('#contenedor')
+    contenedor.classList.toggle('opacity')
+    menuTelefono.classList.toggle('menu-visible')
+})
+
 form.addEventListener('submit', async e => {
     e.preventDefault();
-    btnForm.classList.add('hidden')
-    loader.classList.remove('hidden')
-    invalido.classList.add('hidden')
+    const btn = document.querySelector('#btn')
+    const loader = document.querySelector('.contenedor-loader')
+    btn.innerText = ''
+    loader.classList.add('loader-visible')
+    formError.classList.remove('formato-visible')
     try {
         const credentials = {
             email: emailInput.value,
@@ -27,10 +49,10 @@ form.addEventListener('submit', async e => {
         // window.location.pathname = `/app/${data}`;
     } catch (error) {
         const errorText = (error.response.data.error);
-        invalido.classList.remove('hidden')
-        loader.classList.add('hidden')
-        btnForm.classList.remove('hidden')
+        console.log(errorText);
+        loader.classList.remove('loader-visible')
+        formError.classList.add('formato-visible')
+        btn.innerText = 'Inicia Sesion'
     }
-
 })
 

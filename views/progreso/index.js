@@ -1,22 +1,48 @@
-const svgRecetas = document.querySelector('#svg-recetas')
-const btnPerfil = document.querySelector('#btn-perfil')
-const btnInicio = document.querySelector('#btn-inicio')
-const svgRecetasMobile = document.querySelector('#svg-recetas-mobil')
-const btnPerfilMobile = document.querySelector('#btn-perfil-mobil')
-const btnInicioMobile = document.querySelector('#btn-inicio-mobil')
-const btnCerrarSesionMobile = document.querySelector('#btn-cerrar-mobil')
-const btnCerrarSesion = document.querySelector('#btn-cerrar')
 const btnEntrar = document.querySelector('#btn-entrar')
 const divSelectorMes = document.querySelector('#selector-mes')
-const btnMenuMobile = document.querySelector('.btn-mobil')
-const menuMobile = document.querySelector('.menu-mobil')
 const btnValoresNutricionales = document.querySelector('#btn-valores-nutricionales')
 const btnPeso = document.querySelector('#btn-peso')
 const ctx = document.getElementById('my');
+const btnIncio = document.querySelectorAll('#btn-inicio');
+const btnPerfil = document.querySelectorAll('#btn-perfil');
+const btnRecetas= document.querySelectorAll('#btn-recetas');
+const btnCerrarSesion= document.querySelectorAll('#btn-cerrar');
+const menuIcon = document.querySelector('#menu-icon')
+const menuTelefono = document.querySelector('.menu-telefono')
 
-btnMenuMobile.addEventListener('click', e =>{
-  menuMobile.classList.toggle('top-20')
+
+menuIcon.addEventListener('click',e => {
+  menuTelefono.classList.toggle('menu-visible')
 })
+
+const idPage = window.location.pathname.split('/')[2];
+
+
+btnIncio.forEach(element => {
+  element.addEventListener('click', e => {
+    window.location.pathname = `principal/${idPage}`
+  })
+});
+
+btnRecetas.forEach(element => {
+  element.addEventListener('click', e => {
+    window.location.pathname = `recetas/${idPage}`
+  })
+});
+
+btnPerfil.forEach(element => {
+  element.addEventListener('click', e => {
+    window.location.pathname = `perfil/${idPage}`
+  })
+});
+
+btnCerrarSesion.forEach(element => {
+  element.addEventListener('click', async e => {
+  window.location.pathname = `/signup`
+  })
+});
+
+
 
 // NewDATE
 const MONTHS = [
@@ -38,11 +64,10 @@ let month = MONTHS[newDate.getMonth()];
 console.log(month);
 console.log(MONTHS);
 
-const getTodos = async () => {
+const getPeso = async () => {
   const { data } = await axios.get('/api/todos', {
       withCredentials: true
   })
-  console.log(data[0].newDate);
   const ctx = document.getElementById('my');
 const Peso = ()=>{
 if (data[0].newDate === "Enero") {
@@ -1569,17 +1594,94 @@ if (data[0].newDate === "Junio") {
    }
 
  if (data[0].newDate === "Julio") {
-    console.log(month);
-      
       
       if (month === 'Julio') {
         divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Julio'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [data[0].Julio[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso',
+             color: 'white'
+         }
+          }
+        },
+      });
       }
   
       if (month === 'Agosto') {
+        myChart =  new Chart(ctx, {
+          type: 'bar',
+          data: {
+           // Peso inicial
+            labels: ['Julio', 'Agosto'],
+            datasets: [{
+              label: 'Peso inicial',
+              data: [data[0].peso,data[0].Julio[0].pesoActual],
+              borderColor: '#36A2EB',
+              backgroundColor: '#9BD0F5',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            },
+            {
+               // Peso actual
+               label: 'Peso Actual',
+               data: [data[0].Julio[0].pesoActual,data[0].Agosto[0].pesoActual],
+               borderColor: '#922B21',
+               backgroundColor: '#E74C3C',
+               borderWidth: 2,
+               borderRadius: 5,
+               borderSkipped: false,
+             }
+           ]
+          },
+          options: {
+           responsive: true,
+           plugins: {
+               legend: {
+                   position: 'top',
+              },
+              title: {
+               display: true,
+               text: 'Tu progreso'
+           }
+            }
+          },
+        });
         divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Julio">Julio</option>
@@ -5298,8 +5400,8 @@ if (e.target.value === 'Mayo') {
 
  
     if (e.target.value === 'Julio') {
-    
-       myChart =  new Chart(ctx, {
+    myChart.destroy();
+    myChart =  new Chart(ctx, {
          type: 'bar',
          data: {
           // Peso inicial
@@ -5337,12 +5439,12 @@ if (e.target.value === 'Mayo') {
           }
            }
          },
-       });
+    });
      
     }
  
     if (e.target.value === 'Agosto') {
-   
+      myChart.destroy();
        myChart =  new Chart(ctx, {
          type: 'bar',
          data: {
@@ -5865,7 +5967,9 @@ if (e.target.value === 'Junio') {
 }
 FuncionSelect()
 }
-getTodos()
+getPeso()
+
+
 
 const getCalorias = async () => {
   const { data } = await axios.get('/api/recetas', {
@@ -5880,6 +5984,7 @@ btnValoresNutricionales.addEventListener('click', e =>{
   <option value="proteinas">Proteinas</option>
 
 </select>`
+
   if (data[0] === undefined || data[0].calorias === 0) {
     console.log(data[0]);
     console.log('aqio');
@@ -5894,7 +5999,8 @@ btnValoresNutricionales.addEventListener('click', e =>{
          },
          title: {
           display: true,
-          text: 'Aun no has comido ningun plato'
+          text: 'Aun no has comido ningun plato',
+          color: 'white',
       }
        }
      },
@@ -6214,50 +6320,10 @@ btnValoresNutricionales.addEventListener('click', e =>{
 getCalorias()
 
 
-btnInicio.addEventListener('click', e => {
-  const id = window.location.pathname.split('/')[2]
-  window.location.pathname = `/principal/${id}`;
-  })
-  
-  
-  btnCerrarSesion.addEventListener('click', e =>{
-    window.location.pathname =  '/signup/'
-  })
-  
-
-svgRecetas.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `recetas/${id}`
-  })
-
-  
-  btnPerfil.addEventListener('click', e =>{
-    const id = window.location.pathname.split('/')[2];
-    window.location.pathname = `perfil/${id}`
-  })
 
 
 
 
-// Telefono
-btnPerfilMobile.addEventListener('click', e =>{
-  const id = window.location.pathname.split('/')[2];
-  window.location.pathname = `perfil/${id}`
-})
-
-svgRecetasMobile.addEventListener('click', e => {
-  const id = window.location.pathname.split('/')[2]
-  window.location.pathname = `/recetas/${id}`;
-  })
-
-  btnInicioMobile.addEventListener('click', e => {
-    const id = window.location.pathname.split('/')[2]
-    window.location.pathname = `/principal/${id}`;
-    })
-    
-    btnCerrarSesionMobile.addEventListener('click', e =>{
-      window.location.pathname =  '/signup/'
-    })
 
 // btnEntrar.addEventListener('click',async e => {
 //   e.preventDefault();

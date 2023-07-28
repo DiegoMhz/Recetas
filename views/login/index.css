@@ -1,50 +1,332 @@
-/* @media (min-width: 992px)
-.banner-home {
-    background-image: url(/images/peru/home.jpg);
-    background-size: cover;
-} */
-
-#div-img::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.5);
-    z-index: -5;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
+
+body{
+  height: 100vh;
+  background-image: url('imagen/imagenRecetas.png');
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+#nav-bar{
+  position: fixed;
+  top: 0;
+  height: 5rem;
+  right: 0;
+  left: 0;
+  background-color: #106410;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+#nav-bar p{
+  color: white;
+  font-weight: 700;
+}
+
+#nav-links{
+  display: flex;
+  gap: 1rem;
+}
+
+#nav-links a{
+  text-decoration: none;
+  color: rgb(217, 214, 214);
+}
+
+#nav-links a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+#section{
+  height: 100%;
+  padding-top: 5rem;
+}
+
+#contenedor{
+  display: flex;
+  height: 100%;
+}
+
+#contenedor-form{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#contenedor-image{
+  height: 100%;
+  width: 50%;
+  background-color: rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2rem;
+}
+
+#image-p1{
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+#image-titulo{
+  font-size: 3rem
+}
+
+#image-p2{
+  text-align: center;
+}
+
+#form{
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+#form h1{
+  font-size: 2.7rem;
+  color: #3e3d3d;
+}
+
+.form-inputs{
+  width: 100%;
+  position: relative;
+}
+
+.input{
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 0;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.input:focus{
+  outline-style: solid;
+  outline-color: #106410;
+  outline-width: 2px;
+}
+
+.form-svg{
+  position: absolute;
+  fill: #106410;
+  left: 14px;
+  height: 100%;
+  width: 1rem;
+  display: flex;
+  align-items: center;
+  top: 0;
+}
+
+.form-svg-password{
+  position: absolute;
+  fill: #106410;
+  right: 14px;
+  height: 100%;
+  width: 1rem;
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 1.5rem;
+}
+
+
+.svg-input{
+  width: 100%;
+  position: absolute;
+  top: 11px;
+}
+
+.svg-input-password{
+  width: 100%;
+  position: absolute;
+  top: 11px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+
+.svg-input-password:hover{
+  background-color: #d1d0d0;
+}
+
+.svg-password-visible{
+  width: 100%;
+  position: absolute;
+  top: 11px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  display: none;
+}
+
+.d{
+  display: block;
+}
+
+
+#form-btn{
+  width: 100%;
+  position: relative;
+}
+
+#btn{
+  height: 2.6rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
+  background-color: #106410;
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+#btn:hover{
+  background-color: #0d4d0d;
+}
+
+#form-registrar{
+  display: flex;
+  gap: 1rem;
+}
+
+#form-registrar a{
+  color: #106410;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#form-registrar a:hover{
+  text-decoration: underline;
+}
+
+.formato-error{
+  color: rgb(249, 76, 76);
+  display: none;
+}
+
+.formato-visible{
+  display: block;
+}
+
+/* ---------TELEFONO-------- */
+#nav-telefono{
+  fill: white;
+  width: 2rem;
+  display: none;
+}
+
+.menu-telefono{
+  position: absolute;
+  top: 5rem;
+  right: -193px;
+  display: flex;
+  flex-direction: column;
+  background-color: #3e3d3d;
+  border-radius: 0px 0px 5px 5px;
+  padding: 1rem;
+  gap: 1rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.menu-telefono a{
+ color: white;
+ text-decoration: none;
+ width: 10rem;
+ text-align: center;
+}
+
+.opacity{
+  opacity: 0.5;
+  z-index: -5;
+  position: relative;
+}
+
+.menu-visible{
+  right: 0;
+}
+
+.contenedor-loader{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+
+.loader-visible{
+  align-items: center;
+  display: flex;
+}
+
 
 .loader {
-  border: 5px solid #f3f3f3;
-    border-top: 5px solid #555;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    animation: spin 2s linear infinite;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #FFF;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes animloader {
+  0% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  25% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+  }
+  50% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+  }
+  75% {
+    box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  100% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
 }
 
-@media (max-width: 950px) {
-    #div-img {
-      display: none;
-    }
-  }
 
-  @media (max-width: 950px) {
-    #nav-bar {
-      width: 100%;
-    }
-  }
-  
-  
-  @media (max-width: 950px) {
-    #div-form {
-      width: 100%;
-    }
-  }
-  
+@media (max-width: 900px) {
+  #contenedor-image{
+   display: none;
+ }
+ #contenedor-form{
+  width: 100%;
+ }
+
+ #nav-links{
+  display: none;
+ }
+
+ #nav-telefono{
+  display: block;
+}
+
+ }

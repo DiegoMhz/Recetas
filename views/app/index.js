@@ -1,15 +1,11 @@
 
-const NUMBER_REGEX = /^[0-9]{3}$/;
-
-const PESO_REGEX = /^[0-9]{2,3}$/;
-
 const form = document.querySelector('#form')
-// INPUTS
-const divMasculino = document.querySelector('#div-input-masculino')
-const divfemenino = document.querySelector('#div-input-femenino')
+const divMasculino = document.querySelector('#div-masculino')
+const divfemenino = document.querySelector('#div-femenino')
 const inputActividad = document.querySelector("#input-actividad")
 const inputMeta = document.querySelector("#input-meta")
 const inputAltura = document.querySelector("#input-altura")
+const inputName = document.querySelector('#input-name')
 const inputPeso = document.querySelector("#input-peso")
 const inputMasculino = document.querySelector("#sexo-masculino")
 const inputFemenino = document.querySelector("#sexo-femenino")
@@ -17,6 +13,13 @@ const inputEdad = document.querySelector("#input-edad")
 const btnAceptar = document.querySelector('#btn-aceptar');
 const falso = false
 
+// ------REGEX------
+
+const NUMBER_REGEX = /^[0-9]{3}$/;
+const REGEX_NAME = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+const PESO_REGEX = /^[0-9]{2,3}$/;
+
+let nombreValidacion = false
 let actividadValidacion = false;
 let alturaValidacion = false;
 let pesoValidacion = false;
@@ -26,8 +29,8 @@ let femeninoValidacion = false;
 let edadValidacion = false;
 
 
-const validation = (e, validation, element) => {
-    btnAceptar.disabled = !alturaValidacion || !pesoValidacion ||  !actividadValidacion || !metaValidacion || !masculinoValidacion || !femeninoValidacion || !edadValidacion  ? true : false;
+const validation = ( validation, element) => {
+    btnAceptar.disabled = !nombreValidacion || !alturaValidacion || !pesoValidacion ||  !actividadValidacion || !metaValidacion || !masculinoValidacion || !femeninoValidacion || !edadValidacion  ? true : false;
     if (validation) {
       element.classList.add('correct');
       element.classList.remove('incorrect');
@@ -38,17 +41,16 @@ const validation = (e, validation, element) => {
   }
 
 
-
 inputMasculino.addEventListener('click', e =>{
     console.log(e.target.checked);
     if (e.target.checked === true) {
         masculinoValidacion = true;
         femeninoValidacion = true;
     }
-    divMasculino.classList.add('bg-green-500')
-    divfemenino.classList.remove('bg-green-500') 
+    divMasculino.classList.add('bg-green')
+    divfemenino.classList.remove('bg-green') 
     console.log(inputFemenino.checked);
-    validation(e, masculinoValidacion, inputMasculino);
+    validation( masculinoValidacion, inputMasculino);
 })
 
 
@@ -59,16 +61,21 @@ inputFemenino.addEventListener('click', e =>{
         masculinoValidacion = true;
         femeninoValidacion = true;
     }
-    divMasculino.classList.remove('bg-green-500')
-    divfemenino.classList.add('bg-green-500')
-    validation(e, femeninoValidacion, inputFemenino);
+    divMasculino.classList.remove('bg-green')
+    divfemenino.classList.add('bg-green')
+    validation( femeninoValidacion, inputFemenino);
+})
+
+inputName.addEventListener('input', e => {
+   nombreValidacion = REGEX_NAME.test(e.target.value);
+   validation( nombreValidacion, inputName);
 })
 
 inputEdad.addEventListener('input', e => {
     console.log(e.target.value);
     edadValidacion = PESO_REGEX.test(e.target.value);
     console.log(edadValidacion);
-    validation(e, edadValidacion, inputEdad);
+    validation( edadValidacion, inputEdad);
 })
 
 inputMeta.addEventListener('input', e => {
@@ -77,21 +84,21 @@ inputMeta.addEventListener('input', e => {
         metaValidacion = true;
     };
     console.log(metaValidacion);
-    validation(e, metaValidacion, inputMeta);
+    validation( metaValidacion, inputMeta);
 })
 
 inputPeso.addEventListener('input', e => {
     console.log(e.target.value);
     pesoValidacion = PESO_REGEX.test(e.target.value);
     console.log(pesoValidacion);
-    validation(e, pesoValidacion, inputPeso);
+    validation(pesoValidacion, inputPeso);
 })
 
 inputAltura.addEventListener('input', e => {
     console.log(e.target.value);
     alturaValidacion = NUMBER_REGEX.test(e.target.value);
     console.log(alturaValidacion);
-    validation(e, alturaValidacion, inputAltura);
+    validation(alturaValidacion, inputAltura);
 })
 
 inputActividad.addEventListener('input', e => {
@@ -100,7 +107,7 @@ inputActividad.addEventListener('input', e => {
         actividadValidacion = true
     }
     console.log(actividadValidacion);
-    validation(e, actividadValidacion, inputActividad);
+    validation(actividadValidacion, inputActividad);
 })
 
 
@@ -114,7 +121,7 @@ form.addEventListener('submit', e => {
     const meta = inputMeta.value
     const masculino = inputMasculino.checked
     const femenino = inputFemenino.checked
-
+    const nombre = inputName.value
 
 
 
@@ -140,6 +147,7 @@ form.addEventListener('submit', e => {
         const addTodo = async () => {
             const { data } = await axios.post('/api/todos', {
                 newDate : month,
+                nombre: nombre,
                 newUser: falso,
                 actividad: actividad,
                 altura: altura,
@@ -193,8 +201,6 @@ form.addEventListener('submit', e => {
                     pesoinicial :  parseInt(peso),
                     pesoActual :  parseInt(peso)
                 }],
-                
-                
                 meta: meta,
                 edad: edad,
                 masculino: masculino,

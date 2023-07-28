@@ -1,54 +1,140 @@
 
-.menu-mobil{
-    position: absolute;
-    top: -40rem;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1rem;
-    box-shadow: 0 5px 10px #000;
-    width: 100%;
-    background-color: white;
-    transition: 1s;
-    height:31rem;
-  }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  height: 100vh;
+  background-image: url('imagen12/filete-pollo-rodajas-guisantes-tomate-kiwi-calabaza.jpg');
+  background-size: cover;
+}
+
+
+#nav-bar{
+  display: flex;
+  position: fixed;
+  right: 0;
+  left: 0;
+  justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  align-items: center;
+  height: 5rem;
+  background-color: #106410;
+}
+
+#nav-bar p{
+  color: white;
+  font-weight: 600;
+}
+
+#nav-links{
+  display: flex;
+  gap: 1rem;
+}
+
+#nav-telefono{
+  display: none;
+}
+
+
+#nav-links button{
+  color: rgb(197, 197, 197);
+  transition: all 0.3s ease-in-out;
+}
+
+#nav-links button:hover{
+  color: white;
+}
+
+
+
+#nav-telefono{
+  width: 2rem;
+  fill: white;
+  display: none;
+}
+
+.menu-telefono{
+  position: absolute;
+  top: 5rem;
+  right: -132px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  color: white;
+  background-color: #3e3d3d;
+  border-radius: 0px 0px 5px 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-visible{
+  right: 0;
+}
 
 /* Id */
 
-  #container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-top: 5rem;
-    gap: 1rem;
-    height: 100%;
-  }
+
+#section{
+  padding-top: 5rem;
+  gap: 1rem;
+  height: 100%;
+  background-color: #00000070;
+}
+
+#container{
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#div-canvas{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
   #div-btn{
     display: flex;
-    padding-left: 1rem;
-    padding-right: 1rem;
     gap: 1rem;
+    justify-content: center;
   }
 
   #btn-peso{
-    width: 100%;
-    background-color: white;
-    padding: 2px;
-    border-radius: 0.5rem;
+    background-color: #106410;
+    transition: all 0.3s ease-in-out;
+  }
 
+  #btn-peso:hover{
+    background-color: #0d490d;
   }
   
   #btn-valores-nutricionales{
-    width: 100%;
-    background-color: white;
-    padding: 2px;
-    background-color: rgb(22 163 74 / 1);
-    border-radius: 0.5rem;
-   padding: 1rem;
+    background-color: #3e3d3d;
+    transition: all 0.3s ease-in-out;
   }
+
+  #btn-valores-nutricionales:hover{
+    background-color: #2b2a2a;
+  }
+
+  .btn{
+    color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 50%;
+  }
+
   
    
   #btn-carbohidratos{
@@ -82,6 +168,15 @@
     padding: 1rem;
     border-radius: 0.5rem;
   }
+
+  @media (max-width: 900px) {
+    #nav-links{
+      display: none;
+    }
+    #nav-telefono{
+      display: block;
+    }
+  }
   
 
   @media (min-width: 900px) {
@@ -109,5 +204,11 @@
     #container {
       gap: 0;
       justify-content: center;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .btn {
+      padding: 0.5rem;
     }
   }

@@ -7,6 +7,7 @@ todosRouter.post('/', async (request, response) => {
     if (!user) {
         return response.sendStatus(401);
     }
+    const {nombre} = request.body
     const { actividad } = request.body;
     const { meta } = request.body;
     const { altura } = request.body;
@@ -31,6 +32,7 @@ todosRouter.post('/', async (request, response) => {
     console.log(request.body);
 
     const newTodo = new Todo({
+        nombre,
         newDate,
         Enero,
         Febrero,
@@ -86,6 +88,7 @@ todosRouter.patch('/:id', async (request, response) => {
         return response.sendStatus(401);
     }
     console.log(request.body);
+    const {nombre} = request.body;
     const { peso } = request.body;
     const { edad } = request.body;
     const { meta } = request.body;
@@ -102,8 +105,8 @@ todosRouter.patch('/:id', async (request, response) => {
     const { Enero } = request.body;
     const { Febrero } = request.body;
     const { pesoEdit } = request.body;
-    console.log(Enero);
     await Todo.findByIdAndUpdate(request.params.id, {
+        nombre: nombre,
         Marzo: Marzo,
         Abril : Abril,
         Mayo: Mayo,
@@ -124,5 +127,6 @@ todosRouter.patch('/:id', async (request, response) => {
     response.sendStatus(200);
 
 });
+
 
 module.exports = todosRouter;
