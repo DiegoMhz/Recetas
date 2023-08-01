@@ -68,6 +68,7 @@ const getPeso = async () => {
   const { data } = await axios.get('/api/todos', {
       withCredentials: true
   })
+  console.log(data);
   const ctx = document.getElementById('my');
 const Peso = ()=>{
 if (data[0].newDate === "Enero") {
@@ -1835,6 +1836,45 @@ if (data[0].newDate === "Agosto") {
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [data[0].Agosto[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+   });
       }
     
       if (month === 'Septiembre') {
@@ -1843,6 +1883,47 @@ if (data[0].newDate === "Agosto") {
         <option value="Agosto">Agosto</option>
         <option value="Septiembre">Septiembre</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
     
       if (month === 'Octubre') {
@@ -1852,6 +1933,47 @@ if (data[0].newDate === "Agosto") {
         <option value="Septiembre">Septiembre</option>
         <option value="Octubre">Octubre</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
     
       if (month === 'Noviembre') {
@@ -1862,6 +1984,47 @@ if (data[0].newDate === "Agosto") {
         <option value="Octubre">Octubre</option>
         <option value="Noviembre">Noviembre</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+           data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
     
       if (month === 'Diciembre') {
@@ -1873,6 +2036,47 @@ if (data[0].newDate === "Agosto") {
         <option value="Noviembre">Noviembre</option>
         <option value="Diciembre">Diciembre</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, data[0].Diciembre[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
     
       if (month === 'Enero') {
@@ -1885,6 +2089,48 @@ if (data[0].newDate === "Agosto") {
         <option value="Diciembre">Diciembre</option>
         <option value="Enero">Enero</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, data[0].Diciembre[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
     
       if (month === 'Febrero') {
@@ -1898,9 +2144,94 @@ if (data[0].newDate === "Agosto") {
         <option value="Enero">Enero</option>
         <option value="Febrero">Febrero</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
   
       if (month === 'Marzo') {
+        myChart =  new Chart(ctx, {
+          type: 'bar',
+          data: {
+           // Peso inicial
+            labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo'],
+            datasets: [{
+              label: 'Peso inicial',
+              data: [data[0].peso,
+              data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+              data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual],
+              borderColor: '#36A2EB',
+              backgroundColor: '#9BD0F5',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            },
+            {
+               // Peso actual
+               label: 'Peso Actual',
+               data: [
+               data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+               data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual],
+               borderColor: '#922B21',
+               backgroundColor: '#E74C3C',
+               borderWidth: 2,
+               borderRadius: 5,
+               borderSkipped: false,
+             }
+           ]
+          },
+          options: {
+           responsive: true,
+           plugins: {
+               legend: {
+                   position: 'top',
+              },
+              title: {
+               display: true,
+               text: 'Tu progreso'
+           }
+            }
+          },
+        });
         divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
         <option value="value1"selected disabled>Selecciona el mes</option>
         <option value="Agosto">Agosto</option>
@@ -1927,6 +2258,49 @@ if (data[0].newDate === "Agosto") {
         <option value="Marzo">Marzo</option>
         <option value="Abril">Abril</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+            data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
 
       if (month === 'Mayo') {
@@ -1943,7 +2317,50 @@ if (data[0].newDate === "Agosto") {
         <option value="Abril">Abril</option>
         <option value="Mayo">Mayo</option>
       </select>`
-
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+            data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual,  data[0].Abril[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
+    }
 
       if (month === 'Junio') {
         divSelectorMes.innerHTML = `<select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5  text-center" id="select">
@@ -1960,6 +2377,49 @@ if (data[0].newDate === "Agosto") {
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+            data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual, data[0].Junio[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
 
       if (month === 'Julio') {
@@ -1976,10 +2436,53 @@ if (data[0].newDate === "Agosto") {
         <option value="Abril">Abril</option>
         <option value="Mayo">Mayo</option>
         <option value="Junio">Junio</option>
-        <option value="Julio">Junio</option>
+        <option value="Julio">Julio</option>
       </select>`
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+            data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual,data[0].Junio[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual, data[0].Junio[0].pesoActual,data[0].Julio[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
       }
-      }
+      
    }   
 
 
@@ -5960,6 +6463,575 @@ if (e.target.value === 'Junio') {
  
  
    }
+
+   if (data[0].newDate === 'Agosto') {
+
+ 
+    if (e.target.value === 'Agosto') {
+    myChart.destroy();
+    myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+          // Peso inicial
+           labels: ['Agosto'],
+           datasets: [{
+             label: 'Peso inicial',
+             data: [data[0].peso],
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+           {
+              // Peso actual
+              label: 'Peso Actual',
+              data: [data[0].Agosto[0].pesoActual],
+              borderColor: '#922B21',
+              backgroundColor: '#E74C3C',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            }
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+    });
+     
+    }
+ 
+    if (e.target.value === 'Septiembre') {
+      myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+          // Peso inicial
+           labels: ['Agosto','Septiembre'],
+           datasets: [{
+             label: 'Peso inicial',
+             data: [data[0].peso,
+             data[0].Agosto[0].pesoActual],
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+           {
+              // Peso actual
+              label: 'Peso Actual',
+              data: [
+              data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual],
+              borderColor: '#922B21',
+              backgroundColor: '#E74C3C',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            }
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+       });
+    }
+ 
+    if (e.target.value === 'Octubre') {
+      myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+          // Peso inicial
+           labels: ['Agosto','Septiembre', 'Octubre'],
+           datasets: [{
+             label: 'Peso inicial',
+             data: [data[0].peso,
+             data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual],
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+           {
+              // Peso actual
+              label: 'Peso Actual',
+              data: [
+              data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual],
+              borderColor: '#922B21',
+              backgroundColor: '#E74C3C',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            }
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+       });
+     
+    
+    }
+ 
+    if (e.target.value === 'Noviembre') {
+    myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+          // Peso inicial
+           labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre'],
+           datasets: [{
+             label: 'Peso inicial',
+             data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual],
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+           {
+              // Peso actual
+              label: 'Peso Actual',
+              data: [
+              data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual],
+              borderColor: '#922B21',
+              backgroundColor: '#E74C3C',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            }
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+       });
+     
+    }
+ 
+    if (e.target.value === 'Diciembre') {
+    myChart.destroy();
+       myChart =  new Chart(ctx, {
+         type: 'bar',
+         data: {
+          // Peso inicial
+           labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre'],
+           datasets: [{
+             label: 'Peso inicial',
+             data: [data[0].peso,
+             data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual],
+             borderColor: '#36A2EB',
+             backgroundColor: '#9BD0F5',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           },
+           {
+              // Peso actual
+              label: 'Peso Actual',
+              data: [
+              data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, data[0].Diciembre[0].pesoActual],
+              borderColor: '#922B21',
+              backgroundColor: '#E74C3C',
+              borderWidth: 2,
+              borderRadius: 5,
+              borderSkipped: false,
+            }
+          ]
+         },
+         options: {
+          responsive: true,
+          plugins: {
+              legend: {
+                  position: 'top',
+             },
+             title: {
+              display: true,
+              text: 'Tu progreso'
+          }
+           }
+         },
+       });
+    }
+
+    
+    if (e.target.value === 'Enero') {
+    myChart.destroy();
+      myChart =  new Chart(ctx, {
+        type: 'bar',
+        data: {
+         // Peso inicial
+          labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero'],
+          datasets: [{
+            label: 'Peso inicial',
+            data: [data[0].peso,
+            data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, data[0].Diciembre[0].pesoActual],
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            borderWidth: 2,
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+             // Peso actual
+             label: 'Peso Actual',
+             data: [
+             data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+             data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual],
+             borderColor: '#922B21',
+             backgroundColor: '#E74C3C',
+             borderWidth: 2,
+             borderRadius: 5,
+             borderSkipped: false,
+           }
+         ]
+        },
+        options: {
+         responsive: true,
+         plugins: {
+             legend: {
+                 position: 'top',
+            },
+            title: {
+             display: true,
+             text: 'Tu progreso'
+         }
+          }
+        },
+      });
+   }
+
+      
+   if (e.target.value === 'Febrero') {
+    myChart.destroy();
+    myChart =  new Chart(ctx, {
+      type: 'bar',
+      data: {
+       // Peso inicial
+        labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero'],
+        datasets: [{
+          label: 'Peso inicial',
+          data: [data[0].peso,
+          data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual],
+          borderColor: '#36A2EB',
+          backgroundColor: '#9BD0F5',
+          borderWidth: 2,
+          borderRadius: 5,
+          borderSkipped: false,
+        },
+        {
+           // Peso actual
+           label: 'Peso Actual',
+           data: [
+           data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+           data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual],
+           borderColor: '#922B21',
+           backgroundColor: '#E74C3C',
+           borderWidth: 2,
+           borderRadius: 5,
+           borderSkipped: false,
+         }
+       ]
+      },
+      options: {
+       responsive: true,
+       plugins: {
+           legend: {
+               position: 'top',
+          },
+          title: {
+           display: true,
+           text: 'Tu progreso'
+       }
+        }
+      },
+    });
+ }
+
+       
+ if (e.target.value === 'Marzo') {
+    myChart.destroy();
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,
+        data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+        data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [
+         data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+         data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
+}
+
+
+if (e.target.value === 'Abril') {
+  myChart.destroy();
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,
+        data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+        data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [
+         data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+         data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
+}
+
+
+if (e.target.value === 'Mayo') {
+  myChart.destroy();  
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,
+        data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+        data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual,  data[0].Abril[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [
+         data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+         data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
+}
+
+if (e.target.value === 'Junio') {
+  myChart.destroy();
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,
+        data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+        data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [
+         data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+         data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual, data[0].Junio[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
+}
+
+if (e.target.value === 'Julio') {
+  myChart.destroy();
+  myChart =  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     // Peso inicial
+      labels: ['Agosto','Septiembre', 'Octubre', 'Noviembre','Diciembre', 'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+      datasets: [{
+        label: 'Peso inicial',
+        data: [data[0].peso,
+        data[0].Agosto[0].pesoActual, data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+        data[0].Diciembre[0].pesoActual,data[0].Enero[0].pesoActual,data[0].Febrero[0].pesoActual, data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual,data[0].Junio[0].pesoActual],
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        borderWidth: 2,
+        borderRadius: 5,
+        borderSkipped: false,
+      },
+      {
+         // Peso actual
+         label: 'Peso Actual',
+         data: [
+         data[0].Agosto[0].pesoActual,data[0].Septiembre[0].pesoActual, data[0].Octubre[0].pesoActual, data[0].Noviembre[0].pesoActual, 
+         data[0].Diciembre[0].pesoActual, data[0].Enero[0].pesoActual, data[0].Febrero[0].pesoActual,  data[0].Marzo[0].pesoActual, data[0].Abril[0].pesoActual, data[0].Mayo[0].pesoActual, data[0].Junio[0].pesoActual,data[0].Julio[0].pesoActual],
+         borderColor: '#922B21',
+         backgroundColor: '#E74C3C',
+         borderWidth: 2,
+         borderRadius: 5,
+         borderSkipped: false,
+       }
+     ]
+    },
+    options: {
+     responsive: true,
+     plugins: {
+         legend: {
+             position: 'top',
+        },
+        title: {
+         display: true,
+         text: 'Tu progreso'
+     }
+      }
+    },
+  });
+}
+
+
+
+ 
+ 
+ 
+   }
  
 
 
@@ -5975,6 +7047,7 @@ const getCalorias = async () => {
   const { data } = await axios.get('/api/recetas', {
     withCredentials: true
 })
+
 btnValoresNutricionales.addEventListener('click', e =>{
   divSelectorMes.innerHTML = ` <select name="Progreso" class="outline-none p-2 rounded-lg bg-slate-200 w-4/5 dark:bg-slate-600 text-center" id="select">
   <option value="calorias"selected>Calorias</option>

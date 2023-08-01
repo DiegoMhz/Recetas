@@ -3292,6 +3292,11 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
               }); 
               }
             
@@ -3350,6 +3355,11 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
               }); 
               }
             
@@ -3402,6 +3412,11 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
               }); 
               }
             
@@ -3449,6 +3464,11 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
               }); 
               }
             
@@ -3472,6 +3492,11 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
                   Abril: [{
                     mes : 'Abril',
                     pesoActual : parseInt(inputPeso.value),
@@ -3492,6 +3517,7 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
+                  
               }); 
               }
             
@@ -3507,6 +3533,11 @@ const getDatos = async () => {
                   }],
                   Febrero: [{
                     mes : 'Febrero',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
+                  Marzo: [{
+                    mes : 'Marzo',
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
                   }],
@@ -3543,10 +3574,48 @@ const getDatos = async () => {
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  data[0].Febrero[0].pesoinicial
                   }],
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
                   Abril: [{
                     mes : 'Abril',
                     pesoActual : parseInt(inputPeso.value),
                     pesoinicial :  parseInt(inputPeso.value)
+                  }],
+                  Mayo: [{
+                    mes : 'Mayo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
+                  Junio: [{
+                    mes : 'Junio',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
+                  Julio: [{
+                    mes : 'Julio',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  parseInt(inputPeso.value)
+                  }],
+              }); 
+              }
+                         
+              if (month === 'Marzo') {
+                await axios.patch(`/api/todos/${data[0].id}`,{ edad: inputEdad.value,
+                        nombre: inputName.value, 
+                  pesoEdit : inputPeso.value,
+                  Marzo: [{
+                    mes : 'Marzo',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  data[0].Marzo[0].pesoinicial
+                  }],
+
+                  Abril: [{
+                    mes : 'Abril',
+                    pesoActual : parseInt(inputPeso.value),
+                    pesoinicial :  data[0].Abril[0].pesoinicial
                   }],
                   Mayo: [{
                     mes : 'Mayo',
@@ -3631,8 +3700,6 @@ const getDatos = async () => {
                   }],
               }); 
               }
-            
-            
             
               if (month === 'Julio') {
                 await axios.patch(`/api/todos/${data[0].id}`,{ edad: inputEdad.value,
