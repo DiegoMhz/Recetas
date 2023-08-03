@@ -168,7 +168,10 @@ body{
   transition: .5s;
 }
 
-
+#btn-cheked-card{
+  border-radius: 5px;
+  background-color: #106410;
+}
 
 .front{
   transform: perspective(600px) rotateY(0deg);
@@ -221,9 +224,9 @@ body{
   }
  }
 
-@media (max-width: 640px) {
-  #card {
-   height: 17rem;
+@media (min-width: 1061px) {
+  .card {
+   width: 20rem;
   }
 }
 
@@ -245,6 +248,8 @@ body{
    padding-left: 1rem;
   }
 }
+
+
 
 /* #card:hover .front{
   transform: perspective(600px) rotateY(180deg);

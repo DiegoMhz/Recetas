@@ -55,10 +55,12 @@ const validacion = (input, element) =>{
       
     }
     if (!element && input.value != '') {
+        input.classList.add('incorrecto')
         formatos.classList.add('info-visible')
     }
     else{
         console.log('Si se cumple');
+        input.classList.remove('incorrecto')
         formatos.classList.remove('info-visible')
     }
 }

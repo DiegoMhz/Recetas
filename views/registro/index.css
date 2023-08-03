@@ -157,13 +157,18 @@ body{
 }
 
 .info{
-    color: #3e3d3d;
+    color: rgb(245, 87, 87); 
     padding-top: 0.5rem;
     display: none;
 }
 
 .info-visible{
     display: block;
+}
+.incorrecto{
+    border-width: 2px;
+    border-color: red;
+    border-style: solid;
 }
 
 .form-error{

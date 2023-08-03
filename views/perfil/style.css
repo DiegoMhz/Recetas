@@ -10,6 +10,7 @@
 
 
 body{
+  min-height: 100vh;
   background-image: url("image2/filete-pollo-rodajas-guisantes-tomate-kiwi-calabaza.jpg");
   background-size: cover;
 }
@@ -75,6 +76,7 @@ body{
 }
 
 #contenedor{
+  min-height: 100vh;
   padding-top: 5rem;
   display: flex;
   padding-left: 6rem;

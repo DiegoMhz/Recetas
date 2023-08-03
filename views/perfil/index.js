@@ -50,17 +50,17 @@ btnRecetas.forEach(element => {
   
   
 
-let NameValidacion = false 
-let EdadValidacion = false
-let PesoValidacion = false
+let NameValidacion = true 
+let EdadValidacion = true
+let PesoValidacion = true
 
 const validation = () =>{
-    if (NameValidacion || EdadValidacion || PesoValidacion) {
-        console.log('funciona el boton');
-        btnGuardar.disabled = false;
+    if (!NameValidacion || !EdadValidacion || !PesoValidacion) {
+        btnGuardar.disabled = true;
     }
     else{
-        btnGuardar.disabled = true;
+      btnGuardar.disabled = false;
+        
     }
 }
 

@@ -88,6 +88,7 @@ body{
 
 #descripcion-btn{
   width: 100%;
+  position: relative;
 }
 
 #btn{
@@ -96,9 +97,10 @@ body{
   background-color: #106410;
   font-size: 1rem;
   font-weight: 700;
-  padding: 1rem;
   color: white;
   cursor: pointer;
+  height: 3rem;
+  width: 8rem;
   transition: all 0.3s ease-in-out;
 }
 
@@ -114,6 +116,19 @@ body{
   gap: 1rem;
 }
 
+.loader-contenedor{
+  position: absolute;
+  top: 0;
+  left: 3.5rem;
+  bottom: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+}
+
+.loader-visible{
+  opacity: 1;
+}
 
 .caja-descripcion{
   height: 100%;
@@ -205,3 +220,34 @@ body{
   flex-direction: column;
 }
  }
+
+
+ .loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #FFF;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  25% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+  }
+  50% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+  }
+  75% {
+    box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  100% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+}

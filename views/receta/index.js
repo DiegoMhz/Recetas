@@ -6864,10 +6864,11 @@ let comidasCompletadas  = data[0].comidasCompletadas
 
 
 const FuncionesCarta = async () => {
- const returnCard = document.querySelectorAll('#return-card')
- const cardFront = document.querySelectorAll('.front')
- const btnChekedCard = document.querySelectorAll('#btn-cheked-card')
- const btnEditCard = document.querySelectorAll('#svg-check')
+ const returnCard = document.querySelectorAll('#return-card');
+ const cardFront = document.querySelectorAll('.front');
+ const btnChekedCard = document.querySelectorAll('#btn-cheked-card');
+ const btnEditCard = document.querySelectorAll('#svg-check');
+ 
 
  btnChekedCard.forEach(element => {
   element.addEventListener('click', async e =>{
@@ -8470,7 +8471,7 @@ const FuncionesCarta = async () => {
   
  });
 
-returnCard.forEach(element => {
+ returnCard.forEach(element => {
   element.addEventListener('click', e => {
   const faceFront = element.parentElement.parentElement.parentElement.children[0];
   const faceBack = element.parentElement.parentElement.parentElement.children[1];
@@ -8483,7 +8484,7 @@ returnCard.forEach(element => {
     })
 });
 
-cardFront.forEach(element => {
+ cardFront.forEach(element => {
   element.addEventListener('click', async e => {
   const cardFront = element.parentElement.children[0]
   const cardBack = element.parentElement.children[1]
@@ -8492,8 +8493,11 @@ cardFront.forEach(element => {
     cardFront.style.transform = "rotateY(180deg)";
     cardBack.style.transform = "rotateY(360deg)";  
     cardBack.classList.add('back-overflow')
+    contenedor.classList.add('activo');
   })
   });
+
+
 }
 
 FuncionesCarta();
