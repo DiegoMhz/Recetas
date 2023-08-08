@@ -10,8 +10,8 @@
 }
 
 body{
-  height: 100vh;
-  background-image: url("imagen/imagenRecetas.png");
+  min-height: 100vh;
+  background-image: url("imagen/imagenRecetasHome.webp");
   background-size: cover;
 }
 /* ~~~~~~~~~~~~~ID~~~~~~~~~~~~~~~~ */
