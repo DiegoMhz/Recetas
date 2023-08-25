@@ -981,8 +981,12 @@ btnCerrarSesion.forEach(element => {
 
 
 btnBuscarRecetas.addEventListener('click', e => {
+  const loader = document.querySelector('.loader-contenedor')
+  loader.classList.add('loader-visible')
+  btnBuscarRecetas.innerText = ''
   addRecetas()
-window.location.pathname = `/recetas/${id}`;
+  var say_hello = function () { window.location.pathname = `/recetas/${id}` };  
+  setTimeout(say_hello, 3000);
 })
 
 

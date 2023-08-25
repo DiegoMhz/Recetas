@@ -24,7 +24,7 @@ body{
   background-color: #106410;
   align-items: center;
   height: 5rem;
-  z-index: 1;
+  z-index: 2;
 }
 
 #nav-bar p{
@@ -105,6 +105,7 @@ body{
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 
@@ -117,6 +118,10 @@ body{
   border-radius: 0.5rem;
   background-color: #106410;
   transition: all 0.3s ease-in-out; 
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 9rem;
+  height: 2.5rem;
 }
 
 
@@ -204,6 +209,21 @@ body{
   display: none;
 }
 
+.loader-contenedor{
+  position: absolute;
+  top: 40%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -5;
+  display: flex;
+  align-items: center;
+}
+
+.loader-visible{
+  z-index: 1;
+}
+
 
 @media (max-width: 900px) {
   #nav-telefono{
@@ -215,6 +235,36 @@ body{
  }
 
 
+
+ .loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #FFF;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  25% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+  }
+  50% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+  }
+  75% {
+    box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  100% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+}
 
 
  

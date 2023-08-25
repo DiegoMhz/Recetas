@@ -960,17 +960,16 @@ const addRecetas = async ()=>{
  }
 
 const getRecetas = async () => {
-  console.log('se');
     const { data } = await axios.get('/api/recetas', {
         withCredentials: true
     })
 
 if (data[0] === undefined) {
-  console.log('siisiisisisisisisissi');
   contenedorImage.children[0].children[1].classList.add('displaynone')
   divcontenedor.style.height= '100%';
   contenedorImage.style.height= '100%';
   select.classList.add('displaynone')
+
   btnBuscarReceta.addEventListener('click', async e => {
   addRecetas();
    var say_hello = function () { location.reload() };  
@@ -980,8 +979,6 @@ if (data[0] === undefined) {
 else{
   btnBuscarReceta.classList.add('displaynone')
   contenedorImage.children[0].children[2].classList.add('displaynone')
-
-
 const divCard = document.createElement('div')
 divCard.className = 'contenedor-card'
    divCard.innerHTML=`<h3 class="mt-4 text-center font-bold" style="font-size: 24px;">Semana N°1</h3>
@@ -6864,10 +6861,11 @@ let comidasCompletadas  = data[0].comidasCompletadas
 
 
 const FuncionesCarta = async () => {
+
  const returnCard = document.querySelectorAll('#return-card');
  const cardFront = document.querySelectorAll('.front');
- const btnChekedCard = document.querySelectorAll('#btn-cheked-card');
  const btnEditCard = document.querySelectorAll('#svg-check');
+ const btnChekedCard = document.querySelectorAll('#btn-cheked-card');
  
 
  btnChekedCard.forEach(element => {
@@ -6877,17 +6875,16 @@ const FuncionesCarta = async () => {
     let carbohidratosCard = e.target.parentElement.children[4].children[1].children[2].innerText.split(':')[1];
     let grasasCard = e.target.parentElement.children[4].children[1].children[3].innerText.split(':')[1];
     let fibraCard = e.target.parentElement.children[4].children[1].children[4].innerText.split(':')[1];
-    console.log(e.target);
-    console.log(element);
+    
     resultado = resultado + parseInt(calorias)
     proteinas = proteinas + parseInt(proteinasCard)
     carbohidratos = carbohidratos + parseInt(carbohidratosCard)
     grasas = grasas + parseInt(grasasCard)
     fibra = fibra + parseInt(fibraCard)
-    const btnCard = e.target.parentElement.children[6];
+    const btnCardSvg = e.target.parentElement.children[6];
     e.target.classList.toggle("incompleted");
-    btnCard.classList.toggle("incompleted");
-    btnCard.classList.toggle("completed");
+    btnCardSvg.classList.toggle("incompleted");
+    btnCardSvg.classList.toggle("completed");
     const idcard = (e.target.parentElement.parentElement.id);
     const id = data[0].id;
     comidasCompletadas = comidasCompletadas + 1
@@ -7757,10 +7754,10 @@ const FuncionesCarta = async () => {
     carbohidratos = carbohidratos - parseInt(carbohidratosCard)
     grasas = grasas - parseInt(grasasCard)
     fibra = fibra - parseInt(fibraCard)
-    const btnCard = e.target.parentElement.parentElement.children[5];
+    const btnCardCheked = e.target.parentElement.parentElement.children[5];
     e.target.parentElement.classList.toggle("incompleted");
-    btnCard.classList.toggle("incompleted");
-    btnCard.classList.toggle("completed");
+    btnCardCheked.classList.toggle("incompleted");
+    btnCardCheked.classList.toggle("completed");
     const idcard = e.target.parentElement.parentElement.parentElement.id;
     const id = data[0].id
     console.log(id);
@@ -8471,32 +8468,28 @@ const FuncionesCarta = async () => {
   
  });
 
+ cardFront.forEach(element => {
+  element.addEventListener('click', async e => {
+  const cardBack = element.parentElement.children[1]
+  const card = element.parentElement
+    card.classList.add('card-seleccionada')
+    element.style.transform = "rotateY(180deg)";
+    cardBack.style.transform = "rotateY(360deg)";  
+    cardBack.classList.add('back-overflow')
+  })
+  });
+
  returnCard.forEach(element => {
   element.addEventListener('click', e => {
   const faceFront = element.parentElement.parentElement.parentElement.children[0];
   const faceBack = element.parentElement.parentElement.parentElement.children[1];
-
   const card = element.parentElement.parentElement.parentElement
-  card.classList.remove('card-select')
+  card.classList.remove('card-seleccionada')
   faceFront.style.transform = "rotateY(360deg)";
   faceBack.style.transform = "rotateY(180deg)";
   faceBack.classList.remove('back-overflow')
     })
 });
-
- cardFront.forEach(element => {
-  element.addEventListener('click', async e => {
-  const cardFront = element.parentElement.children[0]
-  const cardBack = element.parentElement.children[1]
-  const card = element.parentElement
-    card.classList.add('card-select')
-    cardFront.style.transform = "rotateY(180deg)";
-    cardBack.style.transform = "rotateY(360deg)";  
-    cardBack.classList.add('back-overflow')
-    contenedor.classList.add('activo');
-  })
-  });
-
 
 }
 
